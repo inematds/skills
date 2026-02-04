@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.6: Debugging e Logging | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.6</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.6
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔍 Debugging e Logging</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Aprenda tecnicas para identificar, diagnosticar e resolver problemas em skills, alem de implementar logging eficaz para monitoramento.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">40</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Intermed.</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🐛 Tipos de Problemas em Skills</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Antes de debugar, e importante entender os <strong class="text-emerald-400">tipos de problemas</strong> que podem ocorrer. Cada categoria tem suas proprias tecnicas de diagnostico.
+      </p>
+
+      <!-- Grid de Tipos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🔴</span>
+            <h4 class="font-bold">Skill Nao Carrega</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Skill nunca e ativada</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Frontmatter invalido (YAML)</li>
+            <li>• Descricao nao faz match</li>
+            <li>• Diretorio errado</li>
+            <li>• Nome de arquivo incorreto</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🟠</span>
+            <h4 class="font-bold">Comportamento Errado</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Carrega mas faz coisa errada</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Instrucoes ambiguas</li>
+            <li>• Conflito com outras skills</li>
+            <li>• Falta de contexto</li>
+            <li>• Interpretacao incorreta</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🟡</span>
+            <h4 class="font-bold">Erros de Execucao</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Tools falham durante uso</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Permissoes insuficientes</li>
+            <li>• Arquivos nao encontrados</li>
+            <li>• Comandos com sintaxe errada</li>
+            <li>• APIs indisponiveis</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">⚪</span>
+            <h4 class="font-bold">Problemas de Performance</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Funciona mas e lento</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Skill muito longa</li>
+            <li>• Muitas tools em sequencia</li>
+            <li>• Loops desnecessarios</li>
+            <li>• Contexto saturado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Primeira Pergunta
+        </h3>
+        <p class="text-neutral-300">
+          Sempre comece com: <strong>"A skill esta sendo carregada?"</strong> Se nao, o problema e de descoberta. Se sim, e de comportamento ou execucao.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🔎 Tecnicas de Diagnostico</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Siga um <strong class="text-emerald-400">processo sistematico</strong> para identificar a causa raiz do problema.
+      </p>
+
+      <!-- Timeline de Diagnostico -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Verificar se Skill Carrega</h4>
+            <p class="text-neutral-300 text-sm mb-3">Use o comando /skills ou pergunte ao agente</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">/skills
+# ou
+"Quais skills voce tem carregadas agora?"</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Validar Frontmatter</h4>
+            <p class="text-neutral-300 text-sm mb-3">YAML invalido impede carregamento</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400"># Use um validador YAML online ou:</span>
+python3 -c "import yaml; yaml.safe_load(open('SKILL.md').read().split('---')[1])"</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Testar Descricao</h4>
+            <p class="text-neutral-300 text-sm mb-3">A descricao faz match com o pedido do usuario?</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400"># Pergunte ao agente:</span>
+"Que skill voce usaria para [tarefa especifica]?"</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Isolar o Problema</h4>
+            <p class="text-neutral-300 text-sm">Desative outras skills, simplifique o input, teste passo a passo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist Rapido -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Checklist Rapido de Diagnostico
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>Arquivo e SKILL.md (nao skill.md)?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>Esta no diretorio correto?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>Frontmatter tem --- no inicio e fim?</span>
+            </li>
+          </ul>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>name: e description: estao presentes?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>YAML e valido (sem tabs, espacos corretos)?</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">☐</span>
+              <span>Descricao contem palavras-chave relevantes?</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📝 Implementando Logging</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Logging nao e automatico em skills - voce precisa <strong class="text-emerald-400">instruir o agente</strong> a reportar acoes. Bom logging facilita debugging futuro.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Niveis de Log
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-blue-400 font-bold">DEBUG:</span>
+            <span>Detalhes internos (so para desenvolvimento)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 font-bold">INFO:</span>
+            <span>Operacoes normais (arquivo criado, analise completa)</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 font-bold">WARN:</span>
+            <span>Algo inesperado mas nao bloqueante</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 font-bold">ERROR:</span>
+            <span>Falha que impede conclusao</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Exemplo de Instrucao -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Instrucoes de Logging na Skill</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">## Logging</span>
+
+Ao executar esta skill, reporte progresso no formato:
+
+<span class="text-emerald-400">[INFO]</span> Descricao da acao executada
+<span class="text-amber-400">[WARN]</span> Descricao do alerta
+<span class="text-red-400">[ERROR]</span> Descricao do erro
+
+<span class="text-blue-400">Exemplo de execucao:</span>
+[INFO] Iniciando analise de codigo em /projeto/src
+[INFO] Encontrados 23 arquivos .js
+[WARN] Arquivo muito grande ignorado: bundle.min.js
+[INFO] Analise completa: 5 issues encontrados
+[INFO] Relatorio gerado em /projeto/report.md</code></pre>
+      </div>
+
+      <!-- Grid Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Logar</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Inicio e fim de operacoes</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Arquivos criados/modificados</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Decisoes importantes</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Erros e como foram tratados</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Evitar Logar</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Dados sensiveis (senhas, tokens)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Conteudo completo de arquivos</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Detalhes excessivos que poluem</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Informacoes pessoais do usuario</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔧 Corrigindo Problemas Comuns</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Alguns problemas aparecem repetidamente. Aqui estao <strong class="text-emerald-400">solucoes rapidas</strong> para os mais comuns.
+      </p>
+
+      <!-- Timeline de Problemas -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+            <span class="text-red-400 font-bold">!</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Skill Nunca Carrega</h4>
+            <p class="text-neutral-400 text-sm mb-3">Problema mais comum</p>
+            <div class="bg-dark-700 rounded-lg p-3 text-sm">
+              <p class="text-neutral-300 mb-2"><strong>Causas:</strong></p>
+              <ul class="text-neutral-400 space-y-1 mb-3">
+                <li>• Arquivo nao e SKILL.md (case-sensitive)</li>
+                <li>• Diretorio errado</li>
+                <li>• Frontmatter YAML invalido</li>
+              </ul>
+              <p class="text-emerald-400"><strong>Solucao:</strong> Verifique nome, local e valide YAML</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-amber-400 font-bold">!</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Carrega mas Nao Ativa</h4>
+            <p class="text-neutral-400 text-sm mb-3">Descricao nao faz match</p>
+            <div class="bg-dark-700 rounded-lg p-3 text-sm">
+              <p class="text-neutral-300 mb-2"><strong>Causas:</strong></p>
+              <ul class="text-neutral-400 space-y-1 mb-3">
+                <li>• Descricao muito especifica ou generica</li>
+                <li>• Faltam palavras-chave</li>
+                <li>• Outra skill mais relevante</li>
+              </ul>
+              <p class="text-emerald-400"><strong>Solucao:</strong> Melhore descricao com sinonimos e casos de uso</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <span class="text-blue-400 font-bold">!</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Tool Nao Permitida</h4>
+            <p class="text-neutral-400 text-sm mb-3">allowed-tools restrito demais</p>
+            <div class="bg-dark-700 rounded-lg p-3 text-sm">
+              <p class="text-neutral-300 mb-2"><strong>Causas:</strong></p>
+              <ul class="text-neutral-400 space-y-1 mb-3">
+                <li>• Tool necessaria nao listada</li>
+                <li>• Pattern de permissao incorreto</li>
+              </ul>
+              <p class="text-emerald-400"><strong>Solucao:</strong> Adicione tools necessarias ao frontmatter</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
+            <span class="text-purple-400 font-bold">!</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Comportamento Inconsistente</h4>
+            <p class="text-neutral-400 text-sm mb-3">Funciona as vezes, falha outras</p>
+            <div class="bg-dark-700 rounded-lg p-3 text-sm">
+              <p class="text-neutral-300 mb-2"><strong>Causas:</strong></p>
+              <ul class="text-neutral-400 space-y-1 mb-3">
+                <li>• Instrucoes ambiguas</li>
+                <li>• Falta de exemplos</li>
+                <li>• Contexto insuficiente</li>
+              </ul>
+              <p class="text-emerald-400"><strong>Solucao:</strong> Adicione exemplos claros e seja mais especifico</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🧪 Testando Skills Sistematicamente</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Criar um <strong class="text-emerald-400">suite de testes</strong> para sua skill previne regressoes e facilita manutencao.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Framework de Testes Manual
+        </h3>
+        <p class="text-neutral-300 mb-4">Crie um documento com cenarios de teste:</p>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400"># Testes da Skill: minha-skill</span>
+
+<span class="text-blue-400">## Cenario 1: Caso basico</span>
+<span class="text-amber-400">Input:</span> "faz X com Y"
+<span class="text-emerald-400">Esperado:</span> Cria arquivo Z com conteudo A
+<span class="text-neutral-500">Status:</span> [ ] Passou [ ] Falhou
+
+<span class="text-blue-400">## Cenario 2: Input invalido</span>
+<span class="text-amber-400">Input:</span> "faz X" (sem Y)
+<span class="text-emerald-400">Esperado:</span> Pede esclarecimento sobre Y
+<span class="text-neutral-500">Status:</span> [ ] Passou [ ] Falhou
+
+<span class="text-blue-400">## Cenario 3: Arquivo nao existe</span>
+<span class="text-amber-400">Input:</span> "analisa /path/inexistente"
+<span class="text-emerald-400">Esperado:</span> Erro claro sobre arquivo
+<span class="text-neutral-500">Status:</span> [ ] Passou [ ] Falhou</code></pre>
+      </div>
+
+      <!-- Grid de Tipos de Teste -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">🟢 Happy Path</h4>
+          <p class="text-sm text-neutral-300">Cenario ideal funciona</p>
+          <ul class="text-sm text-neutral-400 mt-3 space-y-1">
+            <li>• Input valido</li>
+            <li>• Arquivos existem</li>
+            <li>• Permissoes OK</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">🟡 Edge Cases</h4>
+          <p class="text-sm text-neutral-300">Limites e excecoes</p>
+          <ul class="text-sm text-neutral-400 mt-3 space-y-1">
+            <li>• Input vazio</li>
+            <li>• Arquivos grandes</li>
+            <li>• Caracteres especiais</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-red-400 mb-3">🔴 Error Cases</h4>
+          <p class="text-sm text-neutral-300">Falhas esperadas</p>
+          <ul class="text-sm text-neutral-400 mt-3 space-y-1">
+            <li>• Arquivo inexistente</li>
+            <li>• Sem permissao</li>
+            <li>• Tool indisponivel</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica de Manutencao
+        </h3>
+        <p class="text-neutral-300">
+          Execute os testes <strong>apos cada modificacao</strong> da skill. Isso pega regressoes antes de afetar usuarios.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📊 Monitoramento em Producao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Mesmo skills testadas podem falhar em producao. <strong class="text-emerald-400">Monitoramento continuo</strong> ajuda a identificar problemas cedo.
+      </p>
+
+      <!-- Grid de Metricas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">📈 Metricas de Uso</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Quantas vezes ativada por dia</li>
+            <li>• Taxa de sucesso vs falha</li>
+            <li>• Tempo medio de execucao</li>
+            <li>• Usuarios unicos</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">🔴 Metricas de Erro</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Tipos de erro mais comuns</li>
+            <li>• Taxa de erro por versao</li>
+            <li>• Erros por horario/dia</li>
+            <li>• Tempo medio para resolver</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Alertas -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🚨</span> Configurando Alertas
+        </h3>
+        <p class="text-neutral-300 mb-4">Defina alertas para situacoes criticas:</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400">🔴</span>
+            <span>Taxa de erro > 10% - investigar imediatamente</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400">🟡</span>
+            <span>Tempo de execucao > 30s - verificar performance</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-blue-400">🔵</span>
+            <span>Queda de 50% no uso - mudanca de comportamento?</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🚀</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          Com debugging e logging dominados, o proximo modulo aborda <strong>Performance e Otimizacao</strong> - como criar skills rapidas e eficientes.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tipos de Problemas</strong>
+              <span class="text-neutral-400"> - Carregamento, comportamento, execucao, performance</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Diagnostico</strong>
+              <span class="text-neutral-400"> - Verificar carregamento, validar YAML, testar descricao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Logging</strong>
+              <span class="text-neutral-400"> - Niveis INFO/WARN/ERROR, instruir agente a reportar</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Problemas Comuns</strong>
+              <span class="text-neutral-400"> - Nao carrega, nao ativa, tool negada, inconsistente</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Testes</strong>
+              <span class="text-neutral-400"> - Happy path, edge cases, error cases</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Monitoramento</strong>
+              <span class="text-neutral-400"> - Metricas de uso/erro, alertas automaticos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.7 - Performance e Otimizacao</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo Anterior
+          </a>
+          <a href="modulo-1-7.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

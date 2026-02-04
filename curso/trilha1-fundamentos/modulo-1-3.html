@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.3: Ciclo de Vida de Skills | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.3</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.3
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔄 Ciclo de Vida de Skills</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Domine todas as fases do desenvolvimento de skills: desde a concepcao inicial ate deploy em producao e manutencao continua.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">45</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">💡 Fase 1: Ideacao e Planejamento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Toda skill comeca com uma <strong class="text-emerald-400">necessidade real</strong>. Esta fase define o escopo, publico e objetivos da skill antes de escrever qualquer codigo.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Perguntas Essenciais
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span><strong>Qual problema resolve?</strong> Defina claramente a dor ou necessidade</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span><strong>Quem vai usar?</strong> Desenvolvedores, analistas, designers?</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span><strong>Ja existe solucao?</strong> Pesquise antes de reinventar a roda</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span><strong>Quais tools precisa?</strong> Bash, Read, Write, MCP?</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">5.</span>
+            <span><strong>Escopo e limite?</strong> O que a skill NAO deve fazer?</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Template de Planejamento -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Template de Planejamento</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400"># Skill Planning Document</span>
+
+<span class="text-blue-400">## Problema</span>
+[Descreva o problema que a skill resolve]
+
+<span class="text-blue-400">## Solucao</span>
+[Como a skill resolve o problema]
+
+<span class="text-blue-400">## Publico-Alvo</span>
+[Quem vai usar a skill]
+
+<span class="text-blue-400">## Tools Necessarias</span>
+- [ ] Bash
+- [ ] Read/Write
+- [ ] MCP: _____
+
+<span class="text-blue-400">## Fora de Escopo</span>
+[O que a skill NAO faz]
+
+<span class="text-blue-400">## Metricas de Sucesso</span>
+[Como saber se a skill funciona bem]</code></pre>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica de Ouro
+        </h3>
+        <p class="text-neutral-300">
+          <strong>Comece pequeno.</strong> Uma skill que faz uma coisa muito bem e melhor que uma que tenta fazer tudo. Voce pode sempre expandir depois.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">✍️ Fase 2: Desenvolvimento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Com o planejamento feito, e hora de <strong class="text-emerald-400">escrever a skill</strong>. Siga uma estrutura consistente para facilitar manutencao e uso.
+      </p>
+
+      <!-- Timeline de Desenvolvimento -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Criar Estrutura de Pastas</h4>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">mkdir -p ~/.claude/skills/minha-skill
+cd ~/.claude/skills/minha-skill</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Escrever Frontmatter</h4>
+            <p class="text-neutral-300 text-sm mb-3">Metadados essenciais no topo do SKILL.md</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">name:</span> minha-skill
+<span class="text-blue-400">description:</span> Descricao clara com palavras-chave
+<span class="text-blue-400">allowed-tools:</span> Bash(comando:*), Read, Write
+<span class="text-purple-400">---</span></code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Escrever Corpo da Skill</h4>
+            <p class="text-neutral-300 text-sm">Secoes recomendadas: Quando Usar, Instrucoes, Exemplos, Restricoes</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Adicionar Recursos (Opcional)</h4>
+            <p class="text-neutral-300 text-sm">Scripts em /scripts, templates em /resources, exemplos em /examples</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Boas Praticas</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Use nomes em kebab-case</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Descricao com 2-3 frases claras</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Inclua exemplos de uso</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Documente restricoes</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Evitar</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Nomes com espacos ou maiusculas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Descricoes vagas ou genericas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Instrucoes ambiguas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Codigo inline muito longo</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🧪 Fase 3: Teste e Validacao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Antes de usar em producao, <strong class="text-emerald-400">teste exaustivamente</strong>. Uma skill mal testada pode causar mais problemas do que resolve.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🧪</span> Checklist de Testes
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-medium text-white mb-2">Funcionais</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>☐ Skill e descoberta corretamente</li>
+              <li>☐ Instrucoes sao seguidas</li>
+              <li>☐ Tools funcionam como esperado</li>
+              <li>☐ Output e consistente</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-medium text-white mb-2">Edge Cases</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>☐ Input invalido/vazio</li>
+              <li>☐ Arquivos inexistentes</li>
+              <li>☐ Permissoes negadas</li>
+              <li>☐ Timeout de comandos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metodos de Teste -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">🔍 Teste Manual</h4>
+          <p class="text-sm text-neutral-300 mb-3">Interaja diretamente com o agente</p>
+          <ul class="text-sm text-neutral-400 space-y-1">
+            <li>• Abra nova sessao Claude Code</li>
+            <li>• Peca tarefas que ativem a skill</li>
+            <li>• Verifique se carregou</li>
+            <li>• Analise resultados</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">📝 Teste de Cenarios</h4>
+          <p class="text-sm text-neutral-300 mb-3">Crie scripts de teste</p>
+          <ul class="text-sm text-neutral-400 space-y-1">
+            <li>• Liste cenarios de uso</li>
+            <li>• Defina input esperado</li>
+            <li>• Defina output esperado</li>
+            <li>• Execute e compare</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">👥 Teste com Usuarios</h4>
+          <p class="text-sm text-neutral-300 mb-3">Feedback de usuarios reais</p>
+          <ul class="text-sm text-neutral-400 space-y-1">
+            <li>• Compartilhe com colegas</li>
+            <li>• Colete feedback</li>
+            <li>• Observe padroes de uso</li>
+            <li>• Itere baseado em dados</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Comando de Verificacao -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Verificar se Skill Foi Carregada</h3>
+        <p class="text-neutral-300 text-sm mb-3">Use o comando /skills no Claude Code para listar skills ativas:</p>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm"><code class="text-emerald-400">/skills</code></pre>
+        <p class="text-neutral-400 text-sm mt-3">Ou pergunte diretamente: "Quais skills voce tem carregadas?"</p>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🚀 Fase 4: Deploy e Distribuicao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Com a skill testada, e hora de <strong class="text-emerald-400">disponibilizar para uso</strong>. Existem diferentes estrategias dependendo do publico.
+      </p>
+
+      <!-- Timeline de Deploy -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-2xl">👤</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Uso Pessoal</h4>
+            <p class="text-sm text-neutral-400 mb-3">Apenas para voce</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">~/.claude/skills/minha-skill/SKILL.md</code></pre>
+            <p class="text-neutral-300 text-sm mt-2">Disponivel em todas as suas sessoes Claude Code</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <span class="text-2xl">📁</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Por Projeto</h4>
+            <p class="text-sm text-neutral-400 mb-3">Especifica para um repositorio</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">/seu-projeto/.claude/skills/skill-especifica/SKILL.md</code></pre>
+            <p class="text-neutral-300 text-sm mt-2">Versione junto com o projeto no Git</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
+            <span class="text-2xl">👥</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Time/Organizacao</h4>
+            <p class="text-sm text-neutral-400 mb-3">Compartilhar via repositorio</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">git clone org/skills-repo ~/.claude/skills</code></pre>
+            <p class="text-neutral-300 text-sm mt-2">Mantenha um repo central com skills do time</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">🌍</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Comunidade/Publico</h4>
+            <p class="text-sm text-neutral-400 mb-3">Open source para todos</p>
+            <p class="text-neutral-300 text-sm">Publique no GitHub, adicione a awesome-claude-skills, ou contribua para anthropics/skills</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔧 Fase 5: Manutencao e Evolucao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills nao sao estaticas. Elas precisam <strong class="text-emerald-400">evoluir</strong> com mudancas em tools, modelos e necessidades do usuario.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🔄</span> Quando Atualizar
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Nova versao do agente:</strong> Adapte para novas tools ou comportamentos</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Feedback de usuarios:</strong> Corrija problemas reportados</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Novos casos de uso:</strong> Expanda funcionalidades</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Problemas de performance:</strong> Otimize instrucoes</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Mudancas no workflow:</strong> Atualize processos obsoletos</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grid de Praticas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">📋 Versionamento</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Use Git para historico de mudancas</li>
+            <li>• Tags para versoes estaveis</li>
+            <li>• Changelog documentado</li>
+            <li>• Branches para experimentos</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">📊 Monitoramento</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Colete metricas de uso</li>
+            <li>• Monitore erros comuns</li>
+            <li>• Analise padroes de falha</li>
+            <li>• Feedback qualitativo</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Alerta -->
+      <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+          <span class="mr-2">⚠️</span> Cuidado com Breaking Changes
+        </h3>
+        <p class="text-neutral-300">
+          Se outros dependem da sua skill, <strong>comunique mudancas</strong> que podem quebrar workflows existentes. Mantenha retrocompatibilidade quando possivel.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📊 Fase 6: Deprecacao e Arquivamento</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills tem um ciclo de vida finito. Saber quando e como <strong class="text-emerald-400">descontinuar</strong> uma skill e tao importante quanto cria-la.
+      </p>
+
+      <!-- Sinais de Deprecacao -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Sinais de que uma Skill Deve Ser Deprecada</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Funcionalidade agora e nativa</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Tool que usa foi removida</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Ninguem mais usa</span>
+            </li>
+          </ul>
+          <ul class="space-y-2 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Existe alternativa melhor</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Manutencao se tornou custosa</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400">⚠️</span>
+              <span>Problemas de seguranca</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Processo de Deprecacao -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Processo de Deprecacao
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span><strong>Anuncie:</strong> Comunique a deprecacao com antecedencia</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span><strong>Documente alternativas:</strong> Indique o que usar no lugar</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span><strong>Periodo de transicao:</strong> De tempo para migrar</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span><strong>Arquive:</strong> Mova para pasta /archived ou renomeie</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">5.</span>
+            <span><strong>Remova:</strong> Apos periodo, remova completamente</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🚀</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          Com o ciclo de vida dominado, o proximo modulo explora <strong>Padroes de Comunicacao</strong> - como skills interagem com usuarios e sistemas de forma eficaz.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Ideacao</strong>
+              <span class="text-neutral-400"> - Defina problema, publico, escopo antes de comecar</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Desenvolvimento</strong>
+              <span class="text-neutral-400"> - Estrutura consistente, frontmatter correto, instrucoes claras</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Teste</strong>
+              <span class="text-neutral-400"> - Manual, cenarios, e com usuarios reais</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Deploy</strong>
+              <span class="text-neutral-400"> - Pessoal, projeto, time ou publico</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Manutencao</strong>
+              <span class="text-neutral-400"> - Versionamento, monitoramento, atualizacoes</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Deprecacao</strong>
+              <span class="text-neutral-400"> - Processo claro de descontinuacao</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.4 - Padroes de Comunicacao</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo Anterior
+          </a>
+          <a href="modulo-1-4.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

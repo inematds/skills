@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 4.6: Bancos Vetoriais | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; } .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; } html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; } html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; } html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; } html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; } html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span></a>
+          <span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Google</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-amber-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-amber-400">Trilha 4</a><span>/</span><span class="text-amber-400">Modulo 4.6</span></div></nav>
+
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MODULO 4.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🗄️ Bancos Vetoriais</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Embeddings, busca semantica e RAG: Pinecone, Chroma, Weaviate e como usar em skills para conhecimento contextual.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Avancado</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Pratico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📐 O que sao Embeddings</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-amber-400">Embeddings</strong> sao representacoes numericas de texto (vetores) que capturam significado semantico. Textos similares tem vetores proximos no espaco.</p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4">Como Funcionam</h3>
+        <div class="space-y-3">
+          <p class="text-neutral-300 text-sm">"O gato dormiu" → [0.23, -0.45, 0.12, ...]</p>
+          <p class="text-neutral-300 text-sm">"O felino descansou" → [0.21, -0.43, 0.14, ...] (similar!)</p>
+          <p class="text-neutral-300 text-sm">"Python e uma linguagem" → [-0.89, 0.32, 0.67, ...] (diferente)</p>
+        </div>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Gerando Embeddings</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-blue-400">from</span> openai <span class="text-blue-400">import</span> OpenAI
+
+client = OpenAI()
+response = client.embeddings.create(
+    model=<span class="text-emerald-400">"text-embedding-3-small"</span>,
+    input=<span class="text-emerald-400">"O gato dormiu no sofa"</span>
+)
+embedding = response.data[0].embedding  <span class="text-neutral-500"># [0.23, -0.45, ...]</span></code></pre>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🗄️ Vector Databases</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-amber-400">Vector databases</strong> sao otimizados para armazenar e buscar vetores de alta dimensao de forma eficiente.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">Pinecone</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Managed service</li>
+            <li>• Escala automatica</li>
+            <li>• Metadata filtering</li>
+            <li>• Free tier generoso</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-purple-400 mb-3">Chroma</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Open-source</li>
+            <li>• Roda local</li>
+            <li>• Simples de usar</li>
+            <li>• Bom para dev</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">Weaviate</h4>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• GraphQL API</li>
+            <li>• Hybrid search</li>
+            <li>• Modules para ML</li>
+            <li>• Self-hosted ou cloud</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔍 Busca Semantica</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Diferente de busca por keywords, <strong class="text-amber-400">busca semantica</strong> encontra conteudo por significado, mesmo com vocabulario diferente.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-3">Keyword Search</h4>
+          <p class="text-neutral-300 text-sm">Query: "como fazer deploy"</p>
+          <p class="text-neutral-400 text-sm mt-2">Nao encontra: "publicar aplicacao em producao"</p>
+        </div>
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">Semantic Search</h4>
+          <p class="text-neutral-300 text-sm">Query: "como fazer deploy"</p>
+          <p class="text-neutral-400 text-sm mt-2">Encontra: "publicar aplicacao em producao" ✓</p>
+        </div>
+      </div>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Busca com Chroma</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-blue-400">import</span> chromadb
+
+client = chromadb.Client()
+collection = client.create_collection(<span class="text-emerald-400">"docs"</span>)
+
+<span class="text-neutral-500"># Adicionar documentos</span>
+collection.add(
+    documents=[<span class="text-emerald-400">"Como fazer deploy no AWS"</span>, <span class="text-emerald-400">"Guia de Python"</span>],
+    ids=[<span class="text-emerald-400">"doc1"</span>, <span class="text-emerald-400">"doc2"</span>]
+)
+
+<span class="text-neutral-500"># Buscar</span>
+results = collection.query(query_texts=[<span class="text-emerald-400">"publicar aplicacao"</span>], n_results=2)</code></pre>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">📚 RAG - Retrieval Augmented Generation</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-amber-400">RAG</strong> combina busca semantica com geracao LLM: primeiro busca contexto relevante, depois gera resposta informada.</p>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4">Pipeline RAG</h3>
+        <div class="space-y-3">
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">1</span><span class="text-neutral-300">Recebe pergunta do usuario</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">2</span><span class="text-neutral-300">Busca documentos relevantes no vector store</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">3</span><span class="text-neutral-300">Injeta contexto no prompt</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold">4</span><span class="text-neutral-300">LLM gera resposta baseada no contexto</span></div>
+        </div>
+      </div>
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3">💡 Beneficios do RAG</h3>
+        <ul class="space-y-2 text-neutral-300 text-sm">
+          <li>• Reduz hallucinations - respostas baseadas em dados reais</li>
+          <li>• Conhecimento atualizado - nao limitado ao training cutoff</li>
+          <li>• Dados privados - usa documentos internos da empresa</li>
+          <li>• Citacoes - pode referenciar fontes</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">✂️ Chunking Strategies</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-amber-400">Chunking</strong> e o processo de dividir documentos em pedacos menores para embedding. A estrategia impacta diretamente a qualidade do RAG.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">Fixed Size</h4>
+          <p class="text-neutral-300 text-sm">Chunks de tamanho fixo (ex: 500 tokens). Simples mas pode cortar contexto.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">Recursive</h4>
+          <p class="text-neutral-300 text-sm">Divide por paragrafos, depois sentencas. Respeita estrutura do texto.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">Semantic</h4>
+          <p class="text-neutral-300 text-sm">Agrupa por similaridade semantica. Melhor qualidade, mais complexo.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">Overlap</h4>
+          <p class="text-neutral-300 text-sm">Chunks com sobreposicao. Preserva contexto nas bordas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📝 Skills com RAG</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Skills podem usar RAG para se tornarem <strong class="text-amber-400">especialistas em dominios especificos</strong> com acesso a conhecimento privado.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Knowledge Base Skill</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">name:</span> company-knowledge
+<span class="text-blue-400">description:</span> Responde perguntas sobre a empresa.
+  Use quando usuario perguntar sobre politicas, processos, produtos.
+<span class="text-blue-400">allowed-tools:</span> Bash(python:*)
+<span class="text-purple-400">---</span>
+
+<span class="text-amber-400"># Company Knowledge Expert</span>
+
+Para responder perguntas sobre a empresa:
+
+<span class="text-neutral-500">```bash</span>
+python scripts/rag_query.py --question "$QUESTION"
+<span class="text-neutral-500">```</span>
+
+O script busca no Chroma DB com docs da empresa e retorna resposta com citacoes.
+
+<span class="text-amber-400">## Fontes disponiveis</span>
+- Handbook do funcionario
+- Politicas de RH
+- Documentacao de produtos
+- FAQs internos</code></pre>
+      </div>
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-3">🎯 Proximo Passo</h3>
+        <p class="text-neutral-300">No proximo modulo, exploramos <strong>Observabilidade</strong> - LangSmith, tracing, metricas e como monitorar AI em producao.</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Embeddings</strong><span class="text-neutral-400"> - Representacao vetorial de significado</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Vector DBs</strong><span class="text-neutral-400"> - Pinecone, Chroma, Weaviate</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Semantic Search</strong><span class="text-neutral-400"> - Busca por significado, nao keywords</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">RAG</strong><span class="text-neutral-400"> - Retrieval + Generation para respostas informadas</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Chunking</strong><span class="text-neutral-400"> - Fixed, recursive, semantic, overlap</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Skills + RAG</strong><span class="text-neutral-400"> - Especialistas com conhecimento privado</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-amber-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">4.7 - Observabilidade</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-4-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="modulo-4-7.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+  <script>const themeToggle=document.getElementById('theme-toggle'),themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),html=document.documentElement;if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!html.classList.contains('dark'))){themeToggleDarkIcon.classList.remove('hidden');html.classList.remove('dark')}else{themeToggleLightIcon.classList.remove('hidden')}themeToggle.addEventListener('click',()=>{themeToggleDarkIcon.classList.toggle('hidden');themeToggleLightIcon.classList.toggle('hidden');html.classList.toggle('dark');localStorage.setItem('theme',html.classList.contains('dark')?'dark':'light')})</script>
+</body>
+</html>

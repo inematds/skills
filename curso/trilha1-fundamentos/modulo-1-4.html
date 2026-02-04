@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.4: Padroes de Comunicacao | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.4</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.4
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">💬 Padroes de Comunicacao</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Aprenda como skills se comunicam efetivamente com usuarios e sistemas, criando interacoes claras, previsiveis e uteis.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">35</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📥 Comunicacao de Entrada (Input)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Como a skill recebe informacoes do usuario e do sistema. Definir <strong class="text-emerald-400">padroes claros de entrada</strong> evita ambiguidade e erros.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Fontes de Input
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Mensagem do usuario:</strong> Texto livre ou comandos estruturados</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Contexto do projeto:</strong> Arquivos, estrutura, configs</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Resultado de tools:</strong> Output de Bash, Read, APIs</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Outras skills:</strong> Em workflows compostos</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grid de Padroes -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">📝 Input Natural</h4>
+          <p class="text-sm text-neutral-400 mb-3">Usuario fala naturalmente</p>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300">"Cria um arquivo README
+para este projeto"</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">Skill interpreta a intencao</p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">⚡ Input Estruturado</h4>
+          <p class="text-sm text-neutral-400 mb-3">Formato especifico esperado</p>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300">/criar-readme
+  --tipo=tecnico
+  --idioma=pt-BR</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">Skill processa parametros</p>
+        </div>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Dica de Design
+        </h3>
+        <p class="text-neutral-300">
+          Prefira <strong>input natural</strong> sempre que possivel. Usuarios nao querem memorizar comandos. Skill bem escrita entende "faz um PDF" e "gera documento PDF" igualmente.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📤 Comunicacao de Saida (Output)</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Como a skill responde ao usuario. <strong class="text-emerald-400">Output bem estruturado</strong> facilita o uso e gera confianca.
+      </p>
+
+      <!-- Timeline de Padroes -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-2xl">✅</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Confirmacao de Acao</h4>
+            <p class="text-neutral-300 text-sm mb-3">Sempre confirme o que foi feito</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">✓ Arquivo criado: /projeto/README.md
+✓ 45 linhas escritas
+✓ Secoes: Intro, Instalacao, Uso, Licenca</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <span class="text-2xl">📊</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Sumario de Resultados</h4>
+            <p class="text-neutral-300 text-sm mb-3">Para operacoes que geram dados</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-emerald-400">Analise completa:
+- Arquivos analisados: 23
+- Problemas encontrados: 5
+- Sugestoes geradas: 12
+- Tempo: 2.3s</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">⚠️</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Alertas e Avisos</h4>
+            <p class="text-neutral-300 text-sm mb-3">Quando algo requer atencao</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-amber-400">⚠️ Atencao: 3 dependencias desatualizadas
+   - lodash: 4.17.0 → 4.17.21 (seguranca)
+   - axios: 0.21.0 → 1.6.0 (major)
+   - jest: 27.0.0 → 29.7.0 (major)</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-red-500/20 flex items-center justify-center">
+            <span class="text-2xl">❌</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Erros Claros</h4>
+            <p class="text-neutral-300 text-sm mb-3">Explique o que deu errado e como resolver</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-red-400">❌ Erro: Arquivo nao encontrado
+   Caminho: /projeto/config.yaml
+
+   Sugestao: Verifique se o arquivo existe
+   ou crie com: touch config.yaml</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔄 Padroes de Dialogo</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills podem ter diferentes <strong class="text-emerald-400">estilos de interacao</strong>. Escolher o padrao certo depende do caso de uso.
+      </p>
+
+      <!-- Grid de Padroes -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">⚡</span>
+            <h4 class="font-bold">Fire & Forget</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Usuario pede, skill executa</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Sem perguntas intermediarias</li>
+            <li>• Execucao imediata</li>
+            <li>• Bom para tarefas simples</li>
+            <li>• Ex: formatacao, linting</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">💬</span>
+            <h4 class="font-bold">Interativo</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Dialogo para coletar info</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Perguntas de esclarecimento</li>
+            <li>• Confirmacoes antes de agir</li>
+            <li>• Bom para tarefas complexas</li>
+            <li>• Ex: setup de projeto</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🔁</span>
+            <h4 class="font-bold">Iterativo</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Refinamento continuo</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Mostra resultado parcial</li>
+            <li>• Usuario da feedback</li>
+            <li>• Skill ajusta e repete</li>
+            <li>• Ex: geracao de conteudo</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exemplo de Interacao -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">💬</span> Exemplo: Padrao Interativo
+        </h3>
+        <div class="space-y-4 text-sm">
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Usuario:</span>
+            <span class="text-neutral-300">Cria uma API REST</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 font-bold">Skill:</span>
+            <span class="text-neutral-300">Qual framework? (Express, Fastify, Hono)</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Usuario:</span>
+            <span class="text-neutral-300">Fastify</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 font-bold">Skill:</span>
+            <span class="text-neutral-300">Precisa de autenticacao? (JWT, OAuth, nenhuma)</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-blue-400 font-bold">Usuario:</span>
+            <span class="text-neutral-300">JWT</span>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 font-bold">Skill:</span>
+            <span class="text-neutral-300">Criando API Fastify com JWT...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔌 Comunicacao com Sistemas</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills se comunicam com sistemas externos atraves de <strong class="text-emerald-400">tools padronizadas</strong>. Entender os protocolos garante integracao robusta.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">🔧</span> Protocolos de Comunicacao
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-medium text-white mb-2">Tools Nativas</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>• <strong>Bash:</strong> stdin/stdout/stderr</li>
+              <li>• <strong>Read:</strong> conteudo de arquivo</li>
+              <li>• <strong>Write:</strong> confirmacao de escrita</li>
+              <li>• <strong>WebFetch:</strong> HTTP response</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-medium text-white mb-2">MCP (Externas)</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>• JSON-RPC sobre stdio</li>
+              <li>• Schema de request/response</li>
+              <li>• Erro tipados</li>
+              <li>• Timeouts configurados</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exemplo de Comunicacao -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Fluxo: Skill → Tool → Sistema</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">// 1. Skill instrui o agente</span>
+"Para verificar status do Git, use Bash com 'git status'"
+
+<span class="text-purple-400">// 2. Agente chama tool</span>
+Bash(command: "git status", description: "Check git status")
+
+<span class="text-purple-400">// 3. Tool executa e retorna</span>
+{
+  "output": "On branch main\nnothing to commit",
+  "exit_code": 0
+}
+
+<span class="text-purple-400">// 4. Agente interpreta e responde</span>
+"O repositorio esta limpo, sem alteracoes pendentes."</code></pre>
+      </div>
+
+      <!-- Grid Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Boas Praticas</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Trate erros de tools explicitamente</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Valide output antes de usar</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span>Use timeouts para operacoes longas</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Evitar</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Ignorar codigos de erro</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Assumir que tool sempre funciona</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Comandos sem tratamento de falha</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">📝 Tom de Voz e Estilo</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills podem definir um <strong class="text-emerald-400">tom de voz especifico</strong> para suas respostas. Isso cria consistencia e personalidade.
+      </p>
+
+      <!-- Grid de Tons -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">💼 Profissional</h4>
+          <p class="text-sm text-neutral-400 mb-3">Para contextos corporativos</p>
+          <div class="bg-dark-700 rounded-lg p-3 text-sm text-neutral-300">
+            "A analise foi concluida. Foram identificadas 3 oportunidades de otimizacao no codigo, conforme detalhado abaixo."
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">😊 Casual</h4>
+          <p class="text-sm text-neutral-400 mb-3">Para uso pessoal/times</p>
+          <div class="bg-dark-700 rounded-lg p-3 text-sm text-neutral-300">
+            "Pronto! Achei 3 coisas que da pra melhorar no codigo. Olha so o que encontrei:"
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">📚 Didatico</h4>
+          <p class="text-sm text-neutral-400 mb-3">Para ensinar/explicar</p>
+          <div class="bg-dark-700 rounded-lg p-3 text-sm text-neutral-300">
+            "Vamos analisar o codigo juntos. Primeiro, note que na linha 15 ha um padrao que pode ser melhorado..."
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-purple-400 mb-3">🎯 Direto</h4>
+          <p class="text-sm text-neutral-400 mb-3">Minimo de palavras</p>
+          <div class="bg-dark-700 rounded-lg p-3 text-sm text-neutral-300">
+            "3 issues encontradas: L15 (performance), L42 (seguranca), L78 (estilo)"
+          </div>
+        </div>
+      </div>
+
+      <!-- Exemplo de Definicao -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">✍️</span> Definindo Tom na Skill
+        </h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">## Estilo de Comunicacao</span>
+
+Ao responder, siga estas diretrizes:
+- <span class="text-emerald-400">Tom:</span> Profissional mas acessivel
+- <span class="text-emerald-400">Formato:</span> Bullet points para listas
+- <span class="text-emerald-400">Comprimento:</span> Conciso, maximo 3 paragrafos
+- <span class="text-emerald-400">Evitar:</span> Jargao tecnico desnecessario
+- <span class="text-emerald-400">Incluir:</span> Exemplos praticos quando relevante</code></pre>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚨 Tratamento de Erros</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Erros sao inevitaveis. Skills bem projetadas tem <strong class="text-emerald-400">estrategias claras</strong> para lidar com falhas de forma util.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Hierarquia de Erros
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 mt-1">⚠️</span>
+            <span><strong>Warning:</strong> Algo inesperado mas nao bloqueante</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 mt-1">❌</span>
+            <span><strong>Error:</strong> Falha que impede conclusao da tarefa</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-red-400 mt-1">🛑</span>
+            <span><strong>Fatal:</strong> Problema critico que requer intervencao</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Timeline de Tratamento -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Identificar o Erro</h4>
+            <p class="text-neutral-300 text-sm">Capture a mensagem de erro original e contexto</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Traduzir para Usuario</h4>
+            <p class="text-neutral-300 text-sm">Converta jargao tecnico em linguagem compreensivel</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Sugerir Solucao</h4>
+            <p class="text-neutral-300 text-sm">Ofereca passos concretos para resolver o problema</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Oferecer Alternativa</h4>
+            <p class="text-neutral-300 text-sm">Se possivel, sugira abordagem diferente</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exemplo -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: Erro Bem Tratado</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-red-400">❌ Nao foi possivel criar o arquivo</span>
+
+<span class="text-amber-400">Motivo:</span> Permissao negada em /etc/config.yaml
+<span class="text-amber-400">Causa provavel:</span> O diretorio requer privilegios root
+
+<span class="text-emerald-400">Solucoes:</span>
+1. Execute com sudo: sudo claude ...
+2. Escolha outro local: ~/config.yaml
+3. Ajuste permissoes: sudo chmod 777 /etc
+
+<span class="text-blue-400">Quer que eu tente criar em ~/config.yaml?</span></code></pre>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🚀</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          Com padroes de comunicacao dominados, o proximo modulo aborda <strong>Seguranca e Permissoes</strong> - como proteger skills e usuarios de riscos.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Input</strong>
+              <span class="text-neutral-400"> - Natural ou estruturado, prefira natural</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Output</strong>
+              <span class="text-neutral-400"> - Confirmacoes, sumarios, alertas, erros claros</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Padroes de Dialogo</strong>
+              <span class="text-neutral-400"> - Fire & Forget, Interativo, Iterativo</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Comunicacao com Sistemas</strong>
+              <span class="text-neutral-400"> - Tools nativas e MCP para integracao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tom de Voz</strong>
+              <span class="text-neutral-400"> - Profissional, casual, didatico, direto</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tratamento de Erros</strong>
+              <span class="text-neutral-400"> - Identificar, traduzir, sugerir, oferecer alternativas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.5 - Seguranca e Permissoes</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo Anterior
+          </a>
+          <a href="modulo-1-5.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

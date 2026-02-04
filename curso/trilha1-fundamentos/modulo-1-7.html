@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.7: Performance e Otimizacao | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.7</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.7
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Performance e Otimizacao</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Aprenda tecnicas para criar skills rapidas e eficientes, otimizando uso de contexto, minimizando chamadas de tools e melhorando a experiencia do usuario.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">35</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Intermed.</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Pratico</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📏 Entendendo Gargalos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Para otimizar, primeiro entenda <strong class="text-emerald-400">onde o tempo e gasto</strong>. Skills podem ser lentas por varios motivos.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">⏱️</span> Onde o Tempo e Gasto
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 font-bold">40%</span>
+            <span><strong>Processamento LLM:</strong> Cada token de entrada/saida custa tempo</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-blue-400 font-bold">30%</span>
+            <span><strong>Chamadas de Tools:</strong> Cada Bash, Read, Write tem overhead</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 font-bold">20%</span>
+            <span><strong>Network:</strong> APIs externas, MCP servers</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-purple-400 font-bold">10%</span>
+            <span><strong>Outros:</strong> Carregamento de skills, parsing</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Diagrama Visual -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Impacto por Tipo de Operacao</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-neutral-300">Skill com 1000 linhas</span>
+              <span class="text-red-400">Muito lento</span>
+            </div>
+            <div class="w-full bg-dark-700 rounded-full h-3">
+              <div class="bg-red-500 h-3 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-neutral-300">10+ chamadas Bash sequenciais</span>
+              <span class="text-amber-400">Lento</span>
+            </div>
+            <div class="w-full bg-dark-700 rounded-full h-3">
+              <div class="bg-amber-500 h-3 rounded-full" style="width: 70%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-neutral-300">API externa sem cache</span>
+              <span class="text-amber-400">Lento</span>
+            </div>
+            <div class="w-full bg-dark-700 rounded-full h-3">
+              <div class="bg-amber-500 h-3 rounded-full" style="width: 60%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-neutral-300">Skill otimizada (100 linhas)</span>
+              <span class="text-emerald-400">Rapido</span>
+            </div>
+            <div class="w-full bg-dark-700 rounded-full h-3">
+              <div class="bg-emerald-500 h-3 rounded-full" style="width: 20%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Regra de Ouro
+        </h3>
+        <p class="text-neutral-300">
+          <strong>Menos e mais.</strong> Menos texto na skill = menos tokens = mais rapido. Menos tools = menos overhead. Foque no essencial.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📝 Otimizando Tamanho da Skill</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O tamanho da skill afeta diretamente <strong class="text-emerald-400">quanto contexto consome</strong>. Skills enxutas sao mais rapidas e deixam mais espaco para o trabalho real.
+      </p>
+
+      <!-- Grid Antes/Depois -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Skill Verbosa (Evitar)</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">## Instrucoes Detalhadas</span>
+
+Esta skill foi criada para ajudar
+usuarios a formatar codigo Python
+de acordo com as melhores praticas
+da comunidade, incluindo PEP8...
+
+<span class="text-neutral-500">[... 50 linhas de contexto ...]</span>
+
+Voce deve primeiro verificar se o
+arquivo existe, depois ler o conteudo,
+analisar a estrutura...
+
+<span class="text-neutral-500">[... 100 linhas de instrucoes ...]</span></code></pre>
+          <p class="text-sm text-neutral-400 mt-3">~200 linhas = muitos tokens</p>
+        </div>
+
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Skill Concisa (Ideal)</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">## Python Formatter</span>
+
+Formata codigo Python usando PEP8.
+
+<span class="text-blue-400">### Uso</span>
+1. Ler arquivo .py solicitado
+2. Aplicar black + isort
+3. Salvar formatado
+
+<span class="text-blue-400">### Comando</span>
+black {file} && isort {file}</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">~20 linhas = rapido</p>
+        </div>
+      </div>
+
+      <!-- Tecnicas -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">✂️</span> Tecnicas de Reducao
+        </h3>
+        <ul class="space-y-3 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">1.</span>
+            <span><strong>Remova redundancias:</strong> Nao repita o que o nome ja diz</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">2.</span>
+            <span><strong>Use bullet points:</strong> Mais densos que paragrafos</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">3.</span>
+            <span><strong>Externalize exemplos:</strong> Coloque em /examples/ e referencia</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">4.</span>
+            <span><strong>Divida skills grandes:</strong> Multiplas skills pequenas > uma gigante</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Alvo -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">🎯</span> Tamanho Ideal
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Otimo:</strong> 50-100 linhas</li>
+          <li><strong>Aceitavel:</strong> 100-200 linhas</li>
+          <li><strong>Revisar:</strong> 200-500 linhas (considere dividir)</li>
+          <li><strong>Problematico:</strong> 500+ linhas (divida obrigatoriamente)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔧 Minimizando Chamadas de Tools</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Cada chamada de tool tem <strong class="text-emerald-400">overhead de round-trip</strong>. Combine operacoes quando possivel.
+      </p>
+
+      <!-- Grid Comparacao -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Muitas Chamadas (Lento)</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300">Bash: cd /projeto
+Bash: ls
+Bash: cat file1.js
+Bash: cat file2.js
+Bash: cat file3.js
+Bash: npm install
+Bash: npm test</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">7 chamadas = 7x overhead</p>
+        </div>
+
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Chamadas Combinadas (Rapido)</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300">Bash: cd /projeto && ls
+Read: file1.js, file2.js, file3.js
+Bash: npm install && npm test</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">3 chamadas = 3x overhead</p>
+        </div>
+      </div>
+
+      <!-- Tecnicas -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">⚡</span> Tecnicas de Combinacao
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <h4 class="font-medium text-white mb-2">Bash</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>• Use <code>&&</code> para sequenciais</li>
+              <li>• Use <code>;</code> para independentes</li>
+              <li>• Use pipes para transformacoes</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-medium text-white mb-2">Read/Write</h4>
+            <ul class="space-y-1 text-sm text-neutral-300">
+              <li>• Leia multiplos arquivos juntos</li>
+              <li>• Use Glob para buscar varios</li>
+              <li>• Prefira Edit a Read+Write</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exemplo Otimizado -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Instrucao Otimizada na Skill</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">## Eficiencia</span>
+
+Para minimizar latencia:
+- Combine comandos Bash com && ou ;
+- Leia multiplos arquivos em uma chamada Read
+- Use Glob para encontrar arquivos antes de ler
+- Prefira Edit para modificacoes parciais
+- Evite cd; use paths absolutos</code></pre>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🎯 Descricoes Eficientes</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma <strong class="text-emerald-400">descricao bem escrita</strong> ativa a skill rapidamente e evita falsos positivos que desperdicam contexto.
+      </p>
+
+      <!-- Grid Comparacao -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Descricao Ruim</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-blue-400">description:</span> Helps with code</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">Muito vaga, ativa em tudo</p>
+        </div>
+
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Descricao Boa</h4>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-blue-400">description:</span> Formats Python code
+  using black and isort. Use when
+  user asks to format, lint, or
+  clean up Python files.</code></pre>
+          <p class="text-sm text-neutral-400 mt-3">Especifica, com sinonimos</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Formula da Descricao Perfeita
+        </h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm"><code class="text-neutral-300">[Acao principal] [objeto/contexto].
+Use when user [triggers comuns].
+Keywords: [sinonimos, termos relacionados]</code></pre>
+        <p class="text-neutral-400 text-sm mt-4">Exemplo:</p>
+        <pre class="bg-dark-600 rounded-lg p-3 text-sm mt-2"><code class="text-emerald-400">Generates PDF documents from markdown.
+Use when user asks to create, export,
+or convert to PDF. Keywords: pdf,
+document, export, convert, report</code></pre>
+      </div>
+
+      <!-- Dica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Teste sua Descricao
+        </h3>
+        <p class="text-neutral-300">
+          Pergunte ao agente: <strong>"Que skill voce usaria para X?"</strong> com diferentes formulacoes. Se a skill nao aparece, adicione os termos usados.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">💾 Caching e Reutilizacao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Evite <strong class="text-emerald-400">refazer trabalho</strong>. Cache resultados de operacoes caras e reutilize quando possivel.
+      </p>
+
+      <!-- Tecnicas de Caching -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-2xl">📁</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Cache de Arquivo</h4>
+            <p class="text-neutral-300 text-sm mb-3">Salve resultados em arquivo para reutilizar</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400"># Instrucao na skill:</span>
+Antes de analisar, verifique se existe
+.cache/analysis.json com menos de 1h.
+Se existir, use-o. Senao, crie novo.</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <span class="text-2xl">🔄</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Verificacao Condicional</h4>
+            <p class="text-neutral-300 text-sm mb-3">So execute se necessario</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400"># Instrucao na skill:</span>
+Antes de npm install, verifique:
+- Se node_modules existe
+- Se package-lock.json mudou
+So instale se necessario.</code></pre>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">📊</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Processamento Incremental</h4>
+            <p class="text-neutral-300 text-sm mb-3">So processe o que mudou</p>
+            <pre class="bg-dark-700 rounded-lg p-3 text-sm"><code class="text-neutral-300"><span class="text-purple-400"># Instrucao na skill:</span>
+Use git diff para identificar arquivos
+modificados. Analise apenas esses, nao
+o projeto inteiro.</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📊 Medindo e Comparando</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Meça antes e depois</strong> de otimizar. Sem metricas, voce nao sabe se melhorou.
+      </p>
+
+      <!-- Metricas -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">⏱️ Metricas de Tempo</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Tempo total de execucao</li>
+            <li>• Tempo ate primeira resposta</li>
+            <li>• Tempo por tool call</li>
+            <li>• Tempo em processamento LLM</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">📦 Metricas de Recursos</h4>
+          <ul class="text-sm text-neutral-300 space-y-2">
+            <li>• Tokens de input usados</li>
+            <li>• Tokens de output gerados</li>
+            <li>• Numero de tool calls</li>
+            <li>• Tamanho da skill (linhas)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Template de Benchmark -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">📋</span> Template de Benchmark
+        </h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400"># Benchmark: [nome-da-skill]</span>
+
+<span class="text-blue-400">## Cenario de Teste</span>
+Input: "formato os arquivos Python em /src"
+Arquivos: 10 arquivos .py
+
+<span class="text-blue-400">## Antes da Otimizacao</span>
+- Tempo total: 45s
+- Tool calls: 12
+- Linhas da skill: 180
+
+<span class="text-blue-400">## Depois da Otimizacao</span>
+- Tempo total: 18s (-60%)
+- Tool calls: 4 (-67%)
+- Linhas da skill: 45 (-75%)</code></pre>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🚀</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          Com performance dominada, o proximo modulo apresenta <strong>Casos de Uso Reais</strong> - exemplos praticos de skills em producao.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Gargalos</strong>
+              <span class="text-neutral-400"> - LLM (40%), Tools (30%), Network (20%)</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tamanho</strong>
+              <span class="text-neutral-400"> - 50-100 linhas ideal, use bullet points, externalize exemplos</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tools</strong>
+              <span class="text-neutral-400"> - Combine comandos, use && e pipes, prefira Edit</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Descricao</strong>
+              <span class="text-neutral-400"> - Especifica com sinonimos e triggers comuns</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Caching</strong>
+              <span class="text-neutral-400"> - Cache de arquivo, verificacao condicional, incremental</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Metricas</strong>
+              <span class="text-neutral-400"> - Meca tempo, tokens, tool calls antes/depois</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.8 - Casos de Uso Reais</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-1-6.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Modulo Anterior
+          </a>
+          <a href="modulo-1-8.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

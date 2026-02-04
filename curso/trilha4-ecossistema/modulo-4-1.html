@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 4.1: Visao Geral do Ecossistema | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-amber-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400">Trilha 4</a>
+      <span>/</span>
+      <span class="text-amber-400">Modulo 4.1</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 4.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌍 Visao Geral do Ecossistema</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Explore o landscape completo de ferramentas AI: frameworks de orquestracao, plataformas de agentes, ferramentas no-code e como tudo se conecta com skills.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-amber-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-amber-400">30</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-amber-400">Avancado</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-amber-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🗺️ Mapa do Ecossistema AI</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O ecossistema de ferramentas AI explodiu nos ultimos anos. Para navegar efetivamente, e essencial entender as <strong class="text-amber-400">categorias principais</strong> e como elas se relacionam. Cada camada resolve problemas especificos.
+      </p>
+
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center">
+          <span class="mr-2">🏗️</span> Camadas do Ecossistema
+        </h3>
+        <div class="space-y-4">
+          <div class="bg-dark-700/50 rounded-lg p-4">
+            <h4 class="font-semibold text-white mb-2">1. Foundation Models (LLMs)</h4>
+            <p class="text-neutral-300 text-sm">OpenAI GPT-4, Anthropic Claude, Google Gemini, Meta Llama, Mistral. A base de tudo - modelos que entendem e geram texto.</p>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4">
+            <h4 class="font-semibold text-white mb-2">2. Orchestration Frameworks</h4>
+            <p class="text-neutral-300 text-sm">LangChain, LlamaIndex, Semantic Kernel. Conectam LLMs a dados, tools e memoria.</p>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4">
+            <h4 class="font-semibold text-white mb-2">3. Vector Stores & RAG</h4>
+            <p class="text-neutral-300 text-sm">Pinecone, Chroma, Weaviate, Qdrant. Armazenam embeddings para busca semantica.</p>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4">
+            <h4 class="font-semibold text-white mb-2">4. Agent Platforms</h4>
+            <p class="text-neutral-300 text-sm">AutoGPT, CrewAI, AgentGPT. Sistemas de agentes autonomos e multi-agente.</p>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4">
+            <h4 class="font-semibold text-white mb-2">5. Observability & Eval</h4>
+            <p class="text-neutral-300 text-sm">LangSmith, Weights & Biases, Phoenix. Monitoramento e avaliacao de qualidade.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Market Landscape 2026
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>$40B+</strong> - Mercado global de LLM infrastructure</li>
+          <li><strong>500+</strong> - Startups focadas em tooling AI</li>
+          <li><strong>LangChain</strong> - Framework mais adotado (70%+ market share)</li>
+          <li><strong>RAG</strong> - Padrao dominante para knowledge apps</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🏗️ Frameworks de Orquestracao</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Frameworks de orquestracao sao a <strong class="text-amber-400">cola</strong> que une LLMs ao mundo real. Eles abstraem complexidades de chamadas de API, memoria, tools e fluxos complexos.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🦜</span>
+            <h4 class="font-bold">LangChain</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">O framework dominante</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Chains e LCEL para composicao</li>
+            <li>• Agents com tool calling</li>
+            <li>• Integracao com 100+ LLMs</li>
+            <li>• LangGraph para fluxos</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🦙</span>
+            <h4 class="font-bold">LlamaIndex</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Especializado em RAG</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Data connectors (150+)</li>
+            <li>• Indices otimizados</li>
+            <li>• Query engines avancados</li>
+            <li>• Agents RAG-native</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🔷</span>
+            <h4 class="font-bold">Semantic Kernel</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Microsoft - Enterprise focus</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• C# e Python</li>
+            <li>• Plugins architecture</li>
+            <li>• Azure integration</li>
+            <li>• Enterprise-grade</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Quando usar cada um
+        </h3>
+        <p class="text-neutral-300">
+          <strong>LangChain:</strong> Projetos gerais, prototipacao rapida, maior comunidade. <strong>LlamaIndex:</strong> Quando RAG e o foco principal. <strong>Semantic Kernel:</strong> Ambientes Microsoft/Azure, C#.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🤖 Plataformas de Agentes</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Plataformas de agentes permitem criar sistemas que executam tarefas complexas de forma <strong class="text-amber-400">autonoma ou semi-autonoma</strong>. De single-agent a multi-agent systems.
+      </p>
+
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">🚀</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">AutoGPT / AgentGPT</h4>
+            <p class="text-sm text-neutral-400 mb-3">Agentes autonomos pioneiros</p>
+            <p class="text-neutral-300 text-sm">Executam tarefas iterativamente, decompondo em sub-tarefas. Limitacao: podem entrar em loops e gastar muitos tokens.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">👥</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">CrewAI</h4>
+            <p class="text-sm text-neutral-400 mb-3">Multi-agent framework</p>
+            <p class="text-neutral-300 text-sm">Times de agentes com roles especificos (researcher, writer, reviewer). Melhor para tarefas que precisam de diferentes especialidades.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">🔗</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">LangGraph</h4>
+            <p class="text-sm text-neutral-400 mb-3">Grafos de estado</p>
+            <p class="text-neutral-300 text-sm">Agentes como state machines. Mais controle, loops condicionais, human-in-the-loop. Parte do ecossistema LangChain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">⚡ Ferramentas No-Code/Low-Code</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Ferramentas visuais democratizam acesso a AI. Permitem criar <strong class="text-amber-400">workflows complexos</strong> sem escrever codigo, ideal para prototipacao e casos de uso de negocio.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">Automacao de Workflows</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">•</span>
+              <span><strong>n8n:</strong> Open-source, self-hosted, 400+ integracoes</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">•</span>
+              <span><strong>Make/Zapier:</strong> SaaS, facil de usar, integracao rapida</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">•</span>
+              <span><strong>Activepieces:</strong> Open-source alternativa ao Zapier</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-bold text-blue-400 mb-4">Visual AI Builders</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-blue-400">•</span>
+              <span><strong>Flowise:</strong> LangChain visual, drag-and-drop chains</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-blue-400">•</span>
+              <span><strong>Langflow:</strong> Similar, foco em prototipacao</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-blue-400">•</span>
+              <span><strong>Dify:</strong> Platform completa com RAG integrado</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔌 Skills como Ponte</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills funcionam como <strong class="text-amber-400">interface de alto nivel</strong> entre usuarios e o ecossistema de ferramentas. Elas encapsulam conhecimento de como usar ferramentas complexas.
+      </p>
+
+      <div class="bg-gradient-to-br from-amber-900/30 to-dark-800 rounded-xl border border-amber-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-amber-400 mb-4 flex items-center">
+          <span class="mr-2">🔗</span> Padroes de Integracao
+        </h3>
+        <ul class="space-y-4 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 mt-1">•</span>
+            <span><strong>MCP Servers:</strong> Protocolo oficial da Anthropic para conectar Claude a ferramentas externas</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 mt-1">•</span>
+            <span><strong>Script Wrappers:</strong> Skills que chamam scripts Python/Bash conectando a APIs</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 mt-1">•</span>
+            <span><strong>Webhook Triggers:</strong> Skills que disparam workflows em n8n/Make</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-amber-400 mt-1">•</span>
+            <span><strong>RAG Skills:</strong> Skills que consultam vector stores para contexto</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: Skill + LangChain</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">name:</span> research-assistant
+<span class="text-blue-400">description:</span> Pesquisa em documentos internos.
+  Use quando usuario perguntar sobre docs da empresa.
+<span class="text-blue-400">allowed-tools:</span> Bash(python:*)
+<span class="text-purple-400">---</span>
+
+<span class="text-amber-400"># Research Assistant</span>
+
+Execute o script de pesquisa:
+<span class="text-neutral-500">```bash</span>
+python scripts/rag_search.py --query "$QUERY"
+<span class="text-neutral-500">```</span>
+
+O script usa LangChain + Pinecone para busca semantica.</code></pre>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📈 Tendencias e Futuro</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O ecossistema AI evolui rapidamente. Entender <strong class="text-amber-400">tendencias emergentes</strong> permite antecipar oportunidades e posicionar-se estrategicamente.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-4">🔮 Tendencias 2026+</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• <strong>Multimodal:</strong> Agentes que processam texto, imagem, audio, video</li>
+            <li>• <strong>Agent Networks:</strong> Ecossistemas de agentes especializados colaborando</li>
+            <li>• <strong>Skill Marketplaces:</strong> Economia de skills compartilhadas</li>
+            <li>• <strong>Edge AI:</strong> Agentes rodando localmente em dispositivos</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-amber-400 mb-4">🎯 Onde Investir Tempo</h4>
+          <ul class="space-y-3 text-neutral-300 text-sm">
+            <li>• <strong>LangChain/LangGraph:</strong> Framework padrao, alta demanda</li>
+            <li>• <strong>RAG Patterns:</strong> Ainda o caso de uso mais valioso</li>
+            <li>• <strong>Observability:</strong> Skill critica para producao</li>
+            <li>• <strong>Agent Design:</strong> Padroes ReAct, Plan-Execute</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🎯</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          No proximo modulo, mergulhamos em <strong>LangChain e LangGraph</strong> - aprendendo chains, agents, memory e como criar fluxos complexos com grafos de estado.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Camadas do Ecossistema</strong>
+              <span class="text-neutral-400"> - Foundation models, orchestration, vector stores, agents, observability</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Frameworks</strong>
+              <span class="text-neutral-400"> - LangChain (dominante), LlamaIndex (RAG), Semantic Kernel (Microsoft)</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Agent Platforms</strong>
+              <span class="text-neutral-400"> - AutoGPT, CrewAI, LangGraph para diferentes necessidades</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">No-Code Tools</strong>
+              <span class="text-neutral-400"> - n8n, Flowise, Langflow para automacao visual</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Skills como Ponte</strong>
+              <span class="text-neutral-400"> - MCP servers, script wrappers, webhook triggers</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-amber-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Tendencias</strong>
+              <span class="text-neutral-400"> - Multimodal, agent networks, skill marketplaces</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-amber-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">4.2 - LangChain e LangGraph</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha
+          </a>
+          <a href="modulo-4-2.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
