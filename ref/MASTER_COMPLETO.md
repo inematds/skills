@@ -797,53 +797,33 @@ themeToggle.addEventListener('click', () => {
 });
 ```
 
-## 9.3 Modal (Opcional)
+## 9.3 Modal com Iframe
 
-**IMPORTANTE:** O conteudo do modal deve REPLICAR os topicos do modulo, NAO ser apenas um texto generico. Cada modal deve conter:
-- Header com badge do modulo e titulo
-- TODOS os topicos com as 3 secoes (O que e / Por que / Conceitos-chave)
-- Link para "Ver Modulo Completo"
+**IMPORTANTE:** O modal deve carregar a pagina do modulo via iframe para garantir que o conteudo seja IDENTICO ao da pagina de destino. NAO crie conteudo duplicado ou resumido.
 
 ### Template HTML do Modal
 
 ```html
-<div id="modal-1-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
-  <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
-    <!-- Header Sticky -->
-    <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
-      <div>
-        <span class="text-emerald-400 font-bold text-sm">MODULO 1.1</span>
-        <h3 class="text-xl font-bold">[EMOJI] Titulo do Modulo</h3>
+<div id="modal-1-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+  <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+    <!-- Header -->
+    <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+      <div class="flex items-center space-x-3">
+        <span class="text-emerald-400 font-bold">1.1</span>
+        <span class="font-semibold">Titulo do Modulo</span>
       </div>
-      <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
     </div>
-    <!-- Conteudo: TODOS os topicos -->
-    <div class="p-6 space-y-4">
-      <!-- Topico 1 -->
-      <div class="bg-dark-700/50 rounded-lg p-4">
-        <div class="flex items-center space-x-3 mb-3">
-          <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span>
-          <span class="text-lg">[EMOJI]</span>
-          <span class="font-medium">Titulo do Topico</span>
-        </div>
-        <div class="space-y-2 ml-9 text-sm">
-          <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Descricao.</span></p>
-          <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Justificativa.</span></p>
-          <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Pontos principais</span></p>
-        </div>
-      </div>
-      <!-- Repetir para TODOS os topicos (1-6) -->
-
-      <!-- CTA Final -->
-      <div class="pt-4 border-t border-dark-600 flex justify-end">
-        <a href="modulo-1-1.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">
-          Ver Modulo Completo →
-        </a>
-      </div>
-    </div>
+    <!-- Iframe carrega a pagina completa do modulo -->
+    <iframe src="modulo-1-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
   </div>
 </div>
 ```
+
+**Vantagens do iframe:**
+- Conteudo sempre sincronizado com a pagina do modulo
+- Sem duplicacao de codigo/conteudo
+- Manutencao simplificada (atualiza em um lugar so)
 
 ### JavaScript do Modal
 
