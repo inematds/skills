@@ -1,0 +1,7 @@
+# Documentacao interna - nao publicar
+doc/
+ref/
+
+# OS files
+.DS_Store
+Thumbs.db
