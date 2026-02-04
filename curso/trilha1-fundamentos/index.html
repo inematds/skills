@@ -1277,15 +1277,346 @@
   </footer>
 
   <!-- MODAIS -->
+  <!-- Modal 1.1 -->
   <div id="modal-1-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
-    <div class="bg-dark-800 rounded-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto border border-dark-600">
-      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800">
-        <h3 class="text-xl font-bold">1.1 - Introducao a Agent Skills</h3>
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div>
+          <span class="text-emerald-400 font-bold text-sm">MODULO 1.1</span>
+          <h3 class="text-xl font-bold">🎯 Introducao a Agent Skills</h3>
+        </div>
         <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
       </div>
-      <div class="p-6">
-        <p class="text-neutral-300 mb-4">Este modulo introduz o conceito de Agent Skills: capacidades modulares e reutilizaveis que estendem agentes de IA.</p>
-        <p class="text-neutral-400 text-sm">Para conteudo completo, clique em "Ver Completo".</p>
+      <div class="p-6 space-y-4">
+        <!-- Topico 1 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span>
+            <span class="text-lg">🎯</span>
+            <span class="font-medium">O que sao Agent Skills</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Capacidades modulares e reutilizaveis que estendem a funcionalidade de agentes de IA.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Skills transformam agentes generalistas em especialistas sem repetir instrucoes.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Modularidade, descoberta dinamica, reutilizacao, baseado em arquivos</span></p>
+          </div>
+        </div>
+        <!-- Topico 2 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span>
+            <span class="text-lg">🔄</span>
+            <span class="font-medium">Skills vs Tools vs Prompts</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Distincao entre o que agentes SABEM (skills) e o que PODEM FAZER (tools).</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Entender quando usar cada abordagem maximiza eficiencia.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Skills = conhecimento, Tools = acoes, Prompts = instrucoes unicas</span></p>
+          </div>
+        </div>
+        <!-- Topico 3 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span>
+            <span class="text-lg">📦</span>
+            <span class="font-medium">Anatomia de uma Skill</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Estrutura basica: pasta com SKILL.md + recursos opcionais.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Saber a estrutura permite criar skills validas desde o inicio.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">SKILL.md, frontmatter YAML, corpo Markdown</span></p>
+          </div>
+        </div>
+        <!-- Topico 4 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span>
+            <span class="text-lg">🌐</span>
+            <span class="font-medium">Ecossistema de Skills</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Panorama dos players: Anthropic, Google, comunidade open-source.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Conhecer opcoes permite escolher a melhor para cada caso.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">agentskills.io, repositorios oficiais, marketplaces</span></p>
+          </div>
+        </div>
+        <!-- Topico 5 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span>
+            <span class="text-lg">💡</span>
+            <span class="font-medium">Casos de Uso Reais</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Exemplos praticos: documentos, TDD, debugging, branding, analytics.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Inspiracao para criar skills proprias baseadas em necessidades reais.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Document skills, Development skills, Enterprise skills</span></p>
+          </div>
+        </div>
+        <!-- Topico 6 -->
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span>
+            <span class="text-lg">🚀</span>
+            <span class="font-medium">Primeiros Passos</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Como comecar: instalar skills existentes vs criar do zero.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Ter um roadmap claro acelera o aprendizado.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">~/.claude/skills/ (global), .claude/skills/ (projeto)</span></p>
+          </div>
+        </div>
+        <!-- CTA -->
+        <div class="pt-4 border-t border-dark-600 flex justify-end">
+          <a href="modulo-1-1.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">
+            Ver Modulo Completo →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.2 -->
+  <div id="modal-1-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div>
+          <span class="text-emerald-400 font-bold text-sm">MODULO 1.2</span>
+          <h3 class="text-xl font-bold">📄 Estrutura do Arquivo SKILL.md</h3>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span>
+            <span class="font-medium">📄 O Arquivo SKILL.md</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Arquivo principal e OBRIGATORIO que define a skill.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">E o unico arquivo obrigatorio - sem ele, nao existe skill.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Markdown, frontmatter YAML, instrucoes</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span>
+            <span class="font-medium">🏷️ Frontmatter - name</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Campo obrigatorio que identifica a skill (max 64 chars).</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Nome mal formatado impede a skill de ser descoberta.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">lowercase, hyphens, sem espacos</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span>
+            <span class="font-medium">📝 Frontmatter - description</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Campo obrigatorio que define QUANDO usar a skill.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">O agente usa a description para decidir se invoca a skill.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Terceira pessoa, triggers, keywords</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span>
+            <span class="font-medium">🔧 Frontmatter - allowed-tools</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Campo opcional que especifica ferramentas permitidas.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Controle de seguranca e permissoes.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Bash, Read, Write, patterns wildcard</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span>
+            <span class="font-medium">📖 Corpo do Markdown</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Instrucoes que o agente segue quando a skill e invocada.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Instrucoes claras = resultados previsiveis.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Sections, headings, bullet points, code blocks</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span>
+            <span class="font-medium">✅ Exemplo Completo</span>
+          </div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Skill funcional linha por linha explicada.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Ver exemplo real consolida o aprendizado.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Template replicavel, boas praticas</span></p>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end">
+          <a href="modulo-1-2.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.3 -->
+  <div id="modal-1-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div>
+          <span class="text-emerald-400 font-bold text-sm">MODULO 1.3</span>
+          <h3 class="text-xl font-bold">📁 Estrutura de Diretorios</h3>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">📁 Hierarquia Padrao</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Estrutura de pastas recomendada para skills.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Organizacao correta facilita manutencao.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">SKILL.md, scripts/, examples/, resources/</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">🏠 Skills Globais (~/.claude/skills/)</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Skills disponiveis em TODOS os projetos.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Ideal para skills de uso geral.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Diretorio home, persistencia</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">📂 Skills de Projeto (.claude/skills/)</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Skills especificas de um projeto/repositorio.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Perfeito para convencoes de time.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Raiz do projeto, versionamento git</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">📜 Pasta scripts/</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Scripts auxiliares (Python, Bash, Node).</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Automatiza tarefas complexas.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Executaveis, validacao, automacao</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">📚 Pasta resources/</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Templates, JSON, assets estaticos.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Centraliza dados de referencia.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">design-tokens.json, templates, checklists</span></p>
+          </div>
+        </div>
+        <div class="bg-dark-700/50 rounded-lg p-4">
+          <div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">💡 Pasta examples/</span></div>
+          <div class="space-y-2 ml-9 text-sm">
+            <p><span class="text-emerald-400 font-semibold">O que e:</span> <span class="text-neutral-300">Implementacoes de referencia.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Por que aprender:</span> <span class="text-neutral-300">Exemplos ajudam o agente a entender o padrao.</span></p>
+            <p><span class="text-emerald-400 font-semibold">Conceitos-chave:</span> <span class="text-neutral-300">Golden examples, patterns, anti-patterns</span></p>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end">
+          <a href="modulo-1-3.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.4 -->
+  <div id="modal-1-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div><span class="text-emerald-400 font-bold text-sm">MODULO 1.4</span><h3 class="text-xl font-bold">✍️ Escrevendo Instrucoes Eficazes</h3></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">✍️ Principios de Escrita</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Best practices para instrucoes claras.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Instrucoes ruins = resultados imprevisiveis.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Concisao, clareza, especificidade</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">📏 Regra dos 500 Lines</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">SKILL.md deve ter menos de 500 linhas.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Previne sobrecarga de contexto.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Progressive disclosure, arquivos secundarios</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">🎚️ Graus de Liberdade</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Bullets (alta), code blocks (media), comandos (baixa).</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Controle fino sobre comportamento.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Heuristicas vs templates vs comandos</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">🔗 Progressive Disclosure</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Revelar informacao gradualmente.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">SKILL.md enxuto, detalhes em arquivos separados.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Links para ADVANCED.md, 1 nivel</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">📋 Checklists e Validacao</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Listas que o agente pode atualizar.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Tracking de estado em tarefas complexas.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Markdown checkboxes, estado mutavel</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">⚠️ Tratamento de Erros</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Como instruir fallbacks.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Skills robustas precisam lidar com falhas.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Black box scripts, --help, mensagens claras</span></p></div></div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end"><a href="modulo-1-4.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.5 -->
+  <div id="modal-1-5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div><span class="text-emerald-400 font-bold text-sm">MODULO 1.5</span><h3 class="text-xl font-bold">🎯 Descriptions que Ativam</h3></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">🎯 A Importancia da Description</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">O gatilho que decide se a skill e invocada.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Description ruim = skill nunca ativada.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Matching, relevancia, triggers</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">❌ Erros Comuns</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Descriptions vagas ou genericas.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Evitar armadilhas economiza tempo.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">"Helps with code" (ruim), "A tool for" (ruim)</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">✅ Padrao Eficaz</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Formula: O QUE faz + QUANDO usar + KEYWORDS.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Descriptions estruturadas ativam consistentemente.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Terceira pessoa, verbos de acao</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">🔑 Keywords Estrategicas</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Palavras que usuarios usam.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Keywords certas aumentam taxa de ativacao.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Sinonimos, jargao da area</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">🧪 Testando Descriptions</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Validacao pratica antes de distribuir.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Evita frustracoes pos-publicacao.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Prompts de teste, falsos positivos/negativos</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">📚 Galeria de Exemplos</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Descriptions reais: boas e ruins.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Aprender com exemplos acelera.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Patterns, anti-patterns, iteracao</span></p></div></div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end"><a href="modulo-1-5.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.6 -->
+  <div id="modal-1-6" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div><span class="text-emerald-400 font-bold text-sm">MODULO 1.6</span><h3 class="text-xl font-bold">📦 Recursos e Scripts</h3></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">🐍 Scripts Python</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Automacao avancada, APIs, processamento.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Python permite tarefas complexas.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">pandas, requests, argparse</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">🐚 Scripts Bash</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Operacoes de sistema, git, deploy.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Universal em Unix/Linux/Mac.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">chmod +x, shebang, exit codes</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">📋 Templates Markdown</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Estruturas reutilizaveis para output.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Garante consistencia.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Placeholders, variaveis</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">🎨 Design Tokens (JSON)</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Configuracoes: cores, fontes, espacamentos.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Centraliza dados que mudam.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">design-tokens.json, brand colors</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">📂 Arquivos de Referencia</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Contexto: voice-tone.md, tech-stack.md.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Skill acessa conhecimento especifico.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Progressive disclosure, links</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">🔗 Integracao com SKILL.md</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Como referenciar scripts e recursos.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Recursos so funcionam se bem referenciados.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Caminhos relativos, allowed-tools</span></p></div></div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end"><a href="modulo-1-6.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.7 -->
+  <div id="modal-1-7" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div><span class="text-emerald-400 font-bold text-sm">MODULO 1.7</span><h3 class="text-xl font-bold">🔒 Boas Praticas e Seguranca</h3></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">🔐 Principio do Minimo Privilegio</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Dar apenas permissoes necessarias.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Previne acoes nao autorizadas.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">allowed-tools, wildcards restritos</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">🛡️ allowed-tools em Detalhes</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Sintaxe completa: Bash(cmd:*), Read, Write.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Controle granular de permissoes.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Patterns, wildcards, combinacoes</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">⚠️ Riscos Comuns</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Bash sem restricao, Write global, secrets.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Conhecer riscos permite mitiga-los.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Command injection, path traversal</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">✅ Checklist de Seguranca</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Verificacao antes de compartilhar.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Previne publicar skills inseguras.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Review de permissoes, teste de abuso</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">🔍 Auditoria de Skills</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Revisar skills de terceiros.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Protege contra skills maliciosas.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Code review, fonte confiavel</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">📜 Boas Praticas Gerais</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Convencoes, documentacao, versionamento.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Skills bem escritas sao mais faceis de manter.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">README, CHANGELOG, semantic versioning</span></p></div></div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end"><a href="modulo-1-7.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 1.8 -->
+  <div id="modal-1-8" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="bg-dark-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-dark-600">
+      <div class="p-6 border-b border-dark-600 flex justify-between items-center sticky top-0 bg-dark-800 z-10">
+        <div><span class="text-emerald-400 font-bold text-sm">MODULO 1.8</span><h3 class="text-xl font-bold">📋 Especificacao Oficial</h3></div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">1</span><span class="font-medium">🌐 AgentSkills.io</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Especificacao aberta para skills.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Padrao garante compatibilidade.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Open standard, multi-platform</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">2</span><span class="font-medium">📑 Campos Obrigatorios</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">name (64 chars), description (1024 chars).</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Campos fora da spec podem ser ignorados.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Limites de caracteres, formato</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">3</span><span class="font-medium">🔧 Campos Opcionais</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">allowed-tools, version, author, tags.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Funcionalidades extras.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Extensibilidade, metadados</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">4</span><span class="font-medium">✅ Validacao de Skills</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Ferramentas para validar spec.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Previne erros antes de distribuir.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Linters, validators, CI/CD</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">5</span><span class="font-medium">🔄 Compatibilidade Cross-Platform</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Skills que funcionam em varias plataformas.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Maximiza alcance e reutilizacao.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Campos universais, extensoes, fallbacks</span></p></div></div>
+        <div class="bg-dark-700/50 rounded-lg p-4"><div class="flex items-center space-x-3 mb-3"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center">6</span><span class="font-medium">🚀 Futuro da Especificacao</span></div><div class="ml-9 text-sm"><p><span class="text-emerald-400">O que e:</span> <span class="text-neutral-300">Roadmap: versioning, dependencies, registries.</span></p><p><span class="text-emerald-400">Por que:</span> <span class="text-neutral-300">Preparar para evolucoes futuras.</span></p><p><span class="text-emerald-400">Chave:</span> <span class="text-neutral-300">Semantic versioning, skill registries</span></p></div></div>
+        <div class="pt-4 border-t border-dark-600 flex justify-end"><a href="modulo-1-8.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Modulo Completo →</a></div>
       </div>
     </div>
   </div>

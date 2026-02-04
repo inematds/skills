@@ -25,6 +25,7 @@
 - [ ] **Titulo modulo** - Usando `text-2xl font-bold`
 - [ ] **TODOS modulos completos** - TODOS os modulos (1.1 a 1.8) devem ter topicos expandiveis, NAO apenas header+botao
 - [ ] **Modal presente** - Botao "Ver em Modal" + HTML dos modais + JavaScript (openModal/closeModal)
+- [ ] **Modal com conteudo COMPLETO** - Modal deve REPLICAR os topicos do card (NAO texto generico), com as 3 secoes cada
 - [ ] **2 secoes de modulos** - Primeiro cartoes simples (grid 2 cols), depois cartoes detalhados com topicos
 - [ ] **Cartoes simples clicaveis** - Secao 1 usa `<a>` clicavel (SEM botoes), com hover na borda e titulo
 
@@ -325,6 +326,7 @@ Data: ____/____/____
 | Topico sem 3 secoes | Abrir cada topico e verificar |
 | Modulos incompletos no index | Verificar se TODOS os modulos tem topicos expandiveis (nao apenas header+botao) |
 | Modal faltando | Verificar botao "Ver em Modal", HTML dos modais e funcoes openModal/closeModal |
+| Modal com texto generico | Modal deve ter TODOS os topicos com as 3 secoes, NAO apenas "Para conteudo completo, clique..." |
 | Faltando secao de cartoes simples | Index deve ter: 1) Cartoes simples (grid 2 cols) 2) Cartoes detalhados com topicos |
 | Cartoes simples com botoes | Secao 1 deve usar `<a>` clicavel, SEM botoes - apenas hover na borda/titulo |
 
