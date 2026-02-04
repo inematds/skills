@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 1.1: Introducao a Agent Skills | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claudecode/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Google</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.1</span>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">
+        MODULO 1.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Introducao a Agent Skills</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Entenda o que sao Skills, como se diferenciam de Tools e Prompts, e descubra o ecossistema atual de skills para agentes de IA.
+      </p>
+
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">6</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">35</div>
+          <div class="text-xs text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Basico</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-xs text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🎯 O que sao Agent Skills</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        <strong class="text-emerald-400">Agent Skills</strong> sao capacidades modulares e reutilizaveis que estendem a funcionalidade de agentes de IA. Pense nelas como "plugins de conhecimento" - arquivos Markdown que ensinam o agente a executar tarefas especificas de forma consistente.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-br from-emerald-900/30 to-dark-800 rounded-xl border border-emerald-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-emerald-400 mb-4 flex items-center">
+          <span class="mr-2">💡</span> Conceito Fundamental
+        </h3>
+        <p class="text-neutral-300 mb-4">Uma skill e um conjunto de instrucoes persistentes que o agente carrega automaticamente quando relevante. Diferente de prompts de sessao, skills ficam disponiveis sempre.</p>
+        <ul class="space-y-2 text-neutral-300">
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Modularidade:</strong> Cada skill foca em uma capacidade especifica</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Descoberta automatica:</strong> O agente encontra skills relevantes baseado no contexto</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Reutilizacao:</strong> Uma skill pode ser usada em multiplos projetos</span>
+          </li>
+          <li class="flex items-start space-x-2">
+            <span class="text-emerald-400 mt-1">•</span>
+            <span><strong>Baseado em arquivos:</strong> Simples arquivos Markdown, faceis de versionar</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-blue-400 mb-4 flex items-center">
+          <span class="mr-2">📊</span> Por que Skills importam
+        </h3>
+        <ul class="space-y-2 text-neutral-300">
+          <li><strong>Consistencia:</strong> Mesmas instrucoes em todas as sessoes</li>
+          <li><strong>Eficiencia:</strong> Nao precisa repetir contexto a cada conversa</li>
+          <li><strong>Colaboracao:</strong> Times podem compartilhar skills padronizadas</li>
+          <li><strong>Escalabilidade:</strong> Adicione capacidades sem reescrever prompts</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🔄 Skills vs Tools vs Prompts</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        E crucial entender a diferenca entre esses tres conceitos. Cada um tem seu papel no ecossistema de agentes de IA, e saber quando usar cada um maximiza sua eficiencia.
+      </p>
+
+      <!-- Grid Comparacao -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-3">🧠 Skills</h4>
+          <p class="text-sm text-neutral-300 mb-3">O que o agente <strong>SABE</strong></p>
+          <ul class="space-y-2 text-sm text-neutral-400">
+            <li>• Conhecimento persistente</li>
+            <li>• Carregado automaticamente</li>
+            <li>• Instrucoes + contexto</li>
+            <li>• Arquivos Markdown</li>
+          </ul>
+        </div>
+        <div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6">
+          <h4 class="font-bold text-blue-400 mb-3">🔧 Tools</h4>
+          <p class="text-sm text-neutral-300 mb-3">O que o agente <strong>PODE FAZER</strong></p>
+          <ul class="space-y-2 text-sm text-neutral-400">
+            <li>• Acoes executaveis</li>
+            <li>• APIs e funcoes</li>
+            <li>• Read, Write, Bash</li>
+            <li>• MCP servers</li>
+          </ul>
+        </div>
+        <div class="bg-amber-900/20 rounded-xl border border-amber-500/30 p-6">
+          <h4 class="font-bold text-amber-400 mb-3">💬 Prompts</h4>
+          <p class="text-sm text-neutral-300 mb-3">Instrucoes <strong>DE SESSAO</strong></p>
+          <ul class="space-y-2 text-sm text-neutral-400">
+            <li>• Instrucoes unicas</li>
+            <li>• Perdidas ao fechar</li>
+            <li>• Contexto temporario</li>
+            <li>• Input do usuario</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">💡</span> Regra Pratica
+        </h3>
+        <p class="text-neutral-300">
+          <strong>Skills</strong> ensinam o agente <em>como</em> fazer algo. <strong>Tools</strong> dao ao agente a <em>capacidade</em> de fazer. <strong>Prompts</strong> dizem ao agente <em>o que</em> fazer agora. Use skills quando quiser que o agente lembre de algo entre sessoes.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">📦 Anatomia de uma Skill</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Uma skill tem uma estrutura simples: uma pasta contendo pelo menos um arquivo <strong class="text-emerald-400">SKILL.md</strong>. Este arquivo usa frontmatter YAML para metadados e Markdown para instrucoes.
+      </p>
+
+      <!-- Estrutura de Arquivos -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Estrutura Minima</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-emerald-400">skill-name/
+├── SKILL.md          # Obrigatorio - define a skill
+├── scripts/          # Opcional - automacoes
+├── resources/        # Opcional - templates, configs
+└── examples/         # Opcional - referencias</code></pre>
+      </div>
+
+      <!-- Exemplo de SKILL.md -->
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo de SKILL.md</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">name:</span> timestamp-generator
+<span class="text-blue-400">description:</span> Creates timestamps for files. Use when
+  user needs to add dates to filenames.
+<span class="text-blue-400">allowed-tools:</span> Bash(date:*)
+<span class="text-purple-400">---</span>
+
+<span class="text-emerald-400"># Timestamp Generator</span>
+
+<span class="text-amber-400">## When to Use</span>
+- User asks to timestamp a file
+- User wants date-based organization
+
+<span class="text-amber-400">## Instructions</span>
+1. Use format: YYYY-MM-DD-HH-MM-SS
+2. Apply to files or directories
+3. Use Bash date command for accuracy</code></pre>
+      </div>
+
+      <!-- Grid Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">✓ Elementos Obrigatorios</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span><strong>name:</strong> identificador unico</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span><strong>description:</strong> quando usar</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400">✓</span>
+              <span><strong>Corpo:</strong> instrucoes claras</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6">
+          <h4 class="font-bold text-red-400 mb-4">✗ Erros Comuns</h4>
+          <ul class="space-y-3 text-neutral-300">
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Nome com espacos ou maiusculas</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Description vaga ("helps with code")</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-red-400">✗</span>
+              <span>Instrucoes ambiguas ou incompletas</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🌐 Ecossistema de Skills</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O ecossistema de skills para agentes de IA esta em rapida expansao. Conhecer os principais players ajuda a escolher a plataforma certa e aproveitar recursos existentes.
+      </p>
+
+      <!-- Timeline -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-2xl">🔷</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Anthropic (Claude Code)</h4>
+            <p class="text-sm text-neutral-400 mb-3">Plataforma original de skills</p>
+            <p class="text-neutral-300 text-sm">Skills em ~/.claude/skills/ e .claude/skills/. Integracao nativa com Claude Code CLI e Claude.ai Projects. Repositorio oficial: github.com/anthropics/skills</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
+            <span class="text-2xl">🟣</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Google (Gemini CLI / Stitch)</h4>
+            <p class="text-sm text-neutral-400 mb-3">Ecossistema Google para skills</p>
+            <p class="text-neutral-300 text-sm">AntiGravity framework com B.L.A.S.T. Protocol. Skills em .agent/skills/. Stitch Skills para integracao visual. Repositorio: github.com/google-labs-code/stitch-skills</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+            <span class="text-2xl">🌍</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">AgentSkills.io</h4>
+            <p class="text-sm text-neutral-400 mb-3">Especificacao aberta</p>
+            <p class="text-neutral-300 text-sm">Padrao aberto para skills cross-platform. Define campos obrigatorios (name, description) e opcionais. Objetivo: interoperabilidade entre plataformas.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
+            <span class="text-2xl">👥</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Comunidade Open Source</h4>
+            <p class="text-sm text-neutral-400 mb-3">Repositorios e listas awesome</p>
+            <p class="text-neutral-300 text-sm">obra/superpowers (framework de desenvolvimento), travisvn/awesome-claude-skills (colecao curada), marketplaces emergentes de skills.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">💡 Casos de Uso Reais</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Skills ja estao em producao em diversas areas. Conhecer casos de uso reais inspira a criacao de skills proprias e demonstra o potencial da tecnologia.
+      </p>
+
+      <!-- Grid de Casos -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">📄</span>
+            <h4 class="font-bold">Document Skills</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Geracao de documentos Office</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Word (.docx) - relatorios, contratos</li>
+            <li>• Excel (.xlsx) - dashboards, analises</li>
+            <li>• PowerPoint (.pptx) - apresentacoes</li>
+            <li>• PDF - documentos formatados</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🛠️</span>
+            <h4 class="font-bold">Development Skills</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Workflows de desenvolvimento</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• TDD - Test-Driven Development</li>
+            <li>• Code Review automatizado</li>
+            <li>• Debugging assistido</li>
+            <li>• CI/CD integration</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🎨</span>
+            <h4 class="font-bold">Brand Identity Skills</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Consistencia visual e de voz</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Design tokens (cores, fontes)</li>
+            <li>• Tom de voz da marca</li>
+            <li>• Component library patterns</li>
+            <li>• Style guides automatizados</li>
+          </ul>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">📊</span>
+            <h4 class="font-bold">Analytics Skills</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Analise de dados e relatorios</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Sales data analysis</li>
+            <li>• Customer insights</li>
+            <li>• Financial reporting</li>
+            <li>• Market research</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚀 Primeiros Passos</h2>
+      </div>
+
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Pronto para comecar? Ha dois caminhos: usar skills existentes ou criar do zero. Recomendamos comecar usando, depois criar.
+      </p>
+
+      <!-- Timeline de Passos -->
+      <div class="space-y-6 mb-6">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">1</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Explore skills existentes</h4>
+            <p class="text-neutral-300 text-sm">Visite github.com/anthropics/skills e travisvn/awesome-claude-skills. Leia algumas skills para entender o formato.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">2</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Instale uma skill</h4>
+            <p class="text-neutral-300 text-sm">Copie uma skill para ~/.claude/skills/ (global) ou .claude/skills/ (projeto). Teste se ativa corretamente.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">3</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Modifique para suas necessidades</h4>
+            <p class="text-neutral-300 text-sm">Edite uma skill existente para entender como funciona. Mude instrucoes, adicione contexto.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-500/20 flex items-center justify-center">
+            <span class="text-emerald-400 font-bold">4</span>
+          </div>
+          <div class="flex-1 bg-dark-800 rounded-xl p-6 border border-dark-600">
+            <h4 class="font-semibold text-white mb-2">Crie sua primeira skill</h4>
+            <p class="text-neutral-300 text-sm">Com o conhecimento adquirido, crie uma skill do zero para uma necessidade real sua.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Final -->
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center">
+          <span class="mr-2">🎯</span> Proximo Passo
+        </h3>
+        <p class="text-neutral-300">
+          No proximo modulo, vamos mergulhar na <strong>estrutura do arquivo SKILL.md</strong> - entendendo cada campo do frontmatter e como escrever instrucoes eficazes.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-emerald-900/40 via-dark-800 to-dark-800 rounded-xl border border-emerald-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <span class="mr-3">📚</span> Resumo do Modulo
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Agent Skills</strong>
+              <span class="text-neutral-400"> - Capacidades modulares que estendem agentes de IA</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Skills vs Tools vs Prompts</strong>
+              <span class="text-neutral-400"> - Conhecimento vs Capacidade vs Instrucao de sessao</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Estrutura basica</strong>
+              <span class="text-neutral-400"> - SKILL.md com frontmatter YAML + corpo Markdown</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Ecossistema</strong>
+              <span class="text-neutral-400"> - Anthropic, Google, AgentSkills.io, comunidade</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Casos de uso</strong>
+              <span class="text-neutral-400"> - Documents, Development, Brand, Analytics</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="text-emerald-400 mt-1">✓</span>
+            <div>
+              <strong class="text-white">Diretorios</strong>
+              <span class="text-neutral-400"> - ~/.claude/skills/ (global), .claude/skills/ (projeto)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8">
+          <h3 class="font-semibold text-emerald-400 mb-2">Proximo Modulo:</h3>
+          <p class="text-neutral-300">1.2 - Estrutura do Arquivo SKILL.md</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+            ← Voltar para Trilha
+          </a>
+          <a href="modulo-1-2.html" class="flex-1 text-center px-6 py-3 bg-emerald-600 text-white rounded-lg font-semibold hover:bg-emerald-500 transition-colors">
+            Proximo Modulo →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
