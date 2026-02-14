@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 6: Exemplos e Aplicacoes | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">AntiGravity</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+          <a href="../trilha5-universal/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Universal</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">Exemplos</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 6
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🎯 Exemplos e Aplicacoes</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Explore repositorios reais, colecoes awesome, frameworks e ferramentas do ecossistema de skills. Aprenda com exemplos praticos dos melhores projetos open-source.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-rose-400">8</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-rose-400">48</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-rose-400">~5h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-rose-400">Todos</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- NAVEGACAO RAPIDA -->
+    <section class="mb-12">
+      <h2 class="text-lg font-semibold text-neutral-400 mb-4">Navegacao Rapida</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <a href="modulo-6-1.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.1</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Repositorios Oficiais</p>
+        </a>
+        <a href="modulo-6-2.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.2</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Colecoes Awesome</p>
+        </a>
+        <a href="modulo-6-3.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.3</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Superpowers Framework</p>
+        </a>
+        <a href="modulo-6-4.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.4</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Skills de Desenvolvimento</p>
+        </a>
+        <a href="modulo-6-5.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.5</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Skills de Dominio</p>
+        </a>
+        <a href="modulo-6-6.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.6</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Multi-Agent & Subagents</p>
+        </a>
+        <a href="modulo-6-7.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.7</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Skills para Cursor & Windsurf</p>
+        </a>
+        <a href="modulo-6-8.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-rose-500/50 transition-all group">
+          <span class="text-rose-400 font-bold text-sm">6.8</span>
+          <p class="text-sm mt-1 group-hover:text-rose-400 transition-colors">Marketplaces & Ferramentas</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- DIVISOR -->
+    <div class="flex items-center mb-8">
+      <div class="flex-1 border-t border-dark-600"></div>
+      <span class="px-4 text-neutral-500 text-sm">Conteudo Detalhado</span>
+      <div class="flex-1 border-t border-dark-600"></div>
+    </div>
+
+    <!-- MODULO 6.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.1</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🏛️ Repositorios Oficiais</h3>
+        <p class="text-neutral-400 text-sm">Explore os repositorios oficiais de skills das grandes empresas: Anthropic, Microsoft, OpenAI, Vercel, Supabase e Callstack.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔮</span>
+            <div>
+              <span class="font-medium">anthropics/skills</span>
+              <span class="text-neutral-500 text-sm ml-2">- O repositorio da Anthropic</span>
+            </div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Repositorio oficial da Anthropic com skills de referencia para Claude Code.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Padroes oficiais definem as melhores praticas do ecossistema.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">CLAUDE.md, skill format, allowed-tools, description patterns</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🔷</span>
+            <div><span class="font-medium">microsoft/skills</span><span class="text-neutral-500 text-sm ml-2">- Skills da Microsoft</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Colecao de skills Microsoft para Azure, .NET e ferramentas enterprise.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Referencia para skills corporativas e integracao com stack Microsoft.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Azure integration, .NET patterns, enterprise skills, Semantic Kernel</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🤖</span>
+            <div><span class="font-medium">openai/skills</span><span class="text-neutral-500 text-sm ml-2">- Catalogo do OpenAI Codex</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills e instrucoes otimizadas para o ecossistema OpenAI e Codex agents.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender como a OpenAI estrutura instrucoes para seus agentes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AGENTS.md, Codex instructions, function calling, system prompts</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">▲</span>
+            <div><span class="font-medium">vercel-labs/agent-skills</span><span class="text-neutral-500 text-sm ml-2">- Vercel e Next.js</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills focadas em Next.js, Vercel AI SDK e deploy na plataforma Vercel.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Referencia para skills de frontend e full-stack moderno.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Next.js patterns, AI SDK, server components, edge functions</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">supabase/agent-skills</span><span class="text-neutral-500 text-sm ml-2">- Supabase skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para banco de dados, autenticacao e realtime com Supabase.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Backend-as-a-Service com skills e um padrao poderoso.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">PostgreSQL, RLS, Edge Functions, Realtime, Auth</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">📱</span>
+            <div><span class="font-medium">callstackincubator/agent-skills</span><span class="text-neutral-500 text-sm ml-2">- React Native skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills especializadas em React Native e desenvolvimento mobile.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Mobile e um dominio com particularidades que skills capturam bem.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">React Native, Expo, navigation, native modules, app store</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-1.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.2</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⭐ Colecoes Awesome</h3>
+        <p class="text-neutral-400 text-sm">As melhores listas curadas de skills para agentes de IA. VoltAgent, sickn33, travisvn, ComposioHQ e mais.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">VoltAgent/awesome-agent-skills</span><span class="text-neutral-500 text-sm ml-2">- 300+ skills curadas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Colecao curada com 300+ skills organizadas por categoria e plataforma.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Uma das maiores colecoes organizadas de skills do ecossistema.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Categorization, skill discovery, community contributions</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🌌</span>
+            <div><span class="font-medium">sickn33/antigravity-awesome-skills</span><span class="text-neutral-500 text-sm ml-2">- 800+ skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">A maior colecao de skills com 800+ entradas focadas em AntiGravity e Google AI Studio.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Referencia maxima em volume e diversidade de skills.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AntiGravity format, Gemini skills, multi-platform</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">travisvn/awesome-claude-skills</span><span class="text-neutral-500 text-sm ml-2">- Foco em Claude</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Lista curada especificamente para Claude Code e seus formatos de skill.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Foco exclusivo em Claude garante compatibilidade direta.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">CLAUDE.md, slash commands, skill files, tool permissions</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔧</span>
+            <div><span class="font-medium">ComposioHQ/awesome-claude-skills</span><span class="text-neutral-500 text-sm ml-2">- Composio integrations</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills com foco em integracoes via Composio - conectando 200+ apps.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Composio simplifica integracoes que skills podem disparar.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Tool integrations, API connectors, action triggers</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🤖</span>
+            <div><span class="font-medium">skillmatic-ai/awesome-agent-skills</span><span class="text-neutral-500 text-sm ml-2">- Skillmatic curated</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Colecao focada em skills com qualidade verificada e documentacao padronizada.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Enfase em qualidade sobre quantidade, com reviews da comunidade.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Quality scoring, documentation standards, peer review</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">📝</span>
+            <div><span class="font-medium">Como contribuir para colecoes awesome</span><span class="text-neutral-500 text-sm ml-2">- Guia pratico</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Processo de submissao de skills para listas awesome: PR, formato, review.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Contribuir aumenta visibilidade e melhora qualidade das suas skills.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Pull requests, contribution guidelines, awesome-lint, formatting</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-2.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.3</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💪 Superpowers Framework</h3>
+        <p class="text-neutral-400 text-sm">O framework obra/superpowers com 27K+ stars. Workflow de 6 passos, TDD, debugging, brainstorming e suas variacoes.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🌟</span>
+            <div><span class="font-medium">O que e o Superpowers</span><span class="text-neutral-500 text-sm ml-2">- 27K+ stars no GitHub</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Framework de skills de alta qualidade com 27K+ stars, focado em produtividade maxima.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">O projeto mais popular de skills, adotado por milhares de desenvolvedores.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Structured workflow, quality gates, iterative refinement</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">Workflow de 6 passos</span><span class="text-neutral-500 text-sm ml-2">- O core do framework</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Fluxo estruturado: Analyze, Plan, Implement, Test, Review, Document.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Workflow estruturado reduz erros e aumenta consistencia.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Step-by-step execution, quality checkpoints, iteration loops</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🧪</span>
+            <div><span class="font-medium">TDD com Superpowers</span><span class="text-neutral-500 text-sm ml-2">- Test-Driven Development</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills de TDD que forcam o agente a escrever testes antes do codigo.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">TDD com AI produz codigo mais robusto e testavel.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Red-green-refactor, test-first, coverage targets, assertion patterns</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🐛</span>
+            <div><span class="font-medium">Debugging e brainstorming</span><span class="text-neutral-500 text-sm ml-2">- Skills especializadas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para debugging sistematico e brainstorming estruturado.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Debugging e brainstorming sao atividades onde AI brilha com guia.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Root cause analysis, hypothesis testing, ideation frameworks</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔀</span>
+            <div><span class="font-medium">Forks e variacoes populares</span><span class="text-neutral-500 text-sm ml-2">- Comunidade ativa</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Forks populares que adaptam Superpowers para nichos: DevOps, data science, mobile.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Variacoes mostram como adaptar frameworks para contextos especificos.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Fork customization, domain adaptation, community extensions</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🎨</span>
+            <div><span class="font-medium">Adaptando ao seu workflow</span><span class="text-neutral-500 text-sm ml-2">- Personalizacao</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como customizar Superpowers para seu stack e fluxo de trabalho.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills genericas precisam ser adaptadas para maximo impacto.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Stack-specific rules, team conventions, project adaptation</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-3.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.4</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💻 Skills de Desenvolvimento</h3>
+        <p class="text-neutral-400 text-sm">Skills focadas em desenvolvimento de software. levnikolaevich/claude-code-skills, TDD skills, code review e CI/CD.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📦</span>
+            <div><span class="font-medium">levnikolaevich/claude-code-skills</span><span class="text-neutral-500 text-sm ml-2">- 99 skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Colecao com 99 skills de desenvolvimento cobrindo diversas linguagens e frameworks.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Grande variedade de skills prontas para uso imediato.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Multi-language, framework-specific, ready-to-use, modular</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🏗️</span>
+            <div><span class="font-medium">ramziddin/solid-skills</span><span class="text-neutral-500 text-sm ml-2">- Principios SOLID</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills que forcam aderencia aos principios SOLID em todo codigo gerado.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Codigo com principios SOLID e mais sustentavel e testavel.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">SRP, OCP, LSP, ISP, DIP, clean architecture</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🧪</span>
+            <div><span class="font-medium">TDD skills</span><span class="text-neutral-500 text-sm ml-2">- Test-Driven Development</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills que implementam TDD rigoroso: testes primeiro, depois codigo.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">TDD e a pratica mais eficaz para codigo com AI assistente.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Test-first, red-green-refactor, mocking, integration tests</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔍</span>
+            <div><span class="font-medium">Code review automatizado</span><span class="text-neutral-500 text-sm ml-2">- Review skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills que automatizam code review com criterios consistentes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Code review automatizado mantem padrao mesmo sob pressao.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Linting rules, security checks, performance analysis, best practices</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🐛</span>
+            <div><span class="font-medium">Debugging skills avancadas</span><span class="text-neutral-500 text-sm ml-2">- Resolucao sistematica</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills que guiam debugging sistematico: reproducao, isolamento, fix, validacao.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Debugging e onde desenvolvedores passam mais tempo - AI pode acelerar.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Bisect strategy, log analysis, stack trace parsing, fix verification</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">CI/CD e DevOps skills</span><span class="text-neutral-500 text-sm ml-2">- Automacao de pipeline</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para criar e manter pipelines CI/CD, Docker, Kubernetes e IaC.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">DevOps com AI acelera setup e manutencao de infraestrutura.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">GitHub Actions, Docker, Terraform, monitoring, deployment</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-4.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.5</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎯 Skills de Dominio</h3>
+        <p class="text-neutral-400 text-sm">Skills especializadas por dominio. Experts em AI, product management, platform design e data science.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🧠</span>
+            <div><span class="font-medium">alirezarezvani/claude-skills</span><span class="text-neutral-500 text-sm ml-2">- 53 domain experts</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">53 skills de dominio que transformam Claude em expert de areas especificas.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills de dominio demonstram como capturar expertise especializada.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Domain expertise, persona definition, knowledge encoding</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📊</span>
+            <div><span class="font-medium">product-on-purpose/pm-skills</span><span class="text-neutral-500 text-sm ml-2">- Product Management</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para product managers: PRDs, user stories, roadmaps, OKRs.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">PM skills mostram como AI assiste em trabalho nao-tecnico.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">PRD templates, story mapping, prioritization frameworks</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🎨</span>
+            <div><span class="font-medium">ehmo/platform-design-skills</span><span class="text-neutral-500 text-sm ml-2">- 300+ rules</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">300+ regras de design para plataformas digitais, UX e sistemas de design.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Design skills garantem consistencia visual e UX em projetos AI-assisted.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Design systems, accessibility, responsive patterns, component libraries</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📈</span>
+            <div><span class="font-medium">Data science skills</span><span class="text-neutral-500 text-sm ml-2">- Analise e ML</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para data science: EDA, feature engineering, model training, evaluation.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Data science com AI assistente e extremamente produtivo.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Pandas workflows, visualization, scikit-learn, statistical analysis</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">✍️</span>
+            <div><span class="font-medium">Marketing e conteudo skills</span><span class="text-neutral-500 text-sm ml-2">- Copywriting e SEO</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills para criacao de conteudo: blog posts, social media, SEO, copywriting.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Marketing e uma das areas com maior ROI de skills de AI.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Brand voice, content calendar, SEO optimization, A/B copy</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🔧</span>
+            <div><span class="font-medium">Criando skills de dominio customizadas</span><span class="text-neutral-500 text-sm ml-2">- Seu dominio</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como criar skills especializadas para qualquer dominio de negocio.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills customizadas dao vantagem competitiva unica.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Domain analysis, expertise capture, validation, iteration</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-5')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-5.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.6</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🤝 Multi-Agent & Subagents</h3>
+        <p class="text-neutral-400 text-sm">Skills e padroes para sistemas multi-agente. VoltAgent subagents, wshobson/agents, ccswarm e maestro-gemini.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">VoltAgent/awesome-claude-code-subagents</span><span class="text-neutral-500 text-sm ml-2">- 100+ subagents</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">100+ subagents prontos para orquestracao em Claude Code.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Subagents permitem dividir tarefas complexas em especialistas.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Task delegation, specialist agents, orchestration patterns</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">👥</span>
+            <div><span class="font-medium">wshobson/agents</span><span class="text-neutral-500 text-sm ml-2">- 112 agents</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Colecao de 112 agentes especializados com roles bem definidos.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Variedade de agentes mostra padroes de especializacao.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Role definition, capability scoping, agent personas</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🐝</span>
+            <div><span class="font-medium">ccswarm</span><span class="text-neutral-500 text-sm ml-2">- Coordenacao de agentes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Framework para coordenar swarms de agentes Claude Code trabalhando em paralelo.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Swarm computing com agentes e o futuro de projetos grandes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Parallel execution, task distribution, conflict resolution</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🎼</span>
+            <div><span class="font-medium">maestro-gemini</span><span class="text-neutral-500 text-sm ml-2">- Orquestracao Google</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Orquestrador multi-agent para Google Gemini e AI Studio.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Padroes de orquestracao sao transferiveis entre plataformas.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Conductor pattern, task routing, result aggregation</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Padroes de comunicacao multi-agent</span><span class="text-neutral-500 text-sm ml-2">- Protocolos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Padroes de comunicacao entre agentes: message passing, shared state, event-driven.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Comunicacao eficiente e chave para sistemas multi-agent.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Message protocols, shared context, event buses, handoff patterns</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🏗️</span>
+            <div><span class="font-medium">Construindo seu proprio sistema</span><span class="text-neutral-500 text-sm ml-2">- Passo a passo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Guia para construir um sistema multi-agent customizado do zero.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Criar seu proprio sistema e o nivel maximo de dominio.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Architecture design, agent registry, task queue, monitoring</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-6')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-6.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.7 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.7</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🏄 Skills para Cursor & Windsurf</h3>
+        <p class="text-neutral-400 text-sm">Repositorios e colecoes especificas para Cursor e Windsurf. PatrickJS/awesome-cursorrules, cascade-customizations e mais.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📐</span>
+            <div><span class="font-medium">PatrickJS/awesome-cursorrules</span><span class="text-neutral-500 text-sm ml-2">- A referencia</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">A maior e mais popular colecao de cursor rules do ecossistema.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Referencia obrigatoria para quem usa Cursor como IDE.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.cursorrules format, project rules, global rules, rule composition</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🌊</span>
+            <div><span class="font-medium">Windsurf-Samples/cascade-customizations-catalog</span><span class="text-neutral-500 text-sm ml-2">- Windsurf oficial</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Catalogo oficial de customizacoes para Windsurf Cascade.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Customizacoes oficiais sao a base para uso avancado do Windsurf.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cascade flows, customization format, trigger rules</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🔧</span>
+            <div><span class="font-medium">RuleSurf</span><span class="text-neutral-500 text-sm ml-2">- Gerenciador de regras</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Ferramenta para gerenciar e sincronizar regras entre projetos Windsurf.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Gerenciamento de regras e essencial para equipes grandes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Rule sync, version control, team sharing, conflict resolution</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">💾</span>
+            <div><span class="font-medium">cascade-memory-bank</span><span class="text-neutral-500 text-sm ml-2">- Memoria persistente</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Sistema de memoria persistente para manter contexto entre sessoes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Memoria persistente e critica para projetos longos e complexos.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Memory files, context preservation, session continuity</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔀</span>
+            <div><span class="font-medium">Migracoes entre Cursor e Windsurf</span><span class="text-neutral-500 text-sm ml-2">- Convertendo regras</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como converter regras entre .cursorrules e formato Windsurf.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Portabilidade permite aproveitar skills em qualquer IDE.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Format conversion, compatibility, cross-IDE skills</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Criando regras otimizadas</span><span class="text-neutral-500 text-sm ml-2">- Melhores praticas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tecnicas para criar regras otimizadas que maximizam qualidade do output.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Regras bem escritas fazem diferenca massiva na qualidade do codigo.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Rule specificity, negative examples, context windows, token efficiency</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-7')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-7.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 6.8 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-rose-400 font-bold">6.8</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🛒 Marketplaces & Ferramentas</h3>
+        <p class="text-neutral-400 text-sm">Plataformas para descobrir, publicar e gerenciar skills. SkillsMP.com, AgentSkills.io, agent-skills-cli e como publicar.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🏪</span>
+            <div><span class="font-medium">SkillsMP.com</span><span class="text-neutral-500 text-sm ml-2">- Marketplace de skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Marketplace dedicado para descobrir e compartilhar skills de agentes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Marketplaces sao o futuro da distribuicao de skills.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Skill discovery, ratings, categories, installation</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">AgentSkills.io</span><span class="text-neutral-500 text-sm ml-2">- Spec e diretorio</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Especificacao padrao e diretorio de skills com formato aberto.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Padroes abertos garantem interoperabilidade entre plataformas.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Skill specification, open format, directory listing, metadata</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⌨️</span>
+            <div><span class="font-medium">agent-skills-cli</span><span class="text-neutral-500 text-sm ml-2">- Ferramenta CLI</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">CLI para instalar, gerenciar e publicar skills via terminal.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">CLI e a forma mais rapida de gerenciar skills no dia-a-dia.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Install, init, publish, search, update commands</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔌</span>
+            <div><span class="font-medium">skillport e n-skills</span><span class="text-neutral-500 text-sm ml-2">- Gerenciadores</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Ferramentas para importar, exportar e gerenciar colecoes de skills.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Gerenciamento eficiente e critico quando se tem muitas skills.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Skill bundles, import/export, dependency management</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🤖</span>
+            <div><span class="font-medium">skill-creator</span><span class="text-neutral-500 text-sm ml-2">- Geradores automaticos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Ferramentas que geram skills automaticamente a partir de templates e descricoes.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Geradores aceleram criacao de skills padronizadas.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Templates, scaffolding, auto-generation, customization</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">Como publicar sua skill</span><span class="text-neutral-500 text-sm ml-2">- Guia completo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-rose-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Processo completo para publicar skills em marketplaces e repositorios.</p></div>
+              <div><span class="text-rose-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Publicar skills aumenta visibilidade e contribui com a comunidade.</p></div>
+              <div><span class="text-rose-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Publishing workflow, metadata, testing, documentation, promotion</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-6-8')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-6-8.html" class="px-4 py-2 text-sm bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- NAVEGACAO -->
+    <div class="flex justify-between items-center mt-12 pt-8 border-t border-dark-600">
+      <a href="../trilha5-universal/index.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 rounded-lg transition-colors">
+        ← Trilha Anterior: Universal
+      </a>
+      <a href="../../index.html" class="px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-lg transition-colors">
+        Voltar ao Inicio
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- MODAIS COM IFRAME -->
+  <div id="modal-6-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.1</span>
+          <span class="font-semibold">Repositorios Oficiais</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.2</span>
+          <span class="font-semibold">Colecoes Awesome</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.3</span>
+          <span class="font-semibold">Superpowers Framework</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.4</span>
+          <span class="font-semibold">Skills de Desenvolvimento</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.5</span>
+          <span class="font-semibold">Skills de Dominio</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-5.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-6" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.6</span>
+          <span class="font-semibold">Multi-Agent & Subagents</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-6.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-7" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.7</span>
+          <span class="font-semibold">Skills para Cursor & Windsurf</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-7.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-6-8" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-rose-400 font-bold">6.8</span>
+          <span class="font-semibold">Marketplaces & Ferramentas</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-6-8.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.classList.add('hidden');
+      });
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

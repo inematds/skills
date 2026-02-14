@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 5.8: Portabilidade Cross-Platform | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; } .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; } html:not(.dark) .bg-dark-800 { background-color: #f9fafb; } html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; } html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; } html:not(.dark) .text-neutral-300 { color: #4b5563; } html:not(.dark) .text-neutral-400 { color: #6b7280; } html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; } html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span></a>
+          <span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">AntiGravity</span></a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-cyan-400 bg-cyan-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Universal</span></a>
+          <a href="../trilha6-exemplos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Exemplos</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-cyan-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-cyan-400">Trilha 5</a><span>/</span><span class="text-cyan-400">Modulo 5.8</span></div></nav>
+
+  <header class="bg-gradient-to-br from-cyan-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-semibold rounded-full mb-4">MODULO 5.8</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🔄 Portabilidade Cross-Platform</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Escreva uma vez, use em todos os agentes. Diretorios por plataforma, testing, marketplaces e ferramentas como agent-skills-cli.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">Avancado</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">Pratico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">🌍 Principio Write-Once-Run-Anywhere</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Assim como o Java prometeu "write once, run anywhere" para codigo, o padrao Agent Skills promete o mesmo para <strong class="text-cyan-400">instrucoes de agentes AI</strong>. A ideia e que voce invista tempo criando uma skill de qualidade que funcione em qualquer plataforma que adote o padrao.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Na pratica, portabilidade total ainda requer algum trabalho de adaptacao. Mas o investimento compensa: em vez de manter 3-4 arquivos de instrucao diferentes, voce mantem um SKILL.md central e gera os formatos especificos quando necessario.
+      </p>
+      <div class="bg-gradient-to-br from-cyan-900/30 to-dark-800 rounded-xl border border-cyan-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-4 flex items-center"><span class="mr-2">📊</span> Niveis de Portabilidade</h3>
+        <div class="space-y-4">
+          <div class="bg-dark-700/50 rounded-lg p-4 flex items-start space-x-4">
+            <span class="bg-emerald-500/20 text-emerald-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">A</span>
+            <div><h4 class="font-semibold text-emerald-400">100% Portavel</h4><p class="text-neutral-300 text-sm">Corpo Markdown + campos basicos (name, description). Funciona em todas as plataformas sem modificacao.</p></div>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4 flex items-start space-x-4">
+            <span class="bg-yellow-500/20 text-yellow-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">B</span>
+            <div><h4 class="font-semibold text-yellow-400">Adaptacao Minima</h4><p class="text-neutral-300 text-sm">Campos avancados (globs, alwaysApply). Funcionam na maioria, ignorados em algumas plataformas.</p></div>
+          </div>
+          <div class="bg-dark-700/50 rounded-lg p-4 flex items-start space-x-4">
+            <span class="bg-orange-500/20 text-orange-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">C</span>
+            <div><h4 class="font-semibold text-orange-400">Platform-Specific</h4><p class="text-neutral-300 text-sm">Features especificas como allowed-tools do Claude Code ou scripts do Manus. Requerem adaptacao por plataforma.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📂 Estrutura de Diretorios Multi-Plataforma</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Para suportar todas as plataformas simultaneamente, organize seu repositorio com <strong class="text-cyan-400">diretorios dedicados</strong> para cada agente, alem do SKILL.md universal na raiz. Esta e a estrutura recomendada para maximo alcance.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Estrutura Recomendada</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300">meu-projeto/
+│
+├── <span class="text-cyan-400">SKILL.md</span>                    <span class="text-neutral-500"># Fonte de verdade (universal)</span>
+│
+├── <span class="text-cyan-400">AGENTS.md</span>                   <span class="text-neutral-500"># Para GitHub Copilot + OpenAI Codex</span>
+│
+├── .github/
+│   └── copilot/
+│       └── <span class="text-cyan-400">instructions.md</span>    <span class="text-neutral-500"># Copilot repo-level (opcional)</span>
+│
+├── .cursor/
+│   └── rules/
+│       └── <span class="text-cyan-400">main.mdc</span>           <span class="text-neutral-500"># Para Cursor (.mdc format)</span>
+│
+├── .agents/
+│   └── skills/
+│       └── <span class="text-cyan-400">coding.md</span>          <span class="text-neutral-500"># Para OpenAI Codex</span>
+│
+├── .claude/
+│   └── <span class="text-cyan-400">settings.json</span>          <span class="text-neutral-500"># Config Claude Code (se necessario)</span>
+│
+└── src/
+    └── <span class="text-cyan-400">AGENTS.md</span>              <span class="text-neutral-500"># Instrucoes especificas para /src</span></code></pre>
+      </div>
+      <div class="bg-cyan-900/20 rounded-xl border border-cyan-500/30 p-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3 flex items-center"><span class="mr-2">💡</span> Automatizacao</h3>
+        <p class="text-neutral-300">Use um script ou o agent-skills-cli para gerar automaticamente AGENTS.md e .mdc a partir do SKILL.md. Isso garante consistencia e elimina duplicacao manual.</p>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🧪 Testing de Portabilidade</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Testar se uma skill funciona corretamente em diferentes agentes e <strong class="text-cyan-400">essencial antes de publicar</strong>. Cada plataforma interpreta instrucoes de forma ligeiramente diferente, e o que funciona perfeitamente no Claude Code pode ter nuances no Copilot.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-cyan-400 mb-4">Checklist de Teste</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>YAML frontmatter valido (sem erros de sintaxe)</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>name em kebab-case, description clara</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>Globs testados com arquivos reais</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>Instrucoes claras e nao ambiguas</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>Testado em Claude Code</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">□</span><span>Testado em Copilot/Cursor</span></li>
+          </ul>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-cyan-400 mb-4">Como Testar</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">1.</span><span>Abra o projeto no agente alvo</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">2.</span><span>Peca uma tarefa coberta pela skill</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">3.</span><span>Verifique se as instrucoes foram seguidas</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">4.</span><span>Pergunte "quais instrucoes voce esta seguindo?"</span></li>
+            <li class="flex items-start space-x-2"><span class="text-cyan-400">5.</span><span>Ajuste e repita ate consistente</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🏪 Marketplaces de Skills</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Marketplaces de skills sao <strong class="text-cyan-400">plataformas para descobrir, compartilhar e distribuir</strong> skills universais. Eles criam um ecossistema onde desenvolvedores podem aproveitar o trabalho da comunidade em vez de criar tudo do zero.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">🌐</span>
+            <h4 class="font-bold">AgentSkills.io</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Marketplace universal</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Skills no formato SKILL.md</li>
+            <li>• Busca por tags e categorias</li>
+            <li>• Ratings e reviews</li>
+            <li>• Instalacao via CLI</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">⚡</span>
+            <h4 class="font-bold">cursor.directory</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Maior comunidade atual</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• Centenas de regras prontas</li>
+            <li>• Formato .cursorrules</li>
+            <li>• Comunidade ativa</li>
+            <li>• Copy-paste simples</li>
+          </ul>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-2xl">📚</span>
+            <h4 class="font-bold">GitHub Repos</h4>
+          </div>
+          <p class="text-neutral-400 text-sm mb-3">Catalogo distribuido</p>
+          <ul class="text-sm text-neutral-300 space-y-1">
+            <li>• openai/skills (oficial)</li>
+            <li>• Repos da comunidade</li>
+            <li>• Template repos</li>
+            <li>• Git submodules</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">💻 agent-skills-cli - Ferramenta CLI</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-cyan-400">agent-skills-cli</strong> e uma ferramenta de linha de comando para gerenciar o ciclo de vida completo de skills: criar, validar, converter entre formatos e publicar em marketplaces.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Comandos Principais</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-cyan-400"># Instalar</span>
+npm install -g agent-skills-cli
+
+<span class="text-cyan-400"># Criar nova skill interativamente</span>
+agent-skills init
+
+<span class="text-cyan-400"># Validar SKILL.md</span>
+agent-skills validate ./SKILL.md
+
+<span class="text-cyan-400"># Converter SKILL.md para outros formatos</span>
+agent-skills convert ./SKILL.md --to agents.md
+agent-skills convert ./SKILL.md --to cursorrules
+agent-skills convert ./SKILL.md --to mdc
+
+<span class="text-cyan-400"># Gerar todos os formatos de uma vez</span>
+agent-skills sync ./SKILL.md
+
+<span class="text-cyan-400"># Publicar no marketplace</span>
+agent-skills publish ./SKILL.md
+
+<span class="text-cyan-400"># Buscar skills no marketplace</span>
+agent-skills search "react typescript"
+
+<span class="text-cyan-400"># Instalar skill do marketplace</span>
+agent-skills install @community/nextjs-expert</code></pre>
+      </div>
+      <div class="bg-cyan-900/20 rounded-xl border border-cyan-500/30 p-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3 flex items-center"><span class="mr-2">💡</span> Uso Rapido com npx</h3>
+        <p class="text-neutral-300">Voce pode usar sem instalar globalmente: <code class="text-cyan-400 bg-dark-700 px-2 py-0.5 rounded">npx agent-skills-cli init</code>. Ideal para experimentar antes de adotar permanentemente.</p>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚀 Publicando sua Primeira Skill Universal</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Vamos colocar tudo em pratica com um <strong class="text-cyan-400">guia passo-a-passo completo</strong> para criar, testar e publicar sua primeira skill universal que funciona em todas as plataformas.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Passo-a-Passo Completo</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-cyan-400"># 1. Inicializar skill</span>
+npx agent-skills-cli init
+<span class="text-neutral-500"># Responda: name, description, globs, tags</span>
+
+<span class="text-cyan-400"># 2. Editar conteudo</span>
+<span class="text-neutral-500"># Abra SKILL.md e adicione suas instrucoes</span>
+
+<span class="text-cyan-400"># 3. Validar</span>
+npx agent-skills-cli validate ./SKILL.md
+
+<span class="text-cyan-400"># 4. Gerar formatos para todas plataformas</span>
+npx agent-skills-cli sync ./SKILL.md
+
+<span class="text-cyan-400"># 5. Testar localmente</span>
+<span class="text-neutral-500"># Abra projeto no Claude Code, Copilot, Cursor</span>
+<span class="text-neutral-500"># Valide que comportamento e consistente</span>
+
+<span class="text-cyan-400"># 6. Commitar e publicar</span>
+git add SKILL.md AGENTS.md .cursor/rules/main.mdc
+git commit -m "feat: add universal coding skill"
+git push
+
+<span class="text-cyan-400"># 7. (Opcional) Publicar no marketplace</span>
+npx agent-skills-cli publish ./SKILL.md</code></pre>
+      </div>
+
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: Skill Universal Completa</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">name:</span> fullstack-typescript
+<span class="text-blue-400">description:</span> |
+  Fullstack TypeScript expert. Use quando trabalhando com
+  projetos TypeScript que incluem frontend React e backend Node.
+<span class="text-blue-400">version:</span> 1.0.0
+<span class="text-blue-400">globs:</span>
+  - "**/*.ts"
+  - "**/*.tsx"
+<span class="text-blue-400">alwaysApply:</span> false
+<span class="text-blue-400">tags:</span>
+  - typescript
+  - react
+  - nodejs
+  - fullstack
+<span class="text-purple-400">---</span>
+
+<span class="text-cyan-400"># Fullstack TypeScript Expert</span>
+
+Voce e um especialista em TypeScript fullstack.
+
+<span class="text-cyan-400">## Principios</span>
+- TypeScript strict mode em todo codigo
+- Functional programming quando possivel
+- Testes para toda logica de negocio
+- Error handling explicito (never throw untyped)
+
+<span class="text-cyan-400">## Frontend (React)</span>
+- Server Components por padrao
+- Client Components com "use client" apenas se necessario
+- Zod para validacao de forms
+- TanStack Query para data fetching
+
+<span class="text-cyan-400">## Backend (Node.js)</span>
+- Express ou Fastify para APIs
+- Prisma para ORM
+- Zod para validacao de input
+- Structured logging com pino
+
+<span class="text-cyan-400">## Testes</span>
+- Vitest para unit tests
+- Playwright para E2E
+- Minimo 80% coverage</code></pre>
+      </div>
+
+      <div class="bg-gradient-to-br from-cyan-900/40 to-dark-800 rounded-xl border border-cyan-500/30 p-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3 flex items-center"><span class="mr-2">🎉</span> Parabens!</h3>
+        <p class="text-neutral-300">
+          Voce completou a Trilha 5 - Skills Universal! Agora voce sabe como criar skills portaveis que funcionam em Claude Code, GitHub Copilot, Cursor, OpenAI Codex e muito mais. Na <strong>Trilha 6 (Exemplos)</strong>, veremos skills completas em acao com casos de uso reais.
+        </p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-cyan-900/40 via-dark-800 to-dark-800 rounded-xl border border-cyan-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Write-Once</strong><span class="text-neutral-400"> - SKILL.md como fonte de verdade, gerar formatos especificos</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Diretorios</strong><span class="text-neutral-400"> - .github/copilot/, .cursor/rules/, .agents/skills/ coexistindo</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Testing</strong><span class="text-neutral-400"> - Validar em multiplas plataformas, checklist de compatibilidade</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Marketplaces</strong><span class="text-neutral-400"> - AgentSkills.io, cursor.directory, GitHub repos</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">agent-skills-cli</strong><span class="text-neutral-400"> - init, validate, convert, sync, publish</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Hands-on</strong><span class="text-neutral-400"> - Passo-a-passo completo para primeira skill universal</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-cyan-400 mb-2">Proxima Trilha:</h3><p class="text-neutral-300">Trilha 6 - Exemplos Praticos</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-5-7.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="index.html" class="flex-1 text-center px-6 py-3 bg-cyan-600 text-white rounded-lg font-semibold hover:bg-cyan-500 transition-colors">Voltar para Trilha →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle'); const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon'); const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon'); const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>

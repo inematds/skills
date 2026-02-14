@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.2: Colecoes Awesome | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">AntiGravity</span></a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <a href="../trilha5-universal/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Universal</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Exemplos</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span>
+      <a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span>
+      <span class="text-rose-400">Modulo 6.2</span>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.2</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⭐ Colecoes Awesome</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">As melhores listas curadas de skills para agentes de IA. VoltAgent, sickn33, travisvn, ComposioHQ e mais.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Todos</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Referencia</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- TOPICO 1 -->
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">⚡ VoltAgent/awesome-agent-skills (300+ Skills)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O repositorio <strong class="text-rose-400">VoltAgent/awesome-agent-skills</strong> e uma das maiores colecoes curadas de skills para agentes de IA. Com mais de 300 skills organizadas por categoria, plataforma e caso de uso, e um ponto de partida essencial para quem quer explorar o ecossistema. A organizacao segue o padrao "awesome list" do GitHub, facilitando navegacao e descoberta.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        As categorias cobrem desde desenvolvimento web e mobile ate DevOps, data science, marketing e mais. Cada entrada inclui descricao, link para o repositorio e tags de plataforma compativel (Claude Code, Cursor, Windsurf, etc.).
+      </p>
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4">Categorias Principais</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">80+</span> <span class="text-neutral-300">Development</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">45+</span> <span class="text-neutral-300">Framework-Specific</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">35+</span> <span class="text-neutral-300">DevOps & CI/CD</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">30+</span> <span class="text-neutral-300">Testing & QA</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">25+</span> <span class="text-neutral-300">Data & Analytics</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-sm"><span class="text-rose-400 font-bold">20+</span> <span class="text-neutral-300">Content & Marketing</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🌌 sickn33/antigravity-awesome-skills (800+ Skills)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Com impressionantes <strong class="text-rose-400">800+ skills</strong>, o repositorio sickn33/antigravity-awesome-skills e a maior colecao conhecida. Focado primariamente em skills para Google AI Studio e AntiGravity, tambem inclui skills compativeis com Claude Code e outras plataformas. A amplitude dessa colecao a torna uma enciclopedia de padroes de skills.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O formato AntiGravity utiliza JSON Schema para definir skills, com campos de metadata ricos e suporte a multi-step workflows. Estudar esta colecao revela como diferentes abordagens de estruturacao afetam a qualidade do output do agente.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Distribuicao por Dominio</h3>
+        <div class="space-y-3">
+          <div class="flex items-center"><div class="w-32 text-sm text-neutral-400">Coding</div><div class="flex-1 bg-dark-700 rounded-full h-4"><div class="bg-rose-500 rounded-full h-4" style="width: 35%"></div></div><span class="ml-3 text-sm text-rose-400">280+</span></div>
+          <div class="flex items-center"><div class="w-32 text-sm text-neutral-400">Writing</div><div class="flex-1 bg-dark-700 rounded-full h-4"><div class="bg-rose-500 rounded-full h-4" style="width: 20%"></div></div><span class="ml-3 text-sm text-rose-400">160+</span></div>
+          <div class="flex items-center"><div class="w-32 text-sm text-neutral-400">Analysis</div><div class="flex-1 bg-dark-700 rounded-full h-4"><div class="bg-rose-500 rounded-full h-4" style="width: 15%"></div></div><span class="ml-3 text-sm text-rose-400">120+</span></div>
+          <div class="flex items-center"><div class="w-32 text-sm text-neutral-400">Design</div><div class="flex-1 bg-dark-700 rounded-full h-4"><div class="bg-rose-500 rounded-full h-4" style="width: 12%"></div></div><span class="ml-3 text-sm text-rose-400">100+</span></div>
+          <div class="flex items-center"><div class="w-32 text-sm text-neutral-400">Outros</div><div class="flex-1 bg-dark-700 rounded-full h-4"><div class="bg-rose-500 rounded-full h-4" style="width: 18%"></div></div><span class="ml-3 text-sm text-rose-400">140+</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🎯 travisvn/awesome-claude-skills</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-rose-400">travisvn/awesome-claude-skills</strong> e focado exclusivamente em skills para Claude Code. Essa especializacao garante que todas as skills listadas sao compativeis com o formato CLAUDE.md e utilizam corretamente features como slash commands, allowed-tools e skill files.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A curadoria prioriza qualidade sobre quantidade, com cada skill testada e validada pela comunidade. Skills sao organizadas por funcionalidade: coding, testing, documentation, DevOps, e incluem rating de complexidade e tempo de setup.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: Entrada Tipica na Lista</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400">### TDD Workflow Pro</span>
+- <span class="text-blue-400">Repo:</span> github.com/example/tdd-workflow-pro
+- <span class="text-blue-400">Tipo:</span> Slash command (/tdd)
+- <span class="text-blue-400">Compativel:</span> Claude Code 1.0+
+- <span class="text-blue-400">Setup:</span> Copiar para .claude/commands/
+- <span class="text-blue-400">Descricao:</span> Implementa TDD rigoroso com ciclo
+  red-green-refactor e cobertura minima de 80%.
+- <span class="text-blue-400">Tags:</span> testing, tdd, quality</code></pre>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🔧 ComposioHQ/awesome-claude-skills</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A <strong class="text-rose-400">Composio</strong> e uma plataforma de integracoes que conecta agentes de IA a 200+ aplicacoes. Seu repositorio awesome-claude-skills foca em skills que aproveitam essas integracoes: disparar workflows, conectar com APIs externas e automatizar tarefas cross-platform.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O diferencial e a enfase em skills "acionaveis" - que nao apenas dao instrucoes ao agente, mas permitem executar acoes reais via integracoes Composio. Isso inclui enviar emails, criar issues no GitHub, postar no Slack e mais, tudo atraves de skills.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+          <h4 class="font-bold text-rose-400 mb-3">Integracoes Populares</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• GitHub - Issues, PRs, Actions</li>
+            <li>• Slack - Mensagens, canais</li>
+            <li>• Notion - Paginas, databases</li>
+            <li>• Linear - Tasks, projetos</li>
+            <li>• Gmail - Emails automatizados</li>
+          </ul>
+        </div>
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+          <h4 class="font-bold text-rose-400 mb-3">Casos de Uso</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• Deploy + notificacao Slack</li>
+            <li>• Code review + issue criacao</li>
+            <li>• Docs update + Notion sync</li>
+            <li>• Bug report + Linear task</li>
+            <li>• Release notes + email</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🤖 skillmatic-ai/awesome-agent-skills</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-rose-400">skillmatic-ai/awesome-agent-skills</strong> diferencia-se por enfatizar qualidade verificada. Cada skill passa por um processo de review que avalia documentacao, testabilidade, manutencao e compatibilidade. Skills recebem um score de qualidade que ajuda usuarios a escolher as melhores opcoes.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A documentacao padronizada inclui: descricao detalhada, pre-requisitos, instrucoes de instalacao, exemplos de uso e limitacoes conhecidas. Esse nivel de detalhe e raro em colecoes awesome e torna o repositorio especialmente valioso para equipes que precisam de confiabilidade.
+      </p>
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4">Criterios de Qualidade</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start space-x-3"><span class="text-rose-400 text-lg">✓</span><div><strong class="text-white text-sm">Documentacao</strong><p class="text-neutral-400 text-sm">README completo com exemplos</p></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 text-lg">✓</span><div><strong class="text-white text-sm">Testabilidade</strong><p class="text-neutral-400 text-sm">Pode ser validada objetivamente</p></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 text-lg">✓</span><div><strong class="text-white text-sm">Manutencao</strong><p class="text-neutral-400 text-sm">Atualizada nos ultimos 3 meses</p></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 text-lg">✓</span><div><strong class="text-white text-sm">Compatibilidade</strong><p class="text-neutral-400 text-sm">Plataformas suportadas listadas</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">📝 Como Contribuir para Colecoes Awesome</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Contribuir para colecoes awesome e uma excelente forma de <strong class="text-rose-400">ganhar visibilidade</strong> para suas skills e contribuir com a comunidade. O processo segue o padrao GitHub de pull requests, mas cada colecao tem seus proprios guidelines e criterios de aceitacao.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Antes de submeter, certifique-se de que sua skill segue o formato da colecao, tem documentacao adequada e foi testada. O processo tipico envolve: fork do repositorio, adicao da entry seguindo o template, e submissao de PR com descricao clara.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Checklist para Contribuicao</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400">## PR Template para Awesome Lists</span>
+
+<span class="text-green-400">- [ ]</span> Li o CONTRIBUTING.md do repositorio
+<span class="text-green-400">- [ ]</span> Minha skill tem README com instrucoes claras
+<span class="text-green-400">- [ ]</span> Segui o formato de entry existente
+<span class="text-green-400">- [ ]</span> Adicionei em ordem alfabetica na categoria correta
+<span class="text-green-400">- [ ]</span> Link funciona e repositorio e publico
+<span class="text-green-400">- [ ]</span> Descricao e concisa (1-2 linhas)
+<span class="text-green-400">- [ ]</span> Nao e duplicata de entry existente
+<span class="text-green-400">- [ ]</span> Passei no awesome-lint (se aplicavel)</code></pre>
+      </div>
+
+      <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-3 flex items-center"><span class="mr-2">🎯</span> Proximo Passo</h3>
+        <p class="text-neutral-300">No proximo modulo, mergulhamos no <strong>Superpowers Framework</strong> - o projeto com 27K+ stars que definiu padroes de workflow para desenvolvimento com AI.</p>
+      </div>
+    </section>
+
+    <!-- RESUMO -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">VoltAgent</strong><span class="text-neutral-400"> - 300+ skills curadas por categoria e plataforma</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">sickn33/antigravity</strong><span class="text-neutral-400"> - 800+ skills, a maior colecao do ecossistema</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">travisvn</strong><span class="text-neutral-400"> - Foco exclusivo em Claude Code, qualidade verificada</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">ComposioHQ</strong><span class="text-neutral-400"> - Skills acionaveis com 200+ integracoes</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Skillmatic</strong><span class="text-neutral-400"> - Enfase em qualidade verificada e documentacao</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Contribuicao</strong><span class="text-neutral-400"> - Processo de PR, formato e criterios de aceitacao</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">6.3 - Superpowers Framework</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="modulo-6-3.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>

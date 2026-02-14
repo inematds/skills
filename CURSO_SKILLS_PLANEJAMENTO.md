@@ -1,7 +1,7 @@
 # CURSO COMPLETO: Agent Skills para IA
 
 > **Domine a criacao de Skills para agentes de IA**
-> **Versao:** 1.0 | **Data:** 2026-02-04
+> **Versao:** 2.0 | **Data:** 2026-02-14
 
 ---
 
@@ -11,21 +11,23 @@
 |------|-------|
 | Nome | Agent Skills Mastery |
 | Emoji | `🧠` |
-| Total de Trilhas | 4 |
-| Total de Modulos | 32 |
+| Total de Trilhas | 6 |
+| Total de Modulos | 48 |
 | Topicos por Modulo | 6-8 |
-| Total Estimado de Topicos | ~200 |
+| Total Estimado de Topicos | ~300 |
 
 ---
 
-## ESTRUTURA DAS 4 TRILHAS
+## ESTRUTURA DAS 6 TRILHAS
 
 | Trilha | Nome | Cor | Foco | Modulos |
 |--------|------|-----|------|---------|
 | T1 | Fundamentos | Emerald | Conceitos, estrutura SKILL.md, especificacao | 8 |
 | T2 | Claude Code | Blue | Anthropic, Claude.ai, Claude API | 8 |
-| T3 | Google/Stitch | Purple | Gemini CLI, AntiGravity, Stitch Skills | 8 |
+| T3 | AntiGravity & Gemini | Purple | Gemini CLI, AntiGravity, Stitch Skills | 8 |
 | T4 | Ecossistema | Amber | Superpowers, comunidade, marketplaces | 8 |
+| T5 | Skills Universal | Cyan | Padrao universal, Copilot, Cursor, Manus, Cline, Codex | 8 |
+| T6 | Exemplos & Aplicacoes | Rose | Repositorios reais, colecoes awesome, multi-agent, marketplaces | 8 |
 
 ---
 
@@ -1024,7 +1026,7 @@ brand-identity/
 
 ---
 
-# TRILHA 3: GOOGLE/STITCH (Purple)
+# TRILHA 3: ANTIGRAVITY & GEMINI (Purple)
 
 > **Skills para Gemini CLI e ecossistema Google**
 
@@ -1870,6 +1872,238 @@ brand-identity/
 
 ---
 
+# TRILHA 5: SKILLS UNIVERSAL (Cyan)
+
+> **O padrao universal de Agent Skills para todas as plataformas**
+
+## Modulo 5.1 - O Padrao Agent Skills
+
+**Duracao:** ~35 min | **Nivel:** Iniciante
+
+### Topicos:
+1. **📋 AgentSkills.io spec** - O que e e quem criou
+2. **📄 SKILL.md como formato universal** - Formato padrao entre plataformas
+3. **🏷️ YAML frontmatter** - Campos obrigatorios vs opcionais
+4. **📖 Progressive disclosure** - Como organizar conteudo gradualmente
+5. **✅ Vantagens da padronizacao** - Por que padronizar skills
+6. **🌐 Adocao pelas grandes plataformas** - Microsoft, OpenAI, Google, etc.
+
+---
+
+## Modulo 5.2 - Skills no GitHub Copilot
+
+**Duracao:** ~40 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **🤖 GitHub Copilot e skills** - Visao geral da integracao
+2. **📂 Repo-level skills** - .github/copilot/ e configuracao
+3. **🏢 Organization-wide skills** - Skills compartilhadas na org
+4. **📋 AGENTS.md** - Formato nativo do Copilot
+5. **⚖️ SKILL.md vs AGENTS.md** - Quando usar cada um
+6. **✅ Boas praticas para Copilot skills** - Dicas e patterns
+
+---
+
+## Modulo 5.3 - Skills no Cursor
+
+**Duracao:** ~40 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **📜 .cursorrules** - O formato legacy do Cursor
+2. **📄 .mdc** - O formato moderno do Cursor
+3. **📋 SKILL.md no Cursor** - Compatibilidade e uso
+4. **🛒 Cursor Directory** - Marketplace de regras
+5. **🔄 Migracao .cursorrules → SKILL.md** - Guia passo a passo
+6. **💡 Dicas avancadas** - Otimizacao e patterns
+
+---
+
+## Modulo 5.4 - Skills no Manus AI
+
+**Duracao:** ~35 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **🖥️ O que e o Manus AI** - Overview da plataforma
+2. **💻 VM completa** - Ambiente Ubuntu integrado
+3. **🤖 Execucao autonoma de skills** - Como funciona
+4. **⚙️ Geracao automatica de skills** - Manus gera skills
+5. **⚠️ Limitacoes e consideracoes** - O que saber
+6. **💡 Casos de uso praticos** - Exemplos reais
+
+---
+
+## Modulo 5.5 - Skills no Cline & OpenCode
+
+**Duracao:** ~35 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **🔌 Cline** - O que e e como funciona
+2. **📦 Skills no Cline 3.48+** - Suporte experimental
+3. **⚙️ Configuracao e ativacao** - Setup passo a passo
+4. **🔧 OpenCode plugins** - Sistema de plugins
+5. **📋 Compatibilidade com SKILL.md** - Formato universal
+6. **🐛 Troubleshooting** - Problemas comuns e solucoes
+
+---
+
+## Modulo 5.6 - Skills no OpenAI Codex
+
+**Duracao:** ~40 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **🧪 OpenAI Codex** - Overview da plataforma
+2. **📂 Diretorio .agents/skills/** - Onde colocar skills
+3. **📋 AGENTS.md no Codex** - Formato nativo
+4. **📦 Catalogo openai/skills** - Repositorio no GitHub
+5. **🔄 Compatibilidade cross-platform** - Portabilidade
+6. **✍️ Criando skills para Codex** - Guia pratico
+
+---
+
+## Modulo 5.7 - SKILL.md vs AGENTS.md vs .cursorrules
+
+**Duracao:** ~40 min | **Nivel:** Todos
+
+### Topicos:
+1. **📊 Tabela comparativa dos formatos** - Side-by-side
+2. **📋 SKILL.md** - Pontos fortes e fracos
+3. **📄 AGENTS.md** - Pontos fortes e fracos
+4. **📜 .cursorrules/.mdc** - Pontos fortes e fracos
+5. **🔄 Estrategia de migracao** - Como migrar entre formatos
+6. **🔮 Tendencias e futuro** - Para onde vai o mercado
+
+---
+
+## Modulo 5.8 - Portabilidade Cross-Platform
+
+**Duracao:** ~45 min | **Nivel:** Avancado
+
+### Topicos:
+1. **🌐 Principio write-once-run-anywhere** - A filosofia
+2. **📁 Estrutura de diretorios multi-plataforma** - Organizacao
+3. **🧪 Testing de portabilidade** - Verificacao cross-platform
+4. **🛒 Marketplaces de skills** - Onde publicar
+5. **🔧 agent-skills-cli** - Ferramenta CLI para gerenciamento
+6. **🚀 Publicando sua primeira skill universal** - Guia completo
+
+---
+
+# TRILHA 6: EXEMPLOS & APLICACOES (Rose)
+
+> **Repositorios reais, colecoes awesome e ferramentas do ecossistema**
+
+## Modulo 6.1 - Repositorios Oficiais
+
+**Duracao:** ~35 min | **Nivel:** Todos
+
+### Topicos:
+1. **🏛️ anthropics/skills** - Repositorio oficial da Anthropic
+2. **Ⓜ️ microsoft/skills** - Skills da Microsoft
+3. **🤖 openai/skills** - Catalogo do OpenAI Codex
+4. **▲ vercel-labs/agent-skills** - Vercel e Next.js
+5. **⚡ supabase/agent-skills** - Supabase skills
+6. **📱 callstackincubator/agent-skills** - React Native skills
+
+---
+
+## Modulo 6.2 - Colecoes Awesome
+
+**Duracao:** ~30 min | **Nivel:** Todos
+
+### Topicos:
+1. **⭐ VoltAgent/awesome-agent-skills** - 300+ skills curadas
+2. **🚀 sickn33/antigravity-awesome-skills** - 800+ skills AntiGravity
+3. **📋 travisvn/awesome-claude-skills** - Colecao Claude
+4. **💼 ComposioHQ/awesome-claude-skills** - Foco produtividade
+5. **🤖 skillmatic-ai/awesome-agent-skills** - Multi-plataforma
+6. **🤝 Como contribuir** - Adicionando suas skills
+
+---
+
+## Modulo 6.3 - Superpowers Framework
+
+**Duracao:** ~45 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **💪 O que e o Superpowers (27K+ stars)** - Overview
+2. **🔄 Workflow de 6 passos** - Brainstorm, Plan, Execute, TDD, Review, Finalize
+3. **🧪 TDD com Superpowers** - RED-GREEN-REFACTOR
+4. **🐛 Debugging e brainstorming** - Skills auxiliares
+5. **🔀 Forks e variacoes populares** - Adaptacoes da comunidade
+6. **⚙️ Adaptando ao seu workflow** - Customizacao
+
+---
+
+## Modulo 6.4 - Skills de Desenvolvimento
+
+**Duracao:** ~40 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **📦 levnikolaevich/claude-code-skills (99 skills)** - Colecao massiva
+2. **🏗️ ramziddin/solid-skills** - Principios SOLID
+3. **🧪 TDD skills** - Test-driven development
+4. **📝 Code review automatizado** - Review por agentes
+5. **🐛 Debugging skills avancadas** - Depuracao sistematica
+6. **🔧 CI/CD e DevOps skills** - Automacao de pipeline
+
+---
+
+## Modulo 6.5 - Skills de Dominio
+
+**Duracao:** ~35 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **🧠 alirezarezvani/claude-skills (53 domain experts)** - Colecao completa
+2. **📊 product-on-purpose/pm-skills** - Product Management
+3. **🎨 ehmo/platform-design-skills (300+ rules)** - Design de plataforma
+4. **📈 Data science skills** - Analise de dados
+5. **✍️ Marketing e conteudo skills** - Criacao de conteudo
+6. **🔧 Criando skills de dominio customizadas** - Guia pratico
+
+---
+
+## Modulo 6.6 - Multi-Agent & Subagents
+
+**Duracao:** ~40 min | **Nivel:** Avancado
+
+### Topicos:
+1. **🤝 VoltAgent/awesome-claude-code-subagents (100+)** - Colecao de subagentes
+2. **🤖 wshobson/agents (112 agents)** - Biblioteca completa
+3. **🐝 ccswarm** - Coordenacao de agentes
+4. **🎼 maestro-gemini** - Orquestracao Google
+5. **📡 Padroes de comunicacao multi-agent** - Arquiteturas
+6. **🏗️ Construindo seu sistema multi-agent** - Hands-on
+
+---
+
+## Modulo 6.7 - Skills para Cursor & Windsurf
+
+**Duracao:** ~35 min | **Nivel:** Intermediario
+
+### Topicos:
+1. **📜 PatrickJS/awesome-cursorrules** - A referencia principal
+2. **🏄 Windsurf-Samples/cascade-customizations-catalog** - Catalogo Windsurf
+3. **🏄 RuleSurf** - Gerenciador de regras
+4. **🧠 cascade-memory-bank** - Memoria persistente
+5. **🔄 Migracoes entre Cursor e Windsurf** - Guia pratico
+6. **⚡ Criando regras otimizadas** - Best practices
+
+---
+
+## Modulo 6.8 - Marketplaces & Ferramentas
+
+**Duracao:** ~35 min | **Nivel:** Todos
+
+### Topicos:
+1. **🛒 SkillsMP.com** - Marketplace de skills
+2. **🌐 AgentSkills.io** - Especificacao e diretorio
+3. **🔧 agent-skills-cli** - Ferramenta de linha de comando
+4. **📦 skillport e n-skills** - Gerenciadores de pacotes
+5. **🏭 skill-creator** - Geradores automaticos
+6. **🚀 Como publicar sua skill** - Guia completo de publicacao
+
+---
+
 # RECURSOS COMPLEMENTARES
 
 ## Links Oficiais
@@ -1918,8 +2152,10 @@ brand-identity/
 Usar cores conforme:
 - T1 Fundamentos: **Emerald**
 - T2 Claude Code: **Blue**
-- T3 Google/Stitch: **Purple**
+- T3 AntiGravity & Gemini: **Purple**
 - T4 Ecossistema: **Amber**
+- T5 Skills Universal: **Cyan**
+- T6 Exemplos & Aplicacoes: **Rose**
 
 ## Template de Pagina de Modulo
 - 6 topicos detalhados
@@ -1939,5 +2175,5 @@ Usar cores conforme:
 
 ---
 
-**Versao:** 1.0
-**Ultima atualizacao:** 2026-02-04
+**Versao:** 2.0
+**Ultima atualizacao:** 2026-02-14

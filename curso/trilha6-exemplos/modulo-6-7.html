@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.7: Skills para Cursor & Windsurf | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+    html:not(.dark) body{background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 50%,#f1f5f9 100%)}
+    html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span></a>
+          <span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">AntiGravity</span></a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <a href="../trilha5-universal/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Universal</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Exemplos</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.7</span></div></nav>
+
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.7</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🏄 Skills para Cursor & Windsurf</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Repositorios e colecoes especificas para Cursor e Windsurf. PatrickJS/awesome-cursorrules, cascade-customizations e mais.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Interm.</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Pratico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📐 PatrickJS/awesome-cursorrules - A Referencia</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-rose-400">PatrickJS/awesome-cursorrules</strong> e a maior e mais popular colecao de cursor rules do ecossistema, com milhares de stars no GitHub. Cursor rules sao o equivalente de skills para o Cursor IDE - elas definem como o AI assistant se comporta dentro de cada projeto.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A colecao e organizada por framework e linguagem: React, Next.js, Vue, Angular, Python, Rust, Go e muito mais. Cada rule e um arquivo <code class="bg-dark-700 px-2 py-1 rounded text-rose-400">.cursorrules</code> que pode ser colocado na raiz do projeto para customizar o comportamento do AI.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: .cursorrules para React + TypeScript</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400"># React + TypeScript Rules</span>
+
+You are an expert in React, TypeScript, and Tailwind CSS.
+
+<span class="text-rose-400">## Code Style:</span>
+- Use functional components with TypeScript interfaces
+- Prefer named exports over default exports
+- Use const arrow functions for components
+- Always type props explicitly (no `any`)
+
+<span class="text-rose-400">## State Management:</span>
+- Use React Query for server state
+- Use Zustand for client state
+- Avoid useEffect for data fetching
+
+<span class="text-rose-400">## File Structure:</span>
+- Components in PascalCase directories
+- One component per file
+- Co-locate tests with components</code></pre>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">🌊 Windsurf-Samples/cascade-customizations-catalog</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O catalogo oficial de <strong class="text-rose-400">customizacoes Windsurf Cascade</strong> e mantido pela propria equipe do Windsurf. Ele define o padrao para customizacoes da IDE, incluindo format de arquivo, campos de metadata e padroes de ativacao.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Windsurf usa o conceito de "flows" - sequencias de acoes que o AI executa em resposta a triggers especificos. Customizacoes podem definir novos flows, modificar flows existentes e criar regras de quando cada flow deve ser ativado. Isso permite automacoes sofisticadas integradas ao workflow da IDE.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+          <h4 class="font-bold text-rose-400 mb-4">Tipos de Customizacao</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• <strong>Global Rules:</strong> Aplicam a todos os projetos</li>
+            <li>• <strong>Project Rules:</strong> Especificas por projeto</li>
+            <li>• <strong>Language Rules:</strong> Por linguagem/framework</li>
+            <li>• <strong>Flow Triggers:</strong> Automacoes contextuais</li>
+          </ul>
+        </div>
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+          <h4 class="font-bold text-rose-400 mb-4">Flows Populares</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• <strong>Auto-Test:</strong> Gera testes ao criar funcoes</li>
+            <li>• <strong>Doc-Gen:</strong> Documenta ao salvar arquivo</li>
+            <li>• <strong>Refactor:</strong> Sugere melhorias automaticamente</li>
+            <li>• <strong>Review:</strong> Revisa antes de commit</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🔧 RuleSurf - Gerenciador de Regras</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-rose-400">RuleSurf</strong> e uma ferramenta para gerenciar e sincronizar regras entre projetos e membros de equipe. Quando voce tem dezenas de projetos com regras customizadas, manter tudo atualizado e consistente se torna um desafio. RuleSurf resolve isso com um sistema centralizado de gestao.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A ferramenta permite: criar "rule packs" (colecoes de regras relacionadas), sincronizar regras entre projetos, versionar mudancas e resolver conflitos quando regras de diferentes fontes se contradizem. E especialmente util para equipes grandes que precisam de consistencia.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Workflow com RuleSurf</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400"># Instalar RuleSurf</span>
+npm install -g rulesurf
+
+<span class="text-rose-400"># Inicializar em um projeto</span>
+rulesurf init
+
+<span class="text-rose-400"># Adicionar rule pack</span>
+rulesurf add @team/react-rules
+rulesurf add @team/testing-rules
+
+<span class="text-rose-400"># Sincronizar entre projetos</span>
+rulesurf sync --all
+
+<span class="text-rose-400"># Verificar conflitos</span>
+rulesurf check --verbose</code></pre>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">💾 cascade-memory-bank - Memoria Persistente</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-rose-400">cascade-memory-bank</strong> implementa memoria persistente para agentes de IDE. O problema: agentes perdem contexto entre sessoes. A solucao: um sistema de "memory files" que o agente le ao iniciar e atualiza ao longo do trabalho, mantendo continuidade entre sessoes.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O memory bank tipicamente inclui: decisoes arquiteturais tomadas, padroes identificados no projeto, bugs encontrados e resolvidos, convencoes da equipe e estado atual de tarefas em andamento. Esse contexto persistente permite que o agente "retome de onde parou" mesmo apos dias de inatividade.</p>
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4">Arquivos do Memory Bank</h3>
+        <div class="space-y-3">
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">project-context.md</h4><p class="text-neutral-400 text-xs mt-1">Visao geral do projeto, stack, arquitetura, dependencias principais</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">decisions.md</h4><p class="text-neutral-400 text-xs mt-1">ADRs (Architecture Decision Records) tomados durante o projeto</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">patterns.md</h4><p class="text-neutral-400 text-xs mt-1">Padroes identificados e convencoes adotadas pela equipe</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">progress.md</h4><p class="text-neutral-400 text-xs mt-1">Estado atual de tarefas, o que foi feito e o que falta</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔀 Migracoes entre Cursor e Windsurf</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Muitos desenvolvedores alternam entre <strong class="text-rose-400">Cursor e Windsurf</strong>, e converter regras entre os formatos e uma necessidade pratica. Embora os conceitos sejam similares, os formatos de arquivo e mecanismos de ativacao diferem. Conhecer ambos permite portabilidade completa das suas skills.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A boa noticia e que o conteudo das regras (as instrucoes em si) e quase identico - a diferenca esta na "embalagem". Um conversor simples pode transformar .cursorrules em formato Windsurf e vice-versa, preservando a logica das instrucoes.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Comparacao de Formatos</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-dark-600"><th class="text-left py-3 px-4 text-rose-400">Aspecto</th><th class="text-left py-3 px-4 text-rose-400">Cursor</th><th class="text-left py-3 px-4 text-rose-400">Windsurf</th><th class="text-left py-3 px-4 text-rose-400">Claude Code</th></tr></thead>
+            <tbody class="text-neutral-300">
+              <tr class="border-b border-dark-700"><td class="py-3 px-4">Arquivo</td><td class="py-3 px-4">.cursorrules</td><td class="py-3 px-4">.windsurfrules</td><td class="py-3 px-4">CLAUDE.md</td></tr>
+              <tr class="border-b border-dark-700"><td class="py-3 px-4">Local</td><td class="py-3 px-4">Raiz do projeto</td><td class="py-3 px-4">Raiz do projeto</td><td class="py-3 px-4">Raiz ou .claude/</td></tr>
+              <tr class="border-b border-dark-700"><td class="py-3 px-4">Formato</td><td class="py-3 px-4">Markdown</td><td class="py-3 px-4">Markdown</td><td class="py-3 px-4">YAML + Markdown</td></tr>
+              <tr><td class="py-3 px-4">Skills</td><td class="py-3 px-4">.cursor/rules/</td><td class="py-3 px-4">Cascade flows</td><td class="py-3 px-4">.claude/commands/</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🎯 Criando Regras Otimizadas</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Criar <strong class="text-rose-400">regras otimizadas</strong> que maximizam a qualidade do output exige entender como modelos de linguagem processam instrucoes. Regras mais especificas e com exemplos concretos produzem resultados muito melhores que instrucoes vagas e genericas.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Tecnicas de otimizacao incluem: usar exemplos negativos (o que NAO fazer), definir prioridades claras quando regras conflitam, manter regras curtas e focadas em vez de longas e genericas, e testar iterativamente medindo a qualidade do output em cenarios reais.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Boas Praticas para Regras</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400"># Regra RUIM (vaga):</span>
+Write good code that follows best practices.
+
+<span class="text-rose-400"># Regra BOA (especifica):</span>
+- Functions must be under 20 lines
+- Every function needs a JSDoc comment
+- Use early returns instead of nested if/else
+- Prefer const over let, never use var
+- Error messages must include context: what failed and why
+
+<span class="text-rose-400"># Regra OTIMA (com exemplos):</span>
+Error handling pattern:
+<span class="text-green-400">// GOOD:</span>
+throw new AppError(`Failed to fetch user ${userId}: ${error.message}`)
+<span class="text-red-400">// BAD:</span>
+throw new Error("Something went wrong")</code></pre>
+      </div>
+
+      <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-3 flex items-center"><span class="mr-2">🎯</span> Proximo Passo</h3>
+        <p class="text-neutral-300">No ultimo modulo desta trilha, exploramos <strong>Marketplaces & Ferramentas</strong> - onde descobrir, publicar e gerenciar skills em plataformas dedicadas.</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">awesome-cursorrules</strong><span class="text-neutral-400"> - A maior colecao de cursor rules do ecossistema</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Windsurf Catalog</strong><span class="text-neutral-400"> - Catalogo oficial com customizacoes e flows</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">RuleSurf</strong><span class="text-neutral-400"> - Gerenciamento e sincronizacao de regras entre projetos</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Memory Bank</strong><span class="text-neutral-400"> - Memoria persistente para contexto entre sessoes</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Migracoes</strong><span class="text-neutral-400"> - Conversao entre formatos Cursor, Windsurf e Claude</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Otimizacao</strong><span class="text-neutral-400"> - Regras especificas, exemplos negativos, teste iterativo</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">6.8 - Marketplaces & Ferramentas</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-6.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="modulo-6-8.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+  <script>
+    const themeToggle=document.getElementById('theme-toggle'),themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),html=document.documentElement;
+    if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!html.classList.contains('dark'))){themeToggleDarkIcon.classList.remove('hidden');html.classList.remove('dark')}else{themeToggleLightIcon.classList.remove('hidden')}
+    themeToggle.addEventListener('click',()=>{themeToggleDarkIcon.classList.toggle('hidden');themeToggleLightIcon.classList.toggle('hidden');html.classList.toggle('dark');localStorage.setItem('theme',html.classList.contains('dark')?'dark':'light')});
+  </script>
+</body>
+</html>

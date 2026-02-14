@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 6.6: Multi-Agent & Subagents | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+    html:not(.dark) body{background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 50%,#f1f5f9 100%)}
+    html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+    html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+    html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span></a>
+          <span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">AntiGravity</span></a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <a href="../trilha5-universal/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-colors"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Universal</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-rose-400 bg-rose-500/10"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Exemplos</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-rose-400">Inicio</a><span>/</span><a href="index.html" class="hover:text-rose-400">Trilha 6</a><span>/</span><span class="text-rose-400">Modulo 6.6</span></div></nav>
+
+  <header class="bg-gradient-to-br from-rose-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-rose-500/20 text-rose-400 text-xs font-semibold rounded-full mb-4">MODULO 6.6</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🤝 Multi-Agent & Subagents</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Skills e padroes para sistemas multi-agente. VoltAgent subagents, wshobson/agents, ccswarm e maestro-gemini.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Avancado</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-rose-400">Conceitual</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">⚡ VoltAgent/awesome-claude-code-subagents (100+)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-rose-400">VoltAgent/awesome-claude-code-subagents</strong> cataloga 100+ subagents prontos para uso com Claude Code. Subagents sao agentes especializados que o agente principal pode invocar para tarefas especificas, como um "team" virtual de especialistas que podem ser chamados sob demanda.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A arquitetura de subagents segue o padrao de delegacao: o agente principal recebe a tarefa, identifica quais especialistas sao necessarios, delega sub-tarefas e agrega os resultados. Isso permite lidar com tarefas muito mais complexas do que um unico agente conseguiria.</p>
+      <div class="bg-gradient-to-br from-rose-900/30 to-dark-800 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-4">Categorias de Subagents</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">Code Specialists</h4><p class="text-neutral-400 text-xs mt-1">Frontend, backend, database, testing, security review</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">Analysis Agents</h4><p class="text-neutral-400 text-xs mt-1">Code analysis, performance profiling, dependency audit</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">Documentation Agents</h4><p class="text-neutral-400 text-xs mt-1">API docs, README, changelog, architecture diagrams</p></div>
+          <div class="bg-dark-700/50 rounded-lg p-4"><h4 class="font-semibold text-white text-sm">DevOps Agents</h4><p class="text-neutral-400 text-xs mt-1">CI/CD setup, Docker, monitoring, alerting</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">👥 wshobson/agents (112 Agents)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A colecao <strong class="text-rose-400">wshobson/agents</strong> com 112 agentes especializados e uma das maiores do tipo. Cada agente tem um role bem definido, capacidades especificas e instrucoes de quando deve ser utilizado. A diversidade da colecao mostra como o conceito de "agent" pode ser aplicado em praticamente qualquer dominio.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O padrao de definicao inclui: nome do agente, role description, capabilities, limitations e interaction patterns. Essa estrutura padronizada permite combinar agentes de forma previsivel e construir sistemas complexos a partir de pecas simples.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: Definicao de Agent</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400"># Security Auditor Agent</span>
+
+<span class="text-blue-400">Role:</span> Especialista em seguranca de aplicacoes
+<span class="text-blue-400">Capabilities:</span>
+  - Analise de vulnerabilidades OWASP Top 10
+  - Review de configuracoes de autenticacao
+  - Auditoria de dependencias (CVEs)
+  - Verificacao de secrets expostos
+
+<span class="text-blue-400">Limitations:</span>
+  - Nao executa penetration testing real
+  - Analise estatica apenas (sem runtime)
+
+<span class="text-blue-400">Trigger:</span> Invocar antes de merge para main
+<span class="text-blue-400">Output:</span> Relatorio com severity levels (critical/high/medium/low)</code></pre>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🐝 ccswarm - Coordenacao de Agentes</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-rose-400">ccswarm</strong> e um framework para coordenar multiplos agentes Claude Code trabalhando em paralelo no mesmo projeto. Inspirado em algoritmos de enxame (swarm intelligence), permite distribuir tarefas entre agentes que operam simultaneamente com minima interferencia.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O desafio principal em multi-agent paralelo e evitar conflitos: dois agentes editando o mesmo arquivo, decisoes arquiteturais inconsistentes ou duplicacao de trabalho. ccswarm resolve isso com mecanismos de lock de arquivos, contexto compartilhado e protocolos de sincronizacao.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-5">
+          <div class="text-2xl mb-2">🔒</div>
+          <h4 class="font-bold text-white mb-2">File Locking</h4>
+          <p class="text-neutral-400 text-sm">Sistema de lock para evitar edicoes simultaneas no mesmo arquivo</p>
+        </div>
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-5">
+          <div class="text-2xl mb-2">📡</div>
+          <h4 class="font-bold text-white mb-2">Shared Context</h4>
+          <p class="text-neutral-400 text-sm">Arquivo de contexto compartilhado que todos os agentes leem</p>
+        </div>
+        <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-5">
+          <div class="text-2xl mb-2">🔄</div>
+          <h4 class="font-bold text-white mb-2">Sync Protocol</h4>
+          <p class="text-neutral-400 text-sm">Protocolo de sincronizacao para merge de resultados</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🎼 maestro-gemini - Orquestracao Google</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">O <strong class="text-rose-400">maestro-gemini</strong> implementa o padrao "conductor" (maestro) para orquestrar multiplos agentes Gemini. Um agente central (o maestro) recebe a tarefa, a decompoe em sub-tarefas, distribui para agentes especialistas e agrega os resultados em uma solucao coerente.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Embora focado em Gemini, os padroes de orquestracao sao universais e transferiveis. O conceito de task routing (decidir qual agente recebe cada sub-tarefa), result aggregation (combinar outputs) e quality gating (validar antes de agregar) se aplicam a qualquer plataforma multi-agent.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Padrao Conductor/Maestro</h3>
+        <div class="space-y-3">
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">1</span><span class="text-neutral-300"><strong class="text-white">Receive</strong> - Maestro recebe a tarefa complexa</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">2</span><span class="text-neutral-300"><strong class="text-white">Decompose</strong> - Quebra em sub-tarefas independentes</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">3</span><span class="text-neutral-300"><strong class="text-white">Route</strong> - Envia cada sub-tarefa ao especialista correto</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">4</span><span class="text-neutral-300"><strong class="text-white">Collect</strong> - Recebe resultados de cada especialista</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">5</span><span class="text-neutral-300"><strong class="text-white">Validate</strong> - Verifica qualidade e consistencia</span></div>
+          <div class="flex items-center space-x-3"><span class="w-8 h-8 rounded-full bg-rose-500/20 text-rose-400 text-sm font-bold flex items-center justify-center">6</span><span class="text-neutral-300"><strong class="text-white">Aggregate</strong> - Combina em solucao final coerente</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔄 Padroes de Comunicacao Multi-Agent</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">A comunicacao entre agentes e o aspecto mais critico de sistemas <strong class="text-rose-400">multi-agent</strong>. Existem varios padroes, cada um com trade-offs: message passing (simples mas assincrono), shared state (rapido mas com conflitos), event-driven (desacoplado mas complexo) e direct handoff (claro mas rigido).</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Na pratica com Claude Code, o padrao mais comum e o "file-based communication": agentes escrevem resultados em arquivos que outros agentes leem. Isso e simples, persistente e auditavel. Para coordenacao mais sofisticada, usa-se um "coordination file" que funciona como quadro de tarefas compartilhado.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+        <h3 class="text-lg font-semibold mb-4">Padroes de Comunicacao</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-dark-600"><th class="text-left py-3 px-4 text-rose-400">Padrao</th><th class="text-left py-3 px-4 text-rose-400">Pros</th><th class="text-left py-3 px-4 text-rose-400">Contras</th></tr></thead>
+            <tbody class="text-neutral-300">
+              <tr class="border-b border-dark-700"><td class="py-3 px-4 font-medium">Message Passing</td><td class="py-3 px-4">Simples, desacoplado</td><td class="py-3 px-4">Assincrono, sem garantia de ordem</td></tr>
+              <tr class="border-b border-dark-700"><td class="py-3 px-4 font-medium">Shared State</td><td class="py-3 px-4">Rapido, visibilidade total</td><td class="py-3 px-4">Conflitos, race conditions</td></tr>
+              <tr class="border-b border-dark-700"><td class="py-3 px-4 font-medium">Event-Driven</td><td class="py-3 px-4">Desacoplado, escalavel</td><td class="py-3 px-4">Complexo, debugging dificil</td></tr>
+              <tr><td class="py-3 px-4 font-medium">Direct Handoff</td><td class="py-3 px-4">Claro, previsivel</td><td class="py-3 px-4">Rigido, single point of failure</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🏗️ Construindo Seu Proprio Sistema Multi-Agent</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Construir um <strong class="text-rose-400">sistema multi-agent customizado</strong> e o nivel mais avancado de dominio de skills. O processo envolve: definir os agentes necessarios, seus roles e capacidades, estabelecer protocolos de comunicacao, implementar coordenacao e criar mecanismos de monitoramento.</p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">Comece pequeno: dois agentes (um implementador e um reviewer) ja produzem resultados significativamente melhores que um unico agente. Escale gradualmente adicionando especialistas conforme a complexidade dos projetos aumenta. Monitore tempo de execucao e custo para manter o sistema viavel.</p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Arquitetura Minima Viavel</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-rose-400"># Sistema Multi-Agent Basico</span>
+
+<span class="text-rose-400">## Agentes:</span>
+1. <span class="text-blue-400">Implementor</span> - Escreve codigo seguindo skills
+2. <span class="text-blue-400">Reviewer</span> - Revisa codigo com checklist de qualidade
+
+<span class="text-rose-400">## Fluxo:</span>
+1. Implementor recebe tarefa e implementa
+2. Reviewer revisa as mudancas
+3. Se aprovado: merge
+4. Se reprovado: Implementor corrige e repete
+
+<span class="text-rose-400">## Coordenacao:</span>
+- Arquivo tasks.md com status de cada tarefa
+- Arquivo review-notes.md com feedback do reviewer
+- Ambos leem/escrevem nos arquivos de coordenacao</code></pre>
+      </div>
+
+      <div class="bg-rose-500/5 rounded-xl border border-rose-500/30 p-6">
+        <h3 class="text-lg font-semibold text-rose-400 mb-3 flex items-center"><span class="mr-2">🎯</span> Proximo Passo</h3>
+        <p class="text-neutral-300">No proximo modulo, exploramos <strong>Skills para Cursor & Windsurf</strong> - o ecossistema de regras e customizacoes para as IDEs mais populares de AI coding.</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-rose-900/40 via-dark-800 to-dark-800 rounded-xl border border-rose-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">VoltAgent Subagents</strong><span class="text-neutral-400"> - 100+ subagents categorizados e prontos para uso</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">wshobson/agents</strong><span class="text-neutral-400"> - 112 agents com roles bem definidos e padronizados</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">ccswarm</strong><span class="text-neutral-400"> - Coordenacao paralela com file locking e sync</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">maestro-gemini</strong><span class="text-neutral-400"> - Padrao conductor para orquestracao multi-agent</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">Comunicacao</strong><span class="text-neutral-400"> - Message passing, shared state, event-driven, handoff</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-rose-400 mt-1">✓</span><div><strong class="text-white">DIY Multi-Agent</strong><span class="text-neutral-400"> - Arquitetura minima: implementor + reviewer</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-rose-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">6.7 - Skills para Cursor & Windsurf</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-6-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="modulo-6-7.html" class="flex-1 text-center px-6 py-3 bg-rose-600 text-white rounded-lg font-semibold hover:bg-rose-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+  <script>
+    const themeToggle=document.getElementById('theme-toggle'),themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),html=document.documentElement;
+    if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!html.classList.contains('dark'))){themeToggleDarkIcon.classList.remove('hidden');html.classList.remove('dark')}else{themeToggleLightIcon.classList.remove('hidden')}
+    themeToggle.addEventListener('click',()=>{themeToggleDarkIcon.classList.toggle('hidden');themeToggleLightIcon.classList.toggle('hidden');html.classList.toggle('dark');localStorage.setItem('theme',html.classList.contains('dark')?'dark':'light')});
+  </script>
+</body>
+</html>

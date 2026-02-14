@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 5.3: Skills no Cursor | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    html:not(.dark) body { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%); }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; } html:not(.dark) .bg-dark-800 { background-color: #f9fafb; } html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; } html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; } html:not(.dark) .text-neutral-300 { color: #4b5563; } html:not(.dark) .text-neutral-400 { color: #6b7280; } html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; } html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span></a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Fundamentos</span></a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Claude Code</span></a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">AntiGravity</span></a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Ecossistema</span></a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-cyan-400 bg-cyan-500/10"><span class="sm:hidden">T5</span><span class="hidden sm:inline">Universal</span></a>
+          <a href="../trilha6-exemplos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"><span class="sm:hidden">T6</span><span class="hidden sm:inline">Exemplos</span></a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-cyan-400">Inicio</a><span>/</span>
+      <a href="index.html" class="hover:text-cyan-400">Trilha 5</a><span>/</span>
+      <span class="text-cyan-400">Modulo 5.3</span>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-cyan-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-semibold rounded-full mb-4">MODULO 5.3</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">⚡ Skills no Cursor</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">De .cursorrules ao SKILL.md moderno. Entenda a evolucao do Cursor, arquivos .mdc, Cursor Directory e como migrar suas regras.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">6</div><div class="text-xs text-neutral-400">Topicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">30</div><div class="text-xs text-neutral-400">Minutos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">Intermed.</div><div class="text-xs text-neutral-400">Nivel</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-cyan-400">Pratico</div><div class="text-xs text-neutral-400">Tipo</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <section id="topico-1" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">1</span>
+        <h2 class="text-2xl font-bold">📜 .cursorrules - O Formato Legacy</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O arquivo <code class="text-cyan-400 bg-dark-700 px-2 py-0.5 rounded">.cursorrules</code> foi o <strong class="text-cyan-400">primeiro formato</strong> de customizacao do Cursor. Colocado na raiz do projeto, era um arquivo de texto plano que definia instrucoes para o agente. Foi o pioneiro na ideia de "instrucoes por repositorio" para editores AI.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Apesar de simples e eficaz, o .cursorrules tinha limitacoes significativas: sem metadata estruturada, sem scoping por arquivo ou diretorio, e completamente proprietario ao Cursor. Isso motivou a criacao do formato .mdc e a adocao do SKILL.md.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: .cursorrules classico</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300">You are an expert in TypeScript, React, and Next.js.
+
+Key Principles:
+- Write concise, technical TypeScript code
+- Use functional and declarative programming patterns
+- Prefer iteration and modularization over duplication
+- Use descriptive variable names with auxiliary verbs
+
+Naming Conventions:
+- Use lowercase with dashes for directories (e.g., components/form-wizard)
+- Favor named exports for components
+
+TypeScript Usage:
+- Use TypeScript for all code; prefer interfaces over types
+- Avoid enums; use maps instead
+- Use functional components with TypeScript interfaces</code></pre>
+      </div>
+    </section>
+
+    <section id="topico-2" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">2</span>
+        <h2 class="text-2xl font-bold">📋 .mdc - O Formato Moderno do Cursor</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O formato <code class="text-cyan-400 bg-dark-700 px-2 py-0.5 rounded">.mdc</code> (Markdown Cursor) e a <strong class="text-cyan-400">evolucao do .cursorrules</strong>. Armazenados em <code class="text-cyan-400 bg-dark-700 px-2 py-0.5 rounded">.cursor/rules/</code>, arquivos .mdc suportam YAML frontmatter com campos como description, globs e alwaysApply - muito similar ao SKILL.md.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Exemplo: .cursor/rules/react-patterns.mdc</h3>
+        <pre class="bg-dark-700 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-neutral-300"><span class="text-purple-400">---</span>
+<span class="text-blue-400">description:</span> Padroes React para componentes TSX
+<span class="text-blue-400">globs:</span>
+  - "**/*.tsx"
+  - "**/*.jsx"
+<span class="text-blue-400">alwaysApply:</span> false
+<span class="text-purple-400">---</span>
+
+<span class="text-cyan-400"># React Component Patterns</span>
+
+- Use functional components com hooks
+- Prefira composicao sobre heranca
+- Server Components por padrao no Next.js 14+
+- Client Components apenas com "use client" quando necessario</code></pre>
+      </div>
+      <div class="bg-cyan-900/20 rounded-xl border border-cyan-500/30 p-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-3 flex items-center"><span class="mr-2">💡</span> Compatibilidade</h3>
+        <p class="text-neutral-300">O formato .mdc e praticamente identico ao SKILL.md em estrutura. A principal diferenca e a extensao do arquivo (.mdc vs .md) e o diretorio padrao (.cursor/rules/ vs qualquer lugar).</p>
+      </div>
+    </section>
+
+    <section id="topico-3" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">3</span>
+        <h2 class="text-2xl font-bold">🌐 SKILL.md no Cursor</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O Cursor tambem e capaz de <strong class="text-cyan-400">ler arquivos SKILL.md</strong> encontrados no repositorio. Quando o Cursor encontra um SKILL.md, ele trata o conteudo como instrucoes adicionais para o agente, similar ao que faz com .mdc. Isso permite que projetos usem um formato unico para todos os agentes.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        A compatibilidade nao e 100% perfeita - alguns campos do frontmatter especificos do padrao AgentSkills.io podem ser ignorados pelo Cursor. Porem, os campos essenciais (description, globs, alwaysApply) sao reconhecidos, tornando a portabilidade viavel na pratica.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6">
+          <h4 class="font-bold text-emerald-400 mb-4">Campos Reconhecidos</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• <strong>description</strong> - Usado para ativacao contextual</li>
+            <li>• <strong>globs</strong> - Filtro por tipo de arquivo</li>
+            <li>• <strong>alwaysApply</strong> - Se ativa sempre ou sob demanda</li>
+            <li>• Corpo Markdown - Instrucoes completas</li>
+          </ul>
+        </div>
+        <div class="bg-orange-900/20 rounded-xl border border-orange-500/30 p-6">
+          <h4 class="font-bold text-orange-400 mb-4">Campos Ignorados</h4>
+          <ul class="space-y-2 text-neutral-300 text-sm">
+            <li>• <strong>name</strong> - Nao usado para routing</li>
+            <li>• <strong>version</strong> - Sem versionamento nativo</li>
+            <li>• <strong>tags</strong> - Sem sistema de tags</li>
+            <li>• Campos customizados - Ignorados silenciosamente</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-4" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">4</span>
+        <h2 class="text-2xl font-bold">🏪 Cursor Directory - Marketplace de Regras</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        O <strong class="text-cyan-400">cursor.directory</strong> e um repositorio comunitario com centenas de .cursorrules prontos para uso. Abrange frameworks, linguagens e stacks completas. E o maior marketplace de instrucoes para agentes AI atualmente, com contribuicoes de milhares de desenvolvedores.
+      </p>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Embora as regras no cursor.directory estejam no formato .cursorrules (legacy), muitas podem ser facilmente convertidas para SKILL.md ou .mdc adicionando frontmatter. A comunidade tambem esta gradualmente migrando para formatos mais modernos.
+      </p>
+      <div class="bg-gradient-to-br from-cyan-900/30 to-dark-800 rounded-xl border border-cyan-500/30 p-6 mb-6">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-4 flex items-center"><span class="mr-2">📊</span> Categorias Populares no Cursor Directory</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">Next.js / React</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">Python / FastAPI</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">TypeScript</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">Rust</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">Vue / Nuxt</span></div>
+          <div class="bg-dark-700/50 rounded-lg p-3 text-center"><span class="text-sm font-medium text-neutral-300">Tailwind CSS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-5" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">5</span>
+        <h2 class="text-2xl font-bold">🔄 Migracao .cursorrules para SKILL.md</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Migrar de .cursorrules para SKILL.md e um processo <strong class="text-cyan-400">direto e nao-destrutivo</strong>. Voce pode manter o .cursorrules antigo para backward compatibility enquanto cria o SKILL.md com conteudo enriquecido.
+      </p>
+      <div class="bg-dark-800 rounded-xl border border-dark-600 p-6 mb-6">
+        <h3 class="text-lg font-semibold mb-4">Passo-a-Passo de Migracao</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">1</span>
+            <div><strong class="text-white">Copie o conteudo</strong><p class="text-neutral-300 text-sm">Copie o texto do .cursorrules para um novo arquivo SKILL.md</p></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">2</span>
+            <div><strong class="text-white">Adicione frontmatter</strong><p class="text-neutral-300 text-sm">Insira o bloco YAML com name, description, globs e tags</p></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">3</span>
+            <div><strong class="text-white">Estruture em Markdown</strong><p class="text-neutral-300 text-sm">Organize com headings, listas e code blocks para melhor parsing</p></div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <span class="bg-cyan-500/20 text-cyan-400 rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0 text-sm">4</span>
+            <div><strong class="text-white">Teste em ambos</strong><p class="text-neutral-300 text-sm">Valide que funciona tanto no Cursor quanto em outros agentes</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="topico-6" class="mb-16">
+      <div class="flex items-center space-x-4 mb-6">
+        <span class="flex items-center justify-center w-12 h-12 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xl">6</span>
+        <h2 class="text-2xl font-bold">🚀 Dicas Avancadas para Cursor</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 leading-relaxed">
+        Usuarios avancados do Cursor podem tirar proveito de <strong class="text-cyan-400">tecnicas sofisticadas</strong> para maximizar a eficacia das suas rules. Composicao de rules, glob patterns complexos e estrategias de debug fazem diferenca significativa.
+      </p>
+      <div class="space-y-4 mb-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-cyan-400 mb-2">Composicao de Rules</h4>
+          <p class="text-neutral-300 text-sm">Crie multiplos arquivos .mdc especializados em vez de um arquivo gigante. Ex: react-rules.mdc, testing-rules.mdc, api-rules.mdc. O Cursor carrega apenas os relevantes baseado nos globs.</p>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-cyan-400 mb-2">Glob Patterns Avancados</h4>
+          <p class="text-neutral-300 text-sm mb-2">Use padroes complexos para ativacao precisa:</p>
+          <pre class="bg-dark-700 rounded-lg p-3 text-sm overflow-x-auto"><code class="text-neutral-300">globs:
+  - "src/components/**/*.tsx"     <span class="text-cyan-400"># Apenas componentes</span>
+  - "!**/*.test.tsx"              <span class="text-cyan-400"># Excluir testes</span>
+  - "**/*.{ts,tsx}"               <span class="text-cyan-400"># TypeScript files</span>
+  - "app/**/page.tsx"             <span class="text-cyan-400"># Apenas pages Next.js</span></code></pre>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h4 class="font-bold text-cyan-400 mb-2">Debug de Rules</h4>
+          <p class="text-neutral-300 text-sm">Pergunte ao Cursor "quais rules voce esta usando agora?" para verificar quais .mdc foram carregados no contexto atual. Isso ajuda a diagnosticar quando rules nao estao sendo aplicadas.</p>
+        </div>
+      </div>
+
+      <div class="bg-primary/10 rounded-xl border border-primary/30 p-6">
+        <h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">🎯</span> Proximo Passo</h3>
+        <p class="text-neutral-300">No proximo modulo, exploramos o <strong>Manus AI</strong> - um agente com VM completa que pode executar skills de forma totalmente autonoma.</p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-cyan-900/40 via-dark-800 to-dark-800 rounded-xl border border-cyan-500/30 p-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📚</span> Resumo do Modulo</h2>
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">.cursorrules</strong><span class="text-neutral-400"> - Formato legacy, texto plano na raiz, ainda amplamente usado</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">.mdc</strong><span class="text-neutral-400"> - Formato moderno com frontmatter em .cursor/rules/</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">SKILL.md no Cursor</strong><span class="text-neutral-400"> - Compatibilidade parcial, campos essenciais reconhecidos</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Cursor Directory</strong><span class="text-neutral-400"> - Maior marketplace de regras para agentes AI</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Migracao</strong><span class="text-neutral-400"> - Processo direto: copiar, adicionar frontmatter, estruturar, testar</span></div></div>
+          <div class="flex items-start space-x-3"><span class="text-cyan-400 mt-1">✓</span><div><strong class="text-white">Avancado</strong><span class="text-neutral-400"> - Composicao, glob patterns, debug de rules ativas</span></div></div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-cyan-400 mb-2">Proximo Modulo:</h3><p class="text-neutral-300">5.4 - Skills no Manus AI</p></div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="modulo-5-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Modulo Anterior</a>
+          <a href="modulo-5-4.html" class="flex-1 text-center px-6 py-3 bg-cyan-600 text-white rounded-lg font-semibold hover:bg-cyan-500 transition-colors">Proximo Modulo →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle'); const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon'); const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon'); const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { themeToggleDarkIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { themeToggleLightIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { themeToggleDarkIcon.classList.toggle('hidden'); themeToggleLightIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>

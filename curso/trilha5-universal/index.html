@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 5: Skills Universal | Agent Skills Mastery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides */
+    html:not(.dark) body {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Agent Skills Mastery</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1-fundamentos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2-claude-code/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Claude Code</span>
+          </a>
+          <a href="../trilha3-google-ai/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">AntiGravity</span>
+          </a>
+          <a href="../trilha4-ecossistema/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Ecossistema</span>
+          </a>
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-cyan-400 bg-cyan-500/10">
+            <span class="sm:hidden">T5</span>
+            <span class="hidden sm:inline">Universal</span>
+          </a>
+          <a href="../trilha6-exemplos/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors">
+            <span class="sm:hidden">T6</span>
+            <span class="hidden sm:inline">Exemplos</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-cyan-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-semibold rounded-full mb-4">
+        TRILHA 5
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🌐 Skills Universal</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">
+        Domine o padrao universal de Agent Skills. Aprenda a criar skills portaveis para GitHub Copilot, Cursor, Manus AI, Cline, OpenAI Codex e todas as plataformas.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-cyan-400">8</div>
+          <div class="text-xs text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-cyan-400">48</div>
+          <div class="text-xs text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-cyan-400">~5h</div>
+          <div class="text-xs text-neutral-400">Duracao</div>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600">
+          <div class="text-xl font-bold text-cyan-400">Intermed.</div>
+          <div class="text-xs text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- NAVEGACAO RAPIDA -->
+    <section class="mb-12">
+      <h2 class="text-lg font-semibold text-neutral-400 mb-4">Navegacao Rapida</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <a href="modulo-5-1.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.1</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">O Padrao Agent Skills</p>
+        </a>
+        <a href="modulo-5-2.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.2</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Skills no GitHub Copilot</p>
+        </a>
+        <a href="modulo-5-3.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.3</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Skills no Cursor</p>
+        </a>
+        <a href="modulo-5-4.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.4</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Skills no Manus AI</p>
+        </a>
+        <a href="modulo-5-5.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.5</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Skills no Cline & OpenCode</p>
+        </a>
+        <a href="modulo-5-6.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.6</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Skills no OpenAI Codex</p>
+        </a>
+        <a href="modulo-5-7.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.7</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">SKILL.md vs AGENTS.md vs .cursorrules</p>
+        </a>
+        <a href="modulo-5-8.html" class="bg-dark-800 rounded-lg p-4 border border-dark-600 hover:border-cyan-500/50 transition-all group">
+          <span class="text-cyan-400 font-bold text-sm">5.8</span>
+          <p class="text-sm mt-1 group-hover:text-cyan-400 transition-colors">Portabilidade Cross-Platform</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- DIVISOR -->
+    <div class="flex items-center mb-8">
+      <div class="flex-1 border-t border-dark-600"></div>
+      <span class="px-4 text-neutral-500 text-sm">Conteudo Detalhado</span>
+      <div class="flex-1 border-t border-dark-600"></div>
+    </div>
+
+    <!-- MODULO 5.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.1</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">📋 O Padrao Agent Skills</h3>
+        <p class="text-neutral-400 text-sm">Entenda a especificacao AgentSkills.io, o formato SKILL.md, YAML frontmatter e progressive disclosure que padronizam skills entre plataformas.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🌐</span>
+            <div><span class="font-medium">AgentSkills.io Spec</span><span class="text-neutral-500 text-sm ml-2">- O que e e quem criou</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Especificacao aberta para padronizar como agentes AI consomem instrucoes e skills de repositorios.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">E o padrao emergente que unifica como todas as plataformas leem skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AgentSkills.io, especificacao aberta, SKILL.md, interoperabilidade</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📄</span>
+            <div><span class="font-medium">SKILL.md como Formato Universal</span><span class="text-neutral-500 text-sm ml-2">- O arquivo central</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Arquivo Markdown com YAML frontmatter que define uma skill portavel entre plataformas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">SKILL.md e o formato que funciona em qualquer agente compativel.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Markdown, frontmatter, metadata, instrucoes, portabilidade</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📝</span>
+            <div><span class="font-medium">YAML Frontmatter</span><span class="text-neutral-500 text-sm ml-2">- Obrigatorio vs opcional</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Bloco YAML no topo do SKILL.md com campos como name, description, version e globs.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Frontmatter correto garante que a skill seja descoberta e ativada automaticamente.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">name, description, version, globs, alwaysApply, tags</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📊</span>
+            <div><span class="font-medium">Progressive Disclosure</span><span class="text-neutral-500 text-sm ml-2">- Organizando conteudo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tecnica de revelar informacao gradualmente para nao sobrecarregar o contexto do agente.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills eficientes usam progressive disclosure para otimizar tokens consumidos.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Layered content, context window, token optimization, globs</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">✅</span>
+            <div><span class="font-medium">Vantagens da Padronizacao</span><span class="text-neutral-500 text-sm ml-2">- Por que adotar</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Beneficios de usar um formato padrao: portabilidade, reutilizacao, comunidade e marketplace.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Padronizacao multiplica o alcance e impacto das suas skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Write once, portabilidade, sharing, skill economy</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🏢</span>
+            <div><span class="font-medium">Adocao pelas Grandes Plataformas</span><span class="text-neutral-500 text-sm ml-2">- Quem ja suporta</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Status de adocao do padrao por GitHub Copilot, Cursor, Claude Code, Codex e outros.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Saber quem suporta o padrao ajuda a priorizar onde investir tempo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Copilot, Cursor, Claude Code, Codex, Cline, compatibilidade</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-1.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.2</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🤖 Skills no GitHub Copilot</h3>
+        <p class="text-neutral-400 text-sm">Integre skills no VS Code com GitHub Copilot. Repo-level skills, organization skills e a relacao entre AGENTS.md e SKILL.md.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🤖</span>
+            <div><span class="font-medium">GitHub Copilot e Skills</span><span class="text-neutral-500 text-sm ml-2">- Visao geral</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como o GitHub Copilot integra skills para customizar comportamento por repositorio.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Copilot e o agente mais usado do mundo - skills ampliam seu poder.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Copilot Chat, custom instructions, repo context, skills</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📁</span>
+            <div><span class="font-medium">Repo-level Skills</span><span class="text-neutral-500 text-sm ml-2">- .github/copilot/</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Diretorio .github/copilot/ para armazenar skills especificas do repositorio.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills por repo permitem padronizar o trabalho de toda a equipe.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.github/copilot/, SKILL.md, auto-discovery, repo config</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🏢</span>
+            <div><span class="font-medium">Organization-wide Skills</span><span class="text-neutral-500 text-sm ml-2">- Escala empresarial</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Skills aplicadas a todos os repositorios de uma organizacao GitHub.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Permite padronizar praticas de desenvolvimento em escala.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Organization settings, global skills, inheritance, overrides</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">AGENTS.md - Formato Nativo</span><span class="text-neutral-500 text-sm ml-2">- O formato do Copilot</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Formato nativo do GitHub Copilot para definir instrucoes de agente por diretorio.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">AGENTS.md e lido automaticamente pelo Copilot em cada diretorio.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AGENTS.md, directory-scoped, auto-loading, Copilot native</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⚖️</span>
+            <div><span class="font-medium">SKILL.md vs AGENTS.md</span><span class="text-neutral-500 text-sm ml-2">- No contexto do Copilot</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Comparacao dos dois formatos dentro do ecossistema GitHub Copilot.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender qual formato usar em cada situacao no Copilot.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Coexistencia, prioridades, use cases, migracao</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Boas Praticas Copilot</span><span class="text-neutral-500 text-sm ml-2">- Dicas e padroes</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Melhores praticas para criar skills eficientes no GitHub Copilot.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills bem escritas melhoram significativamente a qualidade do Copilot.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Naming conventions, scoping, testing, iteration</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-2.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.3</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Skills no Cursor</h3>
+        <p class="text-neutral-400 text-sm">De .cursorrules ao SKILL.md moderno. Entenda a evolucao do Cursor, arquivos .mdc, Cursor Directory e como migrar suas regras.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📜</span>
+            <div><span class="font-medium">.cursorrules - O Formato Legacy</span><span class="text-neutral-500 text-sm ml-2">- Onde tudo comecou</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Arquivo .cursorrules na raiz do projeto - o primeiro formato de customizacao do Cursor.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Muitos projetos ainda usam .cursorrules e precisam ser migrados.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.cursorrules, plain text, project root, deprecated</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">.mdc - O Formato Moderno</span><span class="text-neutral-500 text-sm ml-2">- Cursor rules moderno</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Formato .mdc em .cursor/rules/ com frontmatter YAML - evolucao do .cursorrules.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">.mdc suporta globs, metadata e e o formato recomendado pelo Cursor.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.cursor/rules/, .mdc, frontmatter, globs, alwaysApply</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🌐</span>
+            <div><span class="font-medium">SKILL.md no Cursor</span><span class="text-neutral-500 text-sm ml-2">- Padrao universal</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como o Cursor le e interpreta arquivos SKILL.md para instrucoes de agente.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">SKILL.md e portavel e funciona tanto no Cursor quanto em outros agentes.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">SKILL.md, compatibilidade Cursor, auto-discovery, portabilidade</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🏪</span>
+            <div><span class="font-medium">Cursor Directory</span><span class="text-neutral-500 text-sm ml-2">- Marketplace de regras</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Repositorio comunitario cursor.directory com centenas de .cursorrules prontos.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Reaproveitar regras da comunidade economiza tempo e inspira novas skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">cursor.directory, community rules, templates, curated lists</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Migracao para SKILL.md</span><span class="text-neutral-500 text-sm ml-2">- De .cursorrules para universal</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Processo passo-a-passo para converter .cursorrules existentes em SKILL.md portavel.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Migrar garante compatibilidade futura e portabilidade entre editores.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Migracao, conversao, frontmatter, backward compatibility</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">Dicas Avancadas</span><span class="text-neutral-500 text-sm ml-2">- Power user tips</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tecnicas avancadas: composicao de rules, glob patterns complexos, debug.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dominar features avancadas maximiza a produtividade no Cursor.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Composicao, nesting, debug mode, performance</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-3.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.4</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🖥️ Skills no Manus AI</h3>
+        <p class="text-neutral-400 text-sm">Explore o Manus AI e sua VM completa para execucao autonoma. Geracao automatica de skills e ambiente Ubuntu integrado.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🖥️</span>
+            <div><span class="font-medium">O que e o Manus AI</span><span class="text-neutral-500 text-sm ml-2">- Visao geral</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Agente AI com VM completa que executa tarefas de forma totalmente autonoma.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Manus representa o futuro dos agentes com ambiente de execucao completo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Manus AI, VM sandbox, autonomous execution, full environment</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🐧</span>
+            <div><span class="font-medium">VM Completa - Ubuntu</span><span class="text-neutral-500 text-sm ml-2">- Ambiente isolado</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Cada sessao do Manus roda em uma VM Ubuntu isolada com acesso completo ao sistema.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">VM completa permite execucao de qualquer software sem restricoes.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Ubuntu VM, sandboxing, file system, network access</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">⚙️</span>
+            <div><span class="font-medium">Execucao Autonoma</span><span class="text-neutral-500 text-sm ml-2">- Skills em acao</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como o Manus executa skills de forma autonoma, instalando dependencias e rodando codigo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender execucao autonoma prepara skills para agentes de proxima geracao.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Auto-execution, dependency install, runtime, output capture</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Geracao Automatica</span><span class="text-neutral-500 text-sm ml-2">- Skills auto-geradas</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">O Manus pode gerar skills automaticamente baseado em padroes de uso e contexto.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Geracao automatica acelera criacao de skills personalizadas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Auto-generation, pattern detection, skill templates</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">⚠️</span>
+            <div><span class="font-medium">Limitacoes e Consideracoes</span><span class="text-neutral-500 text-sm ml-2">- O que saber</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Limitacoes do Manus: tempo de sessao, custo, dependencia de cloud.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Conhecer limitacoes evita frustracao e ajuda a planejar uso eficiente.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Session limits, pricing, cloud dependency, data privacy</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Casos de Uso Praticos</span><span class="text-neutral-500 text-sm ml-2">- Quando usar Manus</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Cenarios ideais para Manus: pesquisa, prototipacao, data analysis, deployment.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Saber quando usar Manus vs outros agentes otimiza custo e resultado.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Research, prototyping, data analysis, web scraping</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-4.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.5</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔌 Skills no Cline & OpenCode</h3>
+        <p class="text-neutral-400 text-sm">Configure skills no Cline 3.48+ e OpenCode. Ativacao experimental, plugins e integracao com o ecossistema de skills.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🔌</span>
+            <div><span class="font-medium">Cline - Visao Geral</span><span class="text-neutral-500 text-sm ml-2">- O que e e como funciona</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Extensao VS Code open-source para agentes AI com suporte a multiplos LLMs.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cline e uma alternativa open-source poderosa ao Copilot e Cursor.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cline, VS Code extension, multi-LLM, open-source</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">Skills no Cline 3.48+</span><span class="text-neutral-500 text-sm ml-2">- Suporte experimental</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">A partir da versao 3.48, o Cline suporta leitura experimental de SKILL.md.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills no Cline permitem customizar comportamento sem mudar de editor.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cline 3.48+, experimental flag, SKILL.md support</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🔧</span>
+            <div><span class="font-medium">Configuracao e Ativacao</span><span class="text-neutral-500 text-sm ml-2">- Setup passo-a-passo</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como ativar e configurar suporte a skills no Cline e OpenCode.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Configuracao correta garante que skills sejam lidas e aplicadas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Settings, experimental flags, skill directories, activation</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🧩</span>
+            <div><span class="font-medium">OpenCode Plugins</span><span class="text-neutral-500 text-sm ml-2">- Extensibilidade</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Sistema de plugins do OpenCode que permite estender funcionalidades com skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">OpenCode plugins ampliam possibilidades alem de instrucoes estaticas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">OpenCode, plugins, extensibility, custom commands</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">✅</span>
+            <div><span class="font-medium">Compatibilidade SKILL.md</span><span class="text-neutral-500 text-sm ml-2">- O que funciona</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Nivel de compatibilidade do Cline e OpenCode com o padrao SKILL.md.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Saber o que funciona evita frustracao e ajuda a adaptar skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Compatibility matrix, supported fields, workarounds</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🛠️</span>
+            <div><span class="font-medium">Troubleshooting</span><span class="text-neutral-500 text-sm ml-2">- Problemas comuns</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Solucoes para problemas comuns ao usar skills no Cline e OpenCode.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Debug rapido economiza horas de frustracao com configuracao.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Common errors, logs, debug mode, version conflicts</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-5')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-5.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.6</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🧪 Skills no OpenAI Codex</h3>
+        <p class="text-neutral-400 text-sm">Descubra o sistema de skills do OpenAI Codex. Diretorio .agents/skills/, AGENTS.md, catalogo openai/skills e compatibilidade.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🧪</span>
+            <div><span class="font-medium">OpenAI Codex - Overview</span><span class="text-neutral-500 text-sm ml-2">- O agente da OpenAI</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Agente de codificacao da OpenAI que executa tarefas em sandbox seguro.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Codex e um player importante no mercado de agentes de codigo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">OpenAI Codex, sandbox, code agent, GPT-4 powered</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📁</span>
+            <div><span class="font-medium">.agents/skills/ Directory</span><span class="text-neutral-500 text-sm ml-2">- Onde colocar skills</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Diretorio .agents/skills/ na raiz do repositorio para skills do Codex.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Estrutura correta de diretorios garante que skills sejam encontradas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.agents/skills/, directory structure, naming, discovery</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">AGENTS.md no Codex</span><span class="text-neutral-500 text-sm ml-2">- Formato compartilhado</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">AGENTS.md usado pelo Codex para instrucoes gerais do agente por diretorio.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Mesmo formato usado pelo GitHub Copilot, facilitando portabilidade.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AGENTS.md, directory-scoped, shared format, Copilot compatible</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📚</span>
+            <div><span class="font-medium">Catalogo openai/skills</span><span class="text-neutral-500 text-sm ml-2">- Skills oficiais</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Repositorio oficial openai/skills no GitHub com skills curadas pela OpenAI.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Skills oficiais servem como referencia de qualidade e melhores praticas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">openai/skills repo, curated catalog, reference implementations</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Compatibilidade Cross-Platform</span><span class="text-neutral-500 text-sm ml-2">- Codex + outros</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como skills do Codex se traduzem para outros agentes e vice-versa.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Maximizar reuso de skills entre Codex, Copilot e Claude Code.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cross-platform, format conversion, shared conventions</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🛠️</span>
+            <div><span class="font-medium">Criando Skills para Codex</span><span class="text-neutral-500 text-sm ml-2">- Guia pratico</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Passo-a-passo para criar e testar skills otimizadas para o Codex.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Pratica hands-on consolida conhecimento e gera skills uteis.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Skill creation, testing, iteration, Codex-specific features</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-6')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-6.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.7 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.7</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚖️ SKILL.md vs AGENTS.md vs .cursorrules</h3>
+        <p class="text-neutral-400 text-sm">Comparacao detalhada dos tres formatos principais. Quando usar cada um, como migrar entre eles e tendencias do mercado.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">📊</span>
+            <div><span class="font-medium">Tabela Comparativa</span><span class="text-neutral-500 text-sm ml-2">- Visao lado a lado</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Comparacao direta entre SKILL.md, AGENTS.md e .cursorrules em todos os criterios.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Visao comparativa facilita escolha do formato certo para cada caso.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Formato, metadata, portabilidade, suporte, comunidade</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📄</span>
+            <div><span class="font-medium">SKILL.md - Analise</span><span class="text-neutral-500 text-sm ml-2">- Pontos fortes e fracos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Analise detalhada do formato SKILL.md: vantagens, desvantagens e casos de uso ideais.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Conhecer forcas e fraquezas ajuda a usar SKILL.md no contexto certo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Portabilidade, YAML frontmatter, cross-platform, padrao aberto</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">📋</span>
+            <div><span class="font-medium">AGENTS.md - Analise</span><span class="text-neutral-500 text-sm ml-2">- Pontos fortes e fracos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Analise detalhada do AGENTS.md: vantagens, desvantagens e quando preferir este formato.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">AGENTS.md e nativo do Copilot e Codex - muito relevante em equipes GitHub.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">GitHub native, directory-scoped, free-form, Copilot/Codex</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">⚡</span>
+            <div><span class="font-medium">.cursorrules/.mdc - Analise</span><span class="text-neutral-500 text-sm ml-2">- Pontos fortes e fracos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Analise dos formatos do Cursor: .cursorrules (legacy) e .mdc (moderno).</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cursor tem a maior comunidade de regras compartilhadas.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cursor-specific, legacy/modern, cursor.directory, comunidade</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🔄</span>
+            <div><span class="font-medium">Estrategia de Migracao</span><span class="text-neutral-500 text-sm ml-2">- Plano pratico</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como migrar entre formatos mantendo compatibilidade com todos os agentes.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Migracao bem planejada evita quebras e maximiza compatibilidade.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Migration path, backward compat, dual format, gradual rollout</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🔮</span>
+            <div><span class="font-medium">Tendencias e Futuro</span><span class="text-neutral-500 text-sm ml-2">- Para onde caminha</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Tendencias de convergencia entre formatos e o futuro do padrao universal.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Antecipar tendencias permite investir no formato com mais futuro.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Convergencia, padrao unico, AgentSkills.io, market trends</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-7')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-7.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- MODULO 5.8 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-cyan-400 font-bold">5.8</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🔄 Portabilidade Cross-Platform</h3>
+        <p class="text-neutral-400 text-sm">Escreva uma vez, use em todos os agentes. Diretorios por plataforma, testing, marketplaces e ferramentas como agent-skills-cli.</p>
+      </div>
+
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🌍</span>
+            <div><span class="font-medium">Write-Once-Run-Anywhere</span><span class="text-neutral-500 text-sm ml-2">- O principio</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Filosofia de escrever uma skill que funciona em qualquer agente compativel.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Portabilidade reduz trabalho duplicado e amplia alcance das skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Portability, universal format, platform-agnostic, SKILL.md</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">📂</span>
+            <div><span class="font-medium">Estrutura Multi-Plataforma</span><span class="text-neutral-500 text-sm ml-2">- Diretorios organizados</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Organizacao de diretorios para suportar multiplas plataformas simultaneamente.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Estrutura correta garante compatibilidade com todos os agentes ao mesmo tempo.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">.github/copilot/, .cursor/rules/, .agents/skills/, SKILL.md</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🧪</span>
+            <div><span class="font-medium">Testing de Portabilidade</span><span class="text-neutral-500 text-sm ml-2">- Validacao cross-platform</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Como testar se uma skill funciona corretamente em diferentes agentes.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Testing evita surpresas ao compartilhar skills com outros desenvolvedores.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cross-platform testing, validation, lint, CI checks</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">🏪</span>
+            <div><span class="font-medium">Marketplaces de Skills</span><span class="text-neutral-500 text-sm ml-2">- Onde publicar</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Plataformas para descobrir, compartilhar e publicar skills universais.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Marketplaces amplificam alcance e permitem monetizacao de skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">AgentSkills.io, cursor.directory, GitHub repos, skill economy</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">💻</span>
+            <div><span class="font-medium">agent-skills-cli</span><span class="text-neutral-500 text-sm ml-2">- Ferramenta CLI</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">CLI para criar, validar, converter e publicar skills universais.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">CLI automatiza tarefas repetitivas do ciclo de vida de skills.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">agent-skills-cli, npx, init, validate, convert, publish</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🚀</span>
+            <div><span class="font-medium">Publicando sua Primeira Skill</span><span class="text-neutral-500 text-sm ml-2">- Hands-on final</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-cyan-400 font-semibold">O que e:</span><p class="text-neutral-300 text-sm">Guia passo-a-passo para criar, testar e publicar uma skill universal completa.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Pratica hands-on consolida tudo o que foi aprendido na trilha.</p></div>
+              <div><span class="text-cyan-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">End-to-end workflow, publish, share, iterate</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-5-8')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-5-8.html" class="px-4 py-2 text-sm bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- NAVEGACAO -->
+    <div class="flex justify-between items-center mt-12 pt-8 border-t border-dark-600">
+      <a href="../trilha4-ecossistema/index.html" class="px-6 py-3 bg-dark-700 hover:bg-dark-600 rounded-lg transition-colors">
+        ← Trilha Anterior: Ecossistema
+      </a>
+      <a href="../trilha6-exemplos/index.html" class="px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg transition-colors">
+        Proxima Trilha: Exemplos →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Agent Skills Mastery - 2026 | <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- MODAIS COM IFRAME -->
+  <div id="modal-5-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.1</span>
+          <span class="font-semibold">O Padrao Agent Skills</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.2</span>
+          <span class="font-semibold">Skills no GitHub Copilot</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.3</span>
+          <span class="font-semibold">Skills no Cursor</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.4</span>
+          <span class="font-semibold">Skills no Manus AI</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.5</span>
+          <span class="font-semibold">Skills no Cline & OpenCode</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-5.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-6" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.6</span>
+          <span class="font-semibold">Skills no OpenAI Codex</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-6.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-7" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.7</span>
+          <span class="font-semibold">SKILL.md vs AGENTS.md vs .cursorrules</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-7.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <div id="modal-5-8" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()">
+    <div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600">
+      <div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0">
+        <div class="flex items-center space-x-3">
+          <span class="text-cyan-400 font-bold">5.8</span>
+          <span class="font-semibold">Portabilidade Cross-Platform</span>
+        </div>
+        <button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <iframe src="modulo-5-8.html" class="flex-1 w-full rounded-b-xl"></iframe>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => {
+        if (exp !== explanation) {
+          exp.classList.remove('active');
+        }
+      });
+
+      explanation.classList.toggle('active');
+    }
+
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal() {
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.classList.add('hidden');
+      });
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
